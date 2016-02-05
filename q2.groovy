@@ -22,7 +22,7 @@ class Employee extends Person
   {
    this.eid=eid;
   }
-  Integer geSalary()
+  Integer getSalary()
   {
    return salary;
   }
