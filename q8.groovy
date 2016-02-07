@@ -22,6 +22,8 @@ if(it.age<youngestage)
     youngestage=it.age
     youngestEmployee=it
 }    }
+//another way...
+//println l.min{it.age}.name
 println "employee with youngest age is: ${youngestEmployee.name}"
 
 
@@ -32,6 +34,8 @@ if(it.age>oldestage)
     oldestage=it.age
     oldestEmployee=it
 }    }
+//another way...
+//println l.max{it.age}.name
 println "employee with oldest age is: ${oldestEmployee.name}"
 
 //8c
