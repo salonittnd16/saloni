@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.im.test.UserSpec" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-02-09T11:44:03" hostname="saloni-TravelMate-P257-M" time="0.219">
+  <properties/>
+  <testcase name="First test" classname="com.im.test.UserSpec" time="0.0"/>
+  <testcase name="get  full name" classname="com.im.test.UserSpec" time="0.009"/>
+  <testcase name="display name" classname="com.im.test.UserSpec" time="0.002"/>
+  <testcase name="is the password valid" classname="com.im.test.UserSpec" time="0.003"/>
+  <testcase name="reset password" classname="com.im.test.UserSpec" time="0.175"/>
+  <testcase name="encrypt supplied password" classname="com.im.test.UserSpec" time="0.022"/>
+  <testcase name="group according to incomes" classname="com.im.test.UserSpec" time="0.003"/>
+  <testcase name="maintaining a list of purchased products" classname="com.im.test.UserSpec" time="0.001"/>
+  <testcase name="removing a product from the list of purchased products" classname="com.im.test.UserSpec" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
