@@ -2,5 +2,8 @@ package com.linksharing
 
 class SomecontrollerController {
 
-    def index() { }
+    def index() {
+        render("welcome to somecontroller")
+
+    }
 }
