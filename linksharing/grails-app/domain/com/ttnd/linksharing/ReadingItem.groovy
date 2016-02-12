@@ -3,8 +3,8 @@ package com.ttnd.linksharing
 import spock.util.mop.Use
 
 class ReadingItem {
-    Resource resource;
-    User user;
+    //Resource resource;
+    //User user;
     Boolean isRead;
     Date dateCreated;
     Date lastUpdated;

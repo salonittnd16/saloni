@@ -4,7 +4,7 @@ abstract class Resource {
 
     String description;
     User createdBy;
-    Topic topic;
+    //Topic topic;
     Date DateCreated;
     Date lastUpdated;
 
