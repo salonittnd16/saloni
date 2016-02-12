@@ -17,7 +17,7 @@ class LinkResourceSpec extends Specification {
 
     def "test link resource validations"() {
         setup:
-        LinkResource linkResource = new LinkResource(url: url)
+        LinkResource linkResource = new LinkResource(url: url, description: "collections in groovy", createdBy: new User(), topic: new Topic())
 
         when:
         Boolean result = linkResource.validate()
@@ -26,8 +26,10 @@ class LinkResourceSpec extends Specification {
         result == valid
 
         where:
-        url   | valid
-        "abc" | false
+        url                               | valid
+        "abc"                             | false
+        "http://www.blogjava.net/BlueSUN" | true
+
 
     }
 

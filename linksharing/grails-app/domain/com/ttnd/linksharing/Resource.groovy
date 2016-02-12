@@ -1,6 +1,6 @@
 package com.ttnd.linksharing
 
- abstract class Resource {
+abstract class Resource {
 
     String description;
     User createdBy;
@@ -8,10 +8,10 @@ package com.ttnd.linksharing
     Date DateCreated;
     Date lastUpdated;
 
-    static mapping = {description(type:'text')}
+    static mapping = { description(type: 'text') }
 
     static constraints = {
     }
-    static hasMany = [resourceRatings:ResourceRating,readingItems:ReadingItem]
-    static belongsTo = [topic:Topic]
+    static hasMany = [resourceRatings: ResourceRating, readingItems: ReadingItem]
+    static belongsTo = [topic: Topic]
 }

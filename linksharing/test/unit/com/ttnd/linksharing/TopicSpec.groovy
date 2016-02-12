@@ -19,23 +19,17 @@ class TopicSpec extends Specification {
     }
 
 
-
-
     void "test all topic validations"() {
 
         setup:
-       // User user=new User();
-        //User user = new User(firstName:"saloni", lastName: "sharma", email: "saloni@gmail.com", password: "hello", userName: "sa",
-             //   admin: true, active: true);
-       // user.metaClass.validate={ return true}
-        Topic topic = new Topic(name:name,createdBy:author,visibility:visibility);
+        Topic topic = new Topic(name: name, createdBy: author, visibility: visibility);
 
 
         when:
         Boolean result = topic.validate()
 
         then:
-        result==valid
+        result == valid
 
         where:
         name     | author     | visibility         | valid

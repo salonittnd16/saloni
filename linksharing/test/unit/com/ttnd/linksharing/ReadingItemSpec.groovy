@@ -17,4 +17,25 @@ class ReadingItemSpec extends Specification {
 
     void "test something"() {
     }
+
+    void "test reading item"() {
+        given:
+        ReadingItem readingItem = new ReadingItem(user: user, resource: res, isRead: true)
+
+        when:
+        Boolean result = readingItem.validate()
+
+        then:
+        result == valid
+
+        where:
+        user       | res                    | valid
+        new User() | new DocumentResource() | true
+        null       | new LinkResource()     | false
+        new User() | null                   | false
+        null       | null                   | false
+
+
+    }
+
 }

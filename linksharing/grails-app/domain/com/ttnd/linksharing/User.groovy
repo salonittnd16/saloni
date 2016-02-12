@@ -13,10 +13,9 @@ class User {
     Date dateCreated;
     Date lastUpdated;
 
-    static mapping = {photo(type:'blob')}
+    static mapping = { photo(type: 'blob') }
 
     static transients = ['name']
-
 
 
     static constraints = {
@@ -30,7 +29,7 @@ class User {
 
 
     }
-    static hasMany = [topics:Topic,subscriptions:Subscription,resources:Resource,readingItems:ReadingItem,resourceRatings:ResourceRating]
+    static hasMany = [topics: Topic, subscriptions: Subscription, resources: Resource, readingItems: ReadingItem, resourceRatings: ResourceRating]
 
     String getName() {
         [firstName, lastName].findAll { it }.join(' ')
