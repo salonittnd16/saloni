@@ -1,0 +1,309 @@
+	<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+
+		<nav role="navigation" class="navbar navbar-default">
+
+			<div class="navbar-header">
+				<div class= "navbar-brand navbar-left"><u><a href="#"><b>LINK SHARING</b></a></u>
+
+				</div> 
+
+				<form class="navbar-form navbar-right" role="search" style="text-align:right">
+					<div class="form group" >
+						<input type="text" class="form-control" placeholder="Search" ></input>
+
+					</div>
+
+				</form>
+
+
+
+			</div>
+
+
+
+
+
+
+
+			<form class="navbar-form navbar-right" >
+
+				<div class="form-group">
+					<button type="button" class="fa fa-unlink " data-toggle="modal" data-target="#myModal2"></button>
+					<button type="button" class="fa fa-file-o " data-toggle="modal" data-target="#myModal3"></button>
+
+
+
+					<span class="glyphicon glyphicon-user" style="font-size:20px; "></span>
+				</div>
+
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Saloni
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">my profile</a></li>
+						<li><a href="#">users</a></li>
+						<li><a href="#">topics</a></li>
+						<li><a href="#">posts</a></li>
+						<li><a href="#">logout</a></li>
+					</ul>
+
+				</form>
+			</nav>
+				<div class="container-fluid">
+					<div class="col-xs-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Recent Shares
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="glyphicon glyphicon-user col-xs-2 " style="font-size:80px; float:left "></div>
+									<div class="col-xs-10">
+										Saloni Sharma<span class="text-muted inline"> @saloni</span>
+										<a href="#" class="inline" style="float:right">Grails</a>
+									</br>
+								</br>
+										<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta 				    		 felis
+										</p>
+										<a href="#"><div class="fa fa-facebook-official"></div></a>
+										<a href="#"><div class="fa fa-twitter inline"></div></a>
+										<a href="#"><div class="fa fa-google-plus inline"></div></a>
+										<a href="#" class="inline" >&nbsp;&nbsp;&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+										<a href="#" class="inline" >Edit&nbsp;&nbsp;</a>
+										<a href="#" class="inline" >Download&nbsp;&nbsp;</a>
+										<a href="#" class="inline" >View Full Site&nbsp;&nbsp;</a>
+									</div>	
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="col-xs-5 col-xs-offset-1">
+						<div class="row" style="margin:9px">
+						<div class="panel panel-default">
+							<div class="panel-heading">Trending Topics
+								<a href="#" style="float:right";>View all </a>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<span class="glyphicon glyphicon-user" style="font-size:80px; float:left"></span>
+									<div> Grails</div>
+									<p class="text-muted inline"> @saloni&nbsp;&nbsp;&nbsp;&nbsp;<span>Subscriptions</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Top Posts</p>
+									<p> Unsuscribe&nbsp;&nbsp;&nbsp;&nbsp;<span>50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>30</p>
+
+
+								</div>
+								<hr>
+								<div class="row">
+									<span class="glyphicon glyphicon-user" style="font-size:80px; float:left"></span>
+									<div> Grails</div>
+									<p class="text-muted inline"> @saloni&nbsp;&nbsp;&nbsp;&nbsp;<span>Subscriptions</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Top Posts</p>
+									<p> Unsuscribe&nbsp;&nbsp;&nbsp;&nbsp;<span>50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>30</p>
+
+
+								</div>
+							</br>
+						
+								<div class="row" style="margin:9px container-fluid">
+											<div class="form-group  container-fluid">
+												<div class="dropdown col-xs-5 ">
+													<button class="btn btn-default dropdown-toggle col-xs-8" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+														Visibility
+														<span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li><a href="#">Private</a></li>
+														<li><a href="#">Public</a></li>
+														
+													</ul>
+												</div>
+												<div class="dropdown col-xs-5 ">
+													<button class="btn btn-default dropdown-toggle col-xs-8" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+														Seriousness
+														<span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li><a href="#">Casual</a></li>
+														<li><a href="#">Serious</a></li>
+														
+													</ul>
+												</div>
+
+												<a href="#"><u> Edit&nbsp;</u> </a>
+												<a href="#"><u>Delete</u> </a>
+											</div>
+										</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+					</div>
+				</div>
+				<div class="container">
+
+
+						<div id="myModal2" class="modal fade">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Share Link</h3>
+									</div>
+									<div class="modal-body">
+										<form class="form-horizontal">
+											<div class="form-group">
+												<label for="inputEmail" class="control-label col-xs-2">Link</label>
+												<div class="col-xs-10">
+													<input type="email" class="form-control" id="inputEmail" placeholder="Link">
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="inputEmail" class="control-label col-xs-2">Description</label>
+												<div class="col-xs-10">
+													<textarea class="form-control" placeholder="Description" rows="5" id="comment"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputText" class="control-label col-xs-2">Topic</label>
+												<div class="dropdown col-xs-7">
+													<button class="btn btn-default dropdown-toggle col-xs-5" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+														Public
+														<span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li><a href="#">Grails</a></li>
+														<li><a href="#">Mean</a></li>
+														<li role="separator" class="divider"></li>
+														<li><a href="#">Others</a></li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-xs-offset-2 col-xs-10" style="float:left">
+													<button type="submit" class="btn btn-primary">save</button>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-xs-offset-5 col-xs-10" style="float:right">
+													<button type="submit" class="btn btn-primary">cancel</button>
+												</div>
+
+											</div>
+										</form>
+
+
+
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="container">
+
+						
+						<div id="myModal3" class="modal fade">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h3 class="modal-title">Share Document</h3>
+									</div>
+									<div class="modal-body">
+										<form class="form-horizontal">
+											<div class="form-group">
+												<label for="inputEmail" class="control-label col-xs-2">Document</label>
+												<div class="col-xs-10">
+													<input type="email" class="form-control" id="inputEmail" placeholder="Document">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail" class="control-label col-xs-2">Description</label>
+												<div class="col-xs-10">
+													<textarea class="form-control" placeholder="Description" rows="5" id="comment"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputText" class="control-label col-xs-2">Topic</label>
+												<div class="dropdown col-xs-7">
+													<button class="btn btn-default dropdown-toggle col-xs-5" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+														Public
+														<span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li><a href="#">Grails</a></li>
+														<li><a href="#">Mean</a></li>
+														<li role="separator" class="divider"></li>
+														<li><a href="#">Others</a></li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<div class="col-xs-offset-2 col-xs-10" style="float:left">
+													<button type="submit" class="btn btn-primary">save</button>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-xs-offset-5 col-xs-10" style="float:right">
+													<button type="submit" class="btn btn-primary">cancel</button>
+												</div>
+
+											</div>
+										</form>
+
+
+
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+
+
+				</div>
+					
+
+
+
+
+
+
+		</body>
+		</html>
