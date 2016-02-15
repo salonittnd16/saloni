@@ -100,35 +100,29 @@ class TransactionSpec extends Specification {
 
 
 
-//    def"get all popular products"()
-//    {   given:
-//      def l=["handbag"]
-//
-//        Transaction transaction=new Transaction()
-//        Product product=new Product(name:"handbag",price:1000,isPopular:true)
-//        product.metaClass.getCurrentProducts={ return l }
-//        //List<Product>p=new Product()
-//        //p.add(product)
-//
-//
-//
-//        when:
-//        List l1=transaction.getAllPopularProducts()
-//
-//        then:
-//        l1.contains("handbag")==true
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    }
-//
+    def"get all popular products"()
+    {   given:
+      def l=["handbag"]
+
+        Transaction transaction=new Transaction()
+        Product product=new Product(name:"handbag",price:1000,isPopular:true)
+        Product product1=new Product(name:"shoes",price:2000,isPopular:false)
+       // product.metaClass.getCurrentProducts={ return l }
+        List<Product> p=[product,product1]
+
+        and:
+        GroovyMock(Product,global:true)
+        Product.getCurrentProducts(* _) >> p
+
+
+        when:
+        List l1=transaction.getAllPopularProducts()
+
+        then:
+        l1.contains(product)
+
+    }
+
 
 
 
