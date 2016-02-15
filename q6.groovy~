@@ -1,4 +1,4 @@
-
+//unable to resolve the exception here
 class HourMinute
 {
     int hours
@@ -28,22 +28,22 @@ class HourMinute
          }
           
      
-         HourMinute plus(HourMinute hm2)
+         HourMinute plus(HourMinute hm1,HourMinute hm2)
          {    HourMinute result=new HourMinute()
-             result.hours=this.hours+hm2.hours
-             result.minutes=this.minutes+hm2.minutes
+             result.hours=hm1.hours+hm2.hours
+             result.minutes=hm1.minutes+hm2.minutes
              
             return result  
              }
- HourMinute minus(HourMinute hm2)
+ HourMinute minus(HourMinute hm1,HourMinute hm2)
          {    HourMinute result=new HourMinute()
-             if(this.hours>hm2.hours)
-            { result.hours=this.hours-hm2.hours
-             result.minutes=this.minutes-hm2.minutes
+             if(hm1.hours>hm2.hours)
+            { result.hours=hm1.hours-hm2.hours
+             result.minutes=hm1.minutes-hm2.minutes
             } 
              else
-             { result.hours=hm2.hours-this.hours
-             result.minutes=hm2.minutes-this.minutes
+             { result.hours=hm1.hours-hm2.hours
+             result.minutes=hm1.minutes-hm2.minutes
             } 
              
              return result  
@@ -58,4 +58,3 @@ HourMinute finalSub=hm1-hm2
 println "time after adding is= hours : ${finalAdd.hours} and minutes : ${finalAdd.minutes}"
 println "time after deducting is= hours : ${finalSub.hours} and minutes : ${finalSub.minutes}"
 
-​
