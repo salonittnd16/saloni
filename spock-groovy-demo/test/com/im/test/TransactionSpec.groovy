@@ -20,24 +20,21 @@ class TransactionSpec extends Specification {
 //        then:
 //        user.balance ==  100.toBigDecimal()
 
-
-
 //    }
 
-    def"sell product"()
-    {
+    def "sell product"() {
         given:
-        Transaction transaction=new Transaction()
-        User user=new User(balance:bal)
-        Product product=new Product(price:p)
+        Transaction transaction = new Transaction()
+        User user = new User(balance: bal)
+        Product product = new Product(price: p)
 
 
         when:
-        transaction.sell(product,user)
+        transaction.sell(product, user)
 
 
         then:
-        user.balance==(bal-p).toBigDecimal()
+        user.balance == (bal - p).toBigDecimal()
 
         where:
         bal | p
@@ -47,13 +44,11 @@ class TransactionSpec extends Specification {
     }
 
 
-
-    def"cancel sale"()
-    {
+    def "cancel sale"() {
         given:
-        Transaction transaction=new Transaction()
-        User user=new User(balance:bal)
-        Product product=new Product(name:"abcd",price:p)
+        Transaction transaction = new Transaction()
+        User user = new User(balance: bal)
+        Product product = new Product(name: "abcd", price: p)
 
         and:
         def mockedEmailService = Mock(EmailService)
@@ -61,7 +56,7 @@ class TransactionSpec extends Specification {
 
 
         when:
-        transaction.cancelSale(product,user)
+        transaction.cancelSale(product, user)
 
 
         then:
@@ -75,56 +70,47 @@ class TransactionSpec extends Specification {
     }
 
 
-
-    def"calculate discount"()
-    {
+    def "calculate discount"() {
         given:
-        Transaction transaction=new Transaction()
-        User user=new User(balance:b,isPrivellegedCustomer:true)
-        Product product=new Product(name:"abcd",price:p,discountType:"PRIVELLEGE_ONLY")
+        Transaction transaction = new Transaction()
+        User user = new User(balance: b, isPrivellegedCustomer: true)
+        Product product = new Product(name: "abcd", price: p, discountType: "PRIVELLEGE_ONLY")
 
         when:
-        BigDecimal discount=transaction.calculateDiscount(product,user)
+        BigDecimal discount = transaction.calculateDiscount(product, user)
 
         then:
-        discount==expectedDiscount
+        discount == expectedDiscount
 
         where:
 
-        b | p | expectedDiscount
-        1000| 500| 150
-
+        b    | p   | expectedDiscount
+        1000 | 500 | 150
 
 
     }
 
 
-
-    def"get all popular products"()
-    {   given:
-      def l=["handbag"]
-
-        Transaction transaction=new Transaction()
-        Product product=new Product(name:"handbag",price:1000,isPopular:true)
-        Product product1=new Product(name:"shoes",price:2000,isPopular:false)
-       // product.metaClass.getCurrentProducts={ return l }
-        List<Product> p=[product,product1]
+    def "get all popular products"() {
+        given:
+        Transaction transaction = new Transaction()
+        Product product = new Product(name: "handbag", price: 1000, isPopular: true)
+        Product product1 = new Product(name: "shoes", price: 2000, isPopular: false)
+        // product.metaClass.getCurrentProducts={ return l }
+        List<Product> p = [product, product1]
 
         and:
-        GroovyMock(Product,global:true)
-        Product.getCurrentProducts(* _) >> p
+        GroovyMock(Product, global: true)
+        Product.getCurrentProducts(*_) >> p
 
 
         when:
-        List l1=transaction.getAllPopularProducts()
+        List l1 = transaction.getAllPopularProducts()
 
         then:
         l1.contains(product)
 
     }
-
-
-
 
 //
 
