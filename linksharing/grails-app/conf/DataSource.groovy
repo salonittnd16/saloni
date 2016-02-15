@@ -25,7 +25,7 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost:3306/sonyliv_dev?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost:3306/linksharing?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
         }
     }
     production {

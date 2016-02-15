@@ -1,5 +1,8 @@
 package com.linksharing
 
+import groovy.util.logging.Log4j
+
+@Log4j
 class LoggingController {
 
     def index() {
