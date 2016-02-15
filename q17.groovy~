@@ -14,5 +14,5 @@ map.each
 {println it}
 
 map.eachWithIndex{key,value->
-println "key:${key.key} and value:${key.value}"
+println "key:${key} and value:${value}"
 } 
