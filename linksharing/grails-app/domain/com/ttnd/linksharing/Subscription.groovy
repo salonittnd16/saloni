@@ -1,7 +1,7 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.Enum.Seriousness
-import spock.util.mop.Use
+import spock.lang.Specification
 
 class Subscription {
 
@@ -21,3 +21,4 @@ class Subscription {
     static belongsTo = [user: User, topic: Topic]
 
 }
+

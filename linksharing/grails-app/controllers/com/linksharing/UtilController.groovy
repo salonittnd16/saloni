@@ -6,4 +6,9 @@ class UtilController {
         render(grailsApplication.config.grails.testvalue)
 
     }
+
+    def myFirstAction()
+    {
+        render "hello"
+    }
 }

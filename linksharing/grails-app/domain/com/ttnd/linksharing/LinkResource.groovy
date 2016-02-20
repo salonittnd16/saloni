@@ -9,4 +9,10 @@ class LinkResource extends Resource {
         url url: true
 
     }
+    String toString()
+    {
+        url
+
+
+    }
 }

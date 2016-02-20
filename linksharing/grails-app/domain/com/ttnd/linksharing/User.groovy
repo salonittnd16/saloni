@@ -36,5 +36,10 @@ class User {
 
     }
 
+    String toString()
+    {
+        firstName
+
+    }
 
 }
