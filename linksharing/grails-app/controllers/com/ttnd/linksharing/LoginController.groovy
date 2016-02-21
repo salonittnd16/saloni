@@ -4,30 +4,26 @@ package com.ttnd.linksharing
 class LoginController {
 
     def index() {
-        if(session.user)
-        {
-            forward(controller: 'User' ,action: 'index')
-        }
-        else
-        render "user is not logged in"
+        if (session.user) {
+            forward(controller: 'User', action: 'index')
+        } else
+            render "user is not logged in"
     }
 
 
-    def login( String username,String password)
-    {   render "logged in"
-        User user=User.findByUserNameAndPassword(username,password)
+    def login(String username, String password) {
+        User user = User.findByUserNameAndPassword(username, password)
+        if (user) {
+            if (user?.active) {
+                session.user = user
+                redirect(action: 'index')
+            } else
+                flash.message = "User is not active"
 
-              if(user?.active)
-              {
-                  session.user=user
-                  redirect(action: 'index')
-
-              }
-              else
-            render "${user?'user is not active':'User not exist'}"
-
-
-
+        } else {
+            flash.message = "User account not found"
+            render flash.message
+        }
     }
 
     def logout()
@@ -37,3 +33,33 @@ class LoginController {
         redirect(action: 'index')
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,6 @@ import com.ttnd.linksharing.Topic
 import com.ttnd.linksharing.User
 import com.ttnd.linksharing.ResourceRating
 import com.ttnd.linksharing.Constants.Constant
-import org.xhtmlrenderer.css.parser.property.PrimitivePropertyBuilders;
 
 
 class BootStrap {
@@ -21,7 +20,7 @@ class BootStrap {
         List<Resource> resources = createResources(topics)
         List<Subscription> subscriptions = createSubscriptions(users, topics)
         List<ReadingItem> readingItems = createReadingItems(users, topics)
-        List<ResourceRating> resourceRatings=createResourceRating(users,resources)
+        List<ResourceRating> resourceRatings = createResourceRating(users, resources)
 
         //println(grailsApplication.config.grails.testvalue)
 
@@ -32,9 +31,9 @@ class BootStrap {
 
         if (User.count == 0) {
             List<User> users = []
-            User user1 = new User(firstName: "saloni", lastName: "sharma", email: "saloni@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "sal",
+            User user1 = new User(firstName: "saloni", lastName: "sharma", email: "saloni@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "saloni",
                     admin: true, active: true);
-            User user2 = new User(firstName: "shalika", lastName: "singhal", email: "shalika@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "shal",
+            User user2 = new User(firstName: "shalika", lastName: "singhal", email: "shalika@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "shali",
                     admin: false, active: true);
             try {
 
@@ -202,7 +201,6 @@ class BootStrap {
                                         }
 
 
-
                                 }
 
                 }
@@ -211,14 +209,13 @@ class BootStrap {
     }
 
 
-
-    List<ResourceRating> createResourceRating(List<User> users,List<ReadingItem> readingItemsnew) {
+    List<ResourceRating> createResourceRating(List<User> users, List<ReadingItem> readingItemsnew) {
         List<ResourceRating> resourceRatings = []
         users.each { user ->
             readingItemsnew = ReadingItem.findAllByUser(user)
             readingItemsnew.each { readingItems1 ->
                 if (!readingItems1.isRead) {
-                    ResourceRating resourceRating = new ResourceRating(user: readingItems1.user,resource: readingItems1.resource,
+                    ResourceRating resourceRating = new ResourceRating(user: readingItems1.user, resource: readingItems1.resource,
                             score: 4)
 
                     if (resourceRating.save()) {
@@ -236,7 +233,6 @@ class BootStrap {
         resourceRatings
 
     }
-
 
 
     def destroy = {
