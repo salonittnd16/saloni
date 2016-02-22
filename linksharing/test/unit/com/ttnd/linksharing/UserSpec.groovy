@@ -97,7 +97,7 @@ class UserSpec extends Specification {
     def "tostring"()
     {
         given:
-        User user = new User(firstName: "saloni", lastName: "sharma", userName: "sal", email:"saloni@tothenew.com", password:Constant.DEFAULT_PASSWORD)
+        User user = new User(firstName: "saloni", lastName: "sharma", userName: "saloni", email:"saloni@tothenew.com", password:Constant.DEFAULT_PASSWORD)
 
         when:
         String s=user.toString()

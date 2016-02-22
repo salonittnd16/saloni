@@ -8,10 +8,13 @@ class TopicController {
     def index() { render "topic controller"}
 
     def show(int id) {
-        Topic topic = Topic.findById(id)
+        Topic topic = Topic.read(id)
         if (topic) {
             if (topic.visibility == Visibility.PUBLIC)
-                render "success"
+            {  render "success"
+
+            }
+
             else {
                 Subscription subscription = Subscription.findByUserAndTopic(topic.createdBy, topic)
                 if (subscription)
@@ -27,5 +30,19 @@ class TopicController {
         }
 
 
+    }
+
+    def save(Topic topic,String visibility)
+    {
+        if(topic) {
+            topic.createdBy = session.user
+            topic.visibility = Enum.valueOf(Visibility.class, visibility)
+            if (topic.save(flush: true)) {
+                flash.message = "topic saved successfully"
+                render "success"
+            }
+        } else {
+            render "No User....."
+        }
     }
 }

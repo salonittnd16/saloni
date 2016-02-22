@@ -33,7 +33,7 @@ class BootStrap {
             List<User> users = []
             User user1 = new User(firstName: "saloni", lastName: "sharma", email: "saloni@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "saloni",
                     admin: true, active: true);
-            User user2 = new User(firstName: "shalika", lastName: "singhal", email: "shalika@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "shali",
+            User user2 = new User(firstName: "shalika", lastName: "singhal", email: "shalika@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "shalika",
                     admin: false, active: true);
             try {
 
@@ -172,38 +172,22 @@ class BootStrap {
 
         List<ReadingItem> readingItems = []
 
-        users.each
-                {
-                    user ->
-                        topics.each
-                                {
-                                    topic ->
-                                        if (Subscription.findByUserAndTopic(user, topic)) {
-
-                                            topic.resources.each
-                                                    {
-                                                        resource ->
-                                                            if (resource.createdBy != user && !user.readingItems?.contains(resource)) {
-                                                                ReadingItem readingItem = new ReadingItem(user: user, resource: resource, isRead: false)
-
-
-
-                                                                if (readingItem.save()) {
-                                                                    readingItems.add(readingItem)
-                                                                    user.addToReadingItems(readingItem)
-                                                                    log.info "${readingItem} saved successfully"
-                                                                } else
-                                                                    log.error "unable to save reading item: ${readingItem.errors.allErrors}"
-                                                            }
-
-                                                    }
-
-                                        }
-
-
-                                }
-
+        users.each { user ->
+            println "************************************for user ${user.id}**************************************"
+            Resource.findAllByCreatedByNotEqual(user).each { resource ->
+                ReadingItem readingItem = new ReadingItem(user: user, resource: resource, isRead: false)
+                if (readingItem.save()) {
+                    println("Saved For Topic ${readingItem.id}::: ${resource.id}")
+                    readingItems.add(readingItem)
+                    user.addToReadingItems(readingItem)
+                    log.info "${readingItem} saved successfully"
+                } else {
+                    log.error "unable to save reading item: ${readingItem.errors.allErrors}"
                 }
+
+            }
+
+        }
 
         readingItems
     }

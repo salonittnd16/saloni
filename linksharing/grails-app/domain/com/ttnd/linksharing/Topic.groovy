@@ -12,6 +12,10 @@ class Topic {
     Date lastUpdated;
     Visibility visibility
 
+    static mapping = {
+        sort "name"
+    }
+
     static constraints = {
 
         name nullable: false, blank: false, unique: 'createdBy'

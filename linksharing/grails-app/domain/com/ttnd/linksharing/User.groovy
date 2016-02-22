@@ -13,7 +13,8 @@ class User {
     Date dateCreated;
     Date lastUpdated;
 
-    static mapping = { photo(type: 'blob') }
+    static mapping = { photo(type: 'blob')
+    sort id:"desc"}
 
     static transients = ['name', 'confirmPassword']
 
@@ -26,10 +27,12 @@ class User {
         photo nullable: true
         admin nullable: true
         active nullable: true
-        confirmPassword(nullable: true, blank: true, validator: { val, obj ->
-            if (!obj.id && obj.password != val || !val) {
-                return "passwords.don't.match"
-            }
+        confirmPassword(bindable:true,nullable: true, blank: true, validator: { val, obj ->
+           if(val) {
+               if (obj.password != val) {
+                   return "passwords.don't.match"
+               }
+           }
         })
 
 

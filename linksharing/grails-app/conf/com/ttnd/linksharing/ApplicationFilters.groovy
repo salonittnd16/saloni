@@ -5,8 +5,8 @@ class ApplicationFilters {
     def filters = {
         all(controller: '*', action: '*') {
             before = {
-                log.info "User Controller"
-                log.info "Login Controller"
+              log.info("controller name : ${controllerName} and action : ${actionName}")
+
             }
             after = { Map model ->
 

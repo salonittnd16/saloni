@@ -43,7 +43,7 @@ class TopicSpec extends Specification {
     {
         given:
         User user =new User()
-        Topic topic = new Topic(name: "grails", createdBy: user, visiblity: Visiblity.PUBLIC )
+        Topic topic = new Topic(name: "grails", createdBy: user, visiblity: Visibility.PUBLIC )
         when:
         String expected=topic.toString()
 
