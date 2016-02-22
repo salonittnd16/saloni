@@ -16,14 +16,17 @@ class ApplicationFilters {
             }
         }
         sessioncheck() {}
-        logincheck(controller: 'Login', invert: true) {
+        logincheck(controller: 'login', invert:true){
             before = {
+                if (!session.user) {
+                    println("=================================================")
+                    redirect(controller: 'login', action: 'index')
+
+                }
 
 
             }
             after = { Map model ->
-                if (!session.user){}
-                //   redirect(controller: 'Login', action: 'index')
 
 
             }

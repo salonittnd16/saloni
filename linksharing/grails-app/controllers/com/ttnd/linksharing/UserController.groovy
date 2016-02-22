@@ -5,7 +5,8 @@ class UserController {
     def index() {
 
         render "user dashboard"
-        render session.username
+        render "\n"
+        render "${session.user.userName}"
     }
 
 
@@ -14,8 +15,10 @@ class UserController {
         if(!session.user)
         {
             log.error("user is not able to register")
-            flash.message="unregise"
+            flash.message="unregistered user"
         }
+        else
+        render("already registered")
 
     }
 }

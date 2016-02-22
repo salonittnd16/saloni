@@ -39,6 +39,19 @@ class TopicSpec extends Specification {
         "mean"   | null       | Visibility.PRIVATE | false
 
     }
+    def "tostring"()
+    {
+        given:
+        User user =new User()
+        Topic topic = new Topic(name: "grails", createdBy: user, visiblity: Visiblity.PUBLIC )
+        when:
+        String expected=topic.toString()
+
+        then:
+        expected=="topic: grails"
+    }
+
+
 
 
 }

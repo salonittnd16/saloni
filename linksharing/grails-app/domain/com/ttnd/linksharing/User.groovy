@@ -15,7 +15,7 @@ class User {
 
     static mapping = { photo(type: 'blob') }
 
-    static transients = ['name']
+    static transients = ['name', 'confirmPassword']
 
 
     static constraints = {
@@ -26,6 +26,11 @@ class User {
         photo nullable: true
         admin nullable: true
         active nullable: true
+        confirmPassword(nullable: true, blank: true, validator: { val, obj ->
+            if (!obj.id && obj.password != val || !val) {
+                return "passwords.don't.match"
+            }
+        })
 
 
     }
@@ -36,8 +41,12 @@ class User {
 
     }
 
-    String toString()
-    {
+
+    String getConfirmPassword() {
+
+    }
+
+    String toString() {
         firstName
 
     }

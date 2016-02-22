@@ -1,5 +1,6 @@
 package com.ttnd.linksharing
 
+import com.ttnd.linksharing.Constants.Constant
 import grails.test.mixin.TestFor
 import jdk.nashorn.internal.ir.annotations.Ignore
 import spock.lang.IgnoreRest
@@ -89,5 +90,21 @@ class UserSpec extends Specification {
         5   | "shalika" | null     | "shalika"
         6   | null      | null     | ""
     }
+
+
+
+
+    def "tostring"()
+    {
+        given:
+        User user = new User(firstName: "saloni", lastName: "sharma", userName: "sal", email:"saloni@tothenew.com", password:Constant.DEFAULT_PASSWORD)
+
+        when:
+        String s=user.toString()
+
+        then:
+        s=="saloni "
+    }
+
 
 }

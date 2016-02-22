@@ -36,7 +36,7 @@ class Topic {
     }
     String toString()
     {
-        name
+        return "topic: ${name}"
     }
 
 }

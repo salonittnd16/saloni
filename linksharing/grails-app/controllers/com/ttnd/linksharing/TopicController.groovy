@@ -5,7 +5,7 @@ import com.ttnd.linksharing.Enum.Visibility
 
 class TopicController {
 
-    def index() {}
+    def index() { render "topic controller"}
 
     def show(int id) {
         Topic topic = Topic.findById(id)
@@ -17,7 +17,7 @@ class TopicController {
                 if (subscription)
                     render "success"
                 else
-                    redirect(controller: 'Login', action: 'index')
+                    redirect(controller: 'login', action: 'index')
 
             }
 

@@ -5,9 +5,11 @@ class LoginController {
 
     def index() {
         if (session.user) {
-            forward(controller: 'User', action: 'index')
-        } else
+            forward(controller: 'user', action: 'index')
+        } else {
+            println "inside else    "
             render "user is not logged in"
+        }
     }
 
 
