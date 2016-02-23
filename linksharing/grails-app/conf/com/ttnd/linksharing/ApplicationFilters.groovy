@@ -5,7 +5,7 @@ class ApplicationFilters {
     def filters = {
         all(controller: '*', action: '*') {
             before = {
-              log.info("controller name : ${controllerName} and action : ${actionName}")
+                log.info("controller name : ${controllerName} and action : ${actionName}")
 
             }
             after = { Map model ->
@@ -16,7 +16,7 @@ class ApplicationFilters {
             }
         }
         sessioncheck() {}
-        logincheck(controller: 'login', invert:true){
+        logincheck(controller: 'login', invert: true) {
             before = {
                 if (!session.user) {
                     println("=================================================")

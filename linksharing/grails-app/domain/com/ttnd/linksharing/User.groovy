@@ -7,6 +7,7 @@ class User {
     String userName;
     String password;
     String email;
+    String confirmPassword
     Byte[] photo;
     Boolean admin;
     Boolean active;
@@ -28,11 +29,11 @@ class User {
         admin nullable: true
         active nullable: true
         confirmPassword(bindable:true,nullable: true, blank: true, validator: { val, obj ->
-           if(val) {
+//           if(val) {
                if (obj.password != val) {
                    return "passwords.don't.match"
                }
-           }
+//           }
         })
 
 
@@ -41,11 +42,6 @@ class User {
 
     String getName() {
         [firstName, lastName].findAll { it }.join(' ')
-
-    }
-
-
-    String getConfirmPassword() {
 
     }
 

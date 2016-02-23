@@ -1,21 +1,19 @@
 package com.ttnd.linksharing
 
-
+import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.Enum.Visibility
 
 class TopicController {
 
-    def index() { render "topic controller"}
+    def index() { render "topic controller" }
 
-    def show(int id) {
+    def show(long id,ResourceSearchCo co) {
         Topic topic = Topic.read(id)
         if (topic) {
-            if (topic.visibility == Visibility.PUBLIC)
-            {  render "success"
+            if (topic.visibility == Visibility.PUBLIC) {
+                render "success"
 
-            }
-
-            else {
+            } else {
                 Subscription subscription = Subscription.findByUserAndTopic(topic.createdBy, topic)
                 if (subscription)
                     render "success"
@@ -32,17 +30,20 @@ class TopicController {
 
     }
 
-    def save(Topic topic,String visibility)
-    {
-        if(topic) {
-            topic.createdBy = session.user
-            topic.visibility = Enum.valueOf(Visibility.class, visibility)
-            if (topic.save(flush: true)) {
-                flash.message = "topic saved successfully"
-                render "success"
-            }
+    def save(String name, String seriousness) {
+        Topic topic = new Topic(name: name, createdBy: session.user, visibility: Visibility.convert(seriousness))
+
+        if (topic.save(flush: true, failOnError: true)) {
+            flash.message = "Success "
+            render flash.message
         } else {
-            render "No User....."
+            log.error(" Could not save Topic ${topic.name}")
+            flash.message = "Topic ${topic.name} not saved"
+            render flash.message
+
+
         }
+
+
     }
 }

@@ -9,12 +9,19 @@ import spock.lang.Specification
 @TestFor(LoginController)
 class LoginControllerSpec extends Specification {
 
-    def setup() {
+    void "when user is available in session then user should be forwarded to user index action"() {
+        setup:
+        controller.session.user = new User()
+        when:
+        controller.index()
+        then:
+        response.forwardedUrl == "/user/index"
     }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
+    void "when user is not available in session then message should be rendered"() {
+        when:
+        controller.index()
+        then:
+        response.text == "user is not logged in"
     }
 }
