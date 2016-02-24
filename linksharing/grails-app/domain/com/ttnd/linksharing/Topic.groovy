@@ -13,6 +13,7 @@ class Topic {
     Date lastUpdated;
     Visibility visibility
 
+    static hasMany = [resources: Resource, subscriptions: Subscription]
     static mapping = {
         sort "name"
     }
@@ -24,24 +25,36 @@ class Topic {
 
 
     }
-    static hasMany = [resources: Resource, subscriptions: Subscription]
+
 
     static getTrendingTopics() {
-        List<TopicVo> topicVoList = Topic.createCriteria().list() {
+        List topicVoList = Resource.createCriteria().list() {
 
             projections {
-                groupProperty('id')
-                count('resources', 'resourceCount')
+                createAlias('topic', 't')
+                groupProperty('t.id')
+                property('t.name')
+                property('t.visibility')
+                property('t.createdBy')
+                createAlias(count('id'),'resourceCount')
+                count('resourceCount')
             }
+            max('resourceCount')
+
             maxResults 5
-            max('resources')
-            eq('visibility', Visibility.PUBLIC)
+
+            //eq('visibility', Visibility.PUBLIC)
             // order("resourceCount", "desc")
-            order("name", "desc")
+            order("t.name", "desc")
 
         }
-        topicVoList
+        println "${topicVoList}"
+        List<TopicVo> topicVoList1 = []
+        topicVoList.each {
+            topicVoList1.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], createdBy: it[3], count: it[4]))
+        }
 
+        return topicVoList1
     }
 
 

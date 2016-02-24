@@ -7,7 +7,7 @@ class TopicController {
 
     def index() { render "topic controller" }
 
-    def show(long id,ResourceSearchCo co) {
+    def show(long id, ResourceSearchCo co) {
         Topic topic = Topic.read(id)
         if (topic) {
             if (topic.visibility == Visibility.PUBLIC) {

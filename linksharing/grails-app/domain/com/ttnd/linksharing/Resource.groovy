@@ -12,6 +12,7 @@ abstract class Resource {
     Date DateCreated;
     Date lastUpdated;
 
+
     static mapping = { description(type: 'text') }
 
     static transients = ['ratingInfo']
@@ -34,19 +35,9 @@ abstract class Resource {
     static belongsTo = [topic: Topic]
 
     RatingInfoVo getRatingInfo() {
-        return RatingInfoVo
-    }
-
-    void setRatingInfo() {
-
-
-    }
-
-
-    static informationOfRatings() {
-        List result = ResourceRating.createCriteria().list() {
+        List result = ResourceRating.createCriteria().get {
             'resource' {
-                eq('id', 1L)
+                eq('id', this.id)
             }
             projections {
                 sum('score')
@@ -56,10 +47,18 @@ abstract class Resource {
 
             }
         }
-        result
+        RatingInfoVo ratingInfoVo = new RatingInfoVo(totalVotes: result[0], averageScore: result[1], totalScore: result[2])
+        ratingInfoVo
     }
+
+    void setRatingInfo() {
+
+
+    }
+
 
     String toString() {
         return "Topic: ${this.topic.name} ... ${this.description}"
     }
+
 }

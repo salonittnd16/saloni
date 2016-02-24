@@ -34,17 +34,30 @@ class ResourceController {
         render resources
     }
 
-    def show() {
-        List resultratings = Resource.informationOfRatings()
-        RatingInfoVo vo = resultratings.collect { List res ->
-            return new RatingInfoVo(totalScore: res[0], averageScore: res[1], totalVotes: res[2])
-        }
-        render(vo)
+    def show(Long id) {
+        Resource resource = Resource.findById(id)
+
+        RatingInfoVo ratingInfoVo = resource.ratingInfo
+
+        render "----------total votes : $ratingInfoVo.totalVotes----average score: $ratingInfoVo.averageScore------total score: $ratingInfoVo.totalScore"
+
 
     }
-    def showtopics(){
-        List<TopicVo> topicVoList=Topic.getTrendingTopics()
+
+    def showtopics() {
+        List<TopicVo> topicVoList = Topic.getTrendingTopics()
         render topicVoList
+
+    }
+
+    def topPosts() {
+        List result = ResourceRating.showTopPosts()
+        List ids = []
+        result.each {
+            ids.add(it[0])
+        }
+        List<Resource> resources = Resource.getAll(ids)
+        render resources
 
 
     }

@@ -7,7 +7,7 @@ import com.ttnd.linksharing.Enum.Visibility
  */
 class TopicVo {
 
-    Integer id
+    Long id
     String name
     Visibility visibility
     Integer count

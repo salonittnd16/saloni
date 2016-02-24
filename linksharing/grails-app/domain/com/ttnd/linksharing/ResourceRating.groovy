@@ -1,7 +1,7 @@
 package com.ttnd.linksharing
 
 class ResourceRating {
-   // Resource resource;
+    // Resource resource;
     //User user;
     Integer score;
 
@@ -14,4 +14,21 @@ class ResourceRating {
 
     }
     static belongsTo = [user: User, resource: Resource]
+
+
+
+    static showTopPosts(){
+        List resourceRatings=ResourceRating.createCriteria ( ).list ( ) {
+
+            projections {
+                groupProperty('id')
+                count('score', 'res')
+            }
+            order('res', 'desc')
+            maxResults 5
+
+        }
+        resourceRatings
+    }
+
 }

@@ -32,9 +32,9 @@ class BootStrap {
         if (User.count == 0) {
             List<User> users = []
             User user1 = new User(firstName: "saloni", lastName: "sharma", email: "saloni@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "saloni",
-                    admin: true, active: true,confirmPassword: Constant.DEFAULT_PASSWORD);
+                    admin: true, active: true, confirmPassword: Constant.DEFAULT_PASSWORD);
             User user2 = new User(firstName: "shalika", lastName: "singhal", email: "shalika@gmail.com", password: Constant.DEFAULT_PASSWORD, userName: "shalika",
-                    admin: false, active: true,confirmPassword: Constant.DEFAULT_PASSWORD);
+                    admin: false, active: true, confirmPassword: Constant.DEFAULT_PASSWORD);
             try {
 
                 if (user1.save(flush: true, failOnError: true)) {

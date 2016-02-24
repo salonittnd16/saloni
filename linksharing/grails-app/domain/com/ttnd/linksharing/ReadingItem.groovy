@@ -15,4 +15,14 @@ class ReadingItem {
         user nullable:false
     }
     static belongsTo = [user:User,resource:Resource]
+
+    def executeUpdate() {
+        User user = User.get(1)
+        String firstName = user.firstName
+        User.executeUpdate("update User as u set u.firstName=:firstName where u.id=:id", [firstName: "Test", id: 1.toLong()])
+//        user.refresh()
+        render "firstName before ${firstName} -: After updation ${user.firstName}"
+        User.executeUpdate("delete User where id=:id", [id: 1.toLong()])
+//        render "Success"
+    }
 }
