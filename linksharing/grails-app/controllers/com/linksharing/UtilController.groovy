@@ -1,14 +1,17 @@
 package com.linksharing
 
+import com.ttnd.linksharing.User
+
 class UtilController {
 
     def index() {
-        render(grailsApplication.config.grails.testvalue)
-
+//        List<User> users=User.list()
+//        render view: 'trial', model:[users:users]
     }
 
-    def myFirstAction()
+    def demo()
     {
-        render "hello"
+        render view: 'trial'
+
     }
 }

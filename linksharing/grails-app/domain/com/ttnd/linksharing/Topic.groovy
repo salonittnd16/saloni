@@ -17,6 +17,7 @@ class Topic {
     static mapping = {
         sort "name"
     }
+    static transients = ['subscribedUsers']
 
     static constraints = {
 
@@ -26,36 +27,61 @@ class Topic {
 
     }
 
-
-    static getTrendingTopics() {
-        List topicVoList = Resource.createCriteria().list() {
+    static List<TopicVo> getTrendingTopics() {
+        List result = Resource.createCriteria().list() {
 
             projections {
                 createAlias('topic', 't')
                 groupProperty('t.id')
                 property('t.name')
                 property('t.visibility')
+                count('id')
                 property('t.createdBy')
-                createAlias(count('id'),'resourceCount')
-                count('resourceCount')
             }
-            max('resourceCount')
-
-            maxResults 5
-
-            //eq('visibility', Visibility.PUBLIC)
-            // order("resourceCount", "desc")
+//order("r.id", "desc")
+            eq('t.visibility', Visibility.PUBLIC)
             order("t.name", "desc")
-
+            maxResults 5
         }
-        println "${topicVoList}"
-        List<TopicVo> topicVoList1 = []
-        topicVoList.each {
-            topicVoList1.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], createdBy: it[3], count: it[4]))
+        println("=========================${result}")
+        List<TopicVo> topicVo = []
+        result.each {
+            topicVo.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], count: it[3], createdBy: it[4]))
         }
+        topicVo
 
-        return topicVoList1
+
     }
+
+//    static List<TopicVo> getTrendingTopics() {
+//        List topicVoList = Resource.createCriteria().list() {
+//
+//            projections {
+//                createAlias('topic', 't')
+//                groupProperty('t.id')
+//                property('t.name')
+//                property('t.visibility')
+//                property('t.createdBy')
+//                //createAlias(count('id'), 'resourceCount')
+//                count('id')
+//            }
+//            max('resourceCount')
+//
+//            maxResults 5
+//
+//            eq('visibility', Visibility.PUBLIC)
+//           // order("resourceCount", "desc")
+//            order("t.name", "desc")
+//
+//        }
+//        println "${topicVoList}"
+//        List<TopicVo> topicVoList1 = []
+//        topicVoList.each {
+//            topicVoList1.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], createdBy: it[3], count: it[4]))
+//        }
+//
+//        return topicVoList1
+//    }
 
 
     def afterInsert() {
@@ -69,8 +95,22 @@ class Topic {
 
     }
 
+    List<User> getSubscribedUsers() {
+
+        List<User> users = Subscription.createCriteria().list() {
+
+            projections {
+                property('user')
+
+            }
+            eq('topic.id', this.id)
+
+        }
+        users
+    }
+
     String toString() {
-        return "topic: ${name}"
+        return name
     }
 
 }

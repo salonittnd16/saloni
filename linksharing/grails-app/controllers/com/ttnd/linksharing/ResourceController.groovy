@@ -45,9 +45,12 @@ class ResourceController {
     }
 
     def showtopics() {
-        List<TopicVo> topicVoList = Topic.getTrendingTopics()
+        /*List<TopicVo> topicVoList = Topic.getTrendingTopics()
         render topicVoList
 
+*/
+        List<TopicVo> topicVoList =Topic.getTrendingTopics()
+        render topicVoList
     }
 
     def topPosts() {

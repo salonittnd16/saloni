@@ -3,6 +3,7 @@ package com.ttnd.linksharing
 import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.Enum.Visibility
 import com.ttnd.linksharing.VO.RatingInfoVo
+import com.ttnd.linksharing.VO.TopicVo
 
 abstract class Resource {
 
@@ -52,6 +53,25 @@ abstract class Resource {
     }
 
     void setRatingInfo() {
+
+
+    }
+
+
+
+
+    static List<Resource> topResources(){
+        List result = ResourceRating.showTopPosts()
+        List ids = []
+        result.each {
+            ids.add(it[0])
+        }
+        List<Resource> resources = Resource.getAll(ids)
+        resources
+    }
+
+    def show(){
+        List<TopicVo> topicVoList =Topic.getTrendingTopics()
 
 
     }

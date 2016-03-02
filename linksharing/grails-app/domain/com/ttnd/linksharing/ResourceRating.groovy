@@ -21,7 +21,8 @@ class ResourceRating {
         List resourceRatings=ResourceRating.createCriteria ( ).list ( ) {
 
             projections {
-                groupProperty('id')
+                createAlias('resource','r')
+                groupProperty('r.id')
                 count('score', 'res')
             }
             order('res', 'desc')

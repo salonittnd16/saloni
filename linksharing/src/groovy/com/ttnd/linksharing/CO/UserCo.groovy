@@ -8,5 +8,8 @@ class UserCo {
     String lastName
     String email
     String password
+    String userName
+    String confirmPassword
+
 
 }

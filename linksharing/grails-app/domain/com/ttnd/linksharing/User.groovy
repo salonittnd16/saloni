@@ -10,14 +10,16 @@ class User {
     String confirmPassword
     Byte[] photo;
     Boolean admin;
-    Boolean active;
+    Boolean active=true;
     Date dateCreated;
     Date lastUpdated;
 
-    static mapping = { photo(type: 'blob')
-    sort id:"desc"}
+    static mapping = {
+        photo(type: 'blob')
+        sort id: "desc"
+    }
 
-    static transients = ['name', 'confirmPassword']
+    static transients = ['name', 'confirmPassword', 'subscribedTopics']
 
 
     static constraints = {
@@ -28,11 +30,11 @@ class User {
         photo nullable: true
         admin nullable: true
         active nullable: true
-        confirmPassword(bindable:true,nullable: true, blank: true, validator: { val, obj ->
+        confirmPassword(bindable: true, nullable: true, blank: true, validator: { val, obj ->
 //           if(val) {
-               if (obj.password != val) {
-                   return "passwords.don't.match"
-               }
+            if (obj.password != val) {
+                return "passwords.don't.match"
+            }
 //           }
         })
 
@@ -44,6 +46,22 @@ class User {
         [firstName, lastName].findAll { it }.join(' ')
 
     }
+
+
+   List<Topic> getSubscribedTopics() {
+
+       List<Topic> topics = Subscription.createCriteria().list(){
+
+           projections {
+               property('topic')
+
+           }
+           eq('user.id', this.id)
+
+
+       }
+       topics
+   }
 
     String toString() {
         firstName

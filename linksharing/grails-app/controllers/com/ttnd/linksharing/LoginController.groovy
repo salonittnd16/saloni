@@ -7,18 +7,21 @@ class LoginController {
         if (session.user) {
             forward(controller: 'user', action: 'index')
         } else {
-            println "inside else    "
-            render "user is not logged in"
+            List<Resource> topPosts = Resource.topResources()
+            List<Resource> recentShares=Resource.list([sort:'dateCreated',order: 'desc',max:2])
+            render view: 'home' ,model: [topPosts:topPosts,recentshares:recentShares]
         }
     }
 
 
     def login(String username, String password) {
+        log.info "${username}, ${password}"
         User user = User.findByUserNameAndPassword(username, password)
         if (user) {
             if (user.active) {
                 session.user = user
-                redirect(action: 'index')
+                redirect(controller: "user", action:"index")
+                //render view: '/user/dashboard'
             } else
                 flash.message = "User is not active"
 
@@ -28,37 +31,18 @@ class LoginController {
         }
     }
 
+    def forgotPassword(){
+        render(view: 'forgotPassword')
+
+    }
+
     def logout()
 
     {
         session.invalidate()
-        redirect(action: 'index')
+        redirect action: 'index'
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
