@@ -57,7 +57,7 @@
                 <li><a href="#">users</a></li>
                 <li><a href="#">topics</a></li>
                 <li><a href="#">posts</a></li>
-                <li><g:link controller="login" action="index">logout</g:link></li>
+                <li><g:link controller="login" action="logout">logout</g:link></li>
             </ul>
 
         </form>
@@ -72,13 +72,14 @@
     <nav role="navigation" class="navbar navbar-default">
 
         <div class="navbar-header">
-            <div class= "navbar-brand navbar-left"><u><a href="#"><b>LINK SHARING</b></a></u>
+            <div class="navbar-brand navbar-left"><u><a href="#"><b>LINK SHARING</b></a></u>
             </div>
 
         </div>
+
         <div class="container-fluid">
             <form class="navbar-form navbar-right" role="search" style="text-align:right">
-                <div class="form group" >
+                <div class="form group">
                     <input type="text" class="form-control" placeholder="Search"/>
                 </div>
             </form>

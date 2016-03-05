@@ -58,9 +58,7 @@ abstract class Resource {
     }
 
 
-
-
-    static List<Resource> topResources(){
+    static List<Resource> topResources() {
         List result = ResourceRating.showTopPosts()
         List ids = []
         result.each {
@@ -70,10 +68,18 @@ abstract class Resource {
         resources
     }
 
-    def show(){
-        List<TopicVo> topicVoList =Topic.getTrendingTopics()
+    def show() {
+        List<TopicVo> topicVoList = Topic.getTrendingTopics()
 
 
+    }
+
+
+    Boolean canViewBy(Long id) {
+        Resource resource = Resource.get(id)
+        if (resource.topic.canViewedBy(topic.id)) {
+            return true
+        }
     }
 
 

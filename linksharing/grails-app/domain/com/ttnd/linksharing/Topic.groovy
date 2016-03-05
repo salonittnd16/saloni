@@ -28,7 +28,7 @@ class Topic {
     }
 
     static List<TopicVo> getTrendingTopics() {
-        List result = Resource.createCriteria().list() {
+        List result = Resource.createCriteria().list([max: 2]) {
 
             projections {
                 createAlias('topic', 't')
@@ -107,6 +107,25 @@ class Topic {
 
         }
         users
+    }
+
+    Boolean isPublic(Long id) {
+        Topic topic = Topic.read(id)
+        if (topic.visibility == Visibility.PUBLIC)
+            true
+        else
+            false
+    }
+
+    Boolean canViewedBy(Long Userid) {
+        User user =User.get(Userid)
+        Topic topic = Topic.get(this.id)
+        if (isPublic(id) || user.admin || topic.subscribedUsers.contains(user))
+            return true
+         else
+            false
+
+
     }
 
     String toString() {

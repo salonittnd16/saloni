@@ -8,27 +8,26 @@ class SubscriptionController {
 
     def save(long id) {
         Topic topic = Topic.get(id)
-        Subscription subscription  = new Subscription(user: session.user, topic: topic, seriousness: Seriousness.SERIOUS)
-        if(subscription.save(flush:true))
+        Subscription subscription = new Subscription(user: session.user, topic: topic, seriousness: Seriousness.SERIOUS)
+        if (subscription.save(flush: true))
             render "success"
         else
             render "couldn't save subscription"
     }
 
-    def update(long id,String seriousness) {
-        Subscription subscription=Subscription.get(id)
-        if(subscription)
-        {
-            subscription.seriousness=seriousness as Seriousness
-            if(subscription.save(flush: true))
+    def update(long id, String seriousness) {
+        Subscription subscription = Subscription.get(id)
+        if (subscription) {
+            subscription.seriousness = seriousness as Seriousness
+            if (subscription.save(flush: true))
                 render("successfully updated")
             else
-            render "couldn't save ${subscription.id}"
+                render "couldn't save ${subscription.id}"
         }
     }
 
-    def delete(int id) {
-        Subscription subscription = Subscription.get(id)
+    def delete(Long subscriptionId) {
+        Subscription subscription = Subscription.get(subscriptionId)
         if (subscription) {
 
             subscription.delete(flush: true)

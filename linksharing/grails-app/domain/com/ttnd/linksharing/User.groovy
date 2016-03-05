@@ -1,5 +1,9 @@
 package com.ttnd.linksharing
 
+import groovy.transform.EqualsAndHashCode
+import org.xhtmlrenderer.css.parser.property.PrimitivePropertyBuilders
+
+@EqualsAndHashCode
 class User {
 
     String firstName;
@@ -10,7 +14,7 @@ class User {
     String confirmPassword
     Byte[] photo;
     Boolean admin;
-    Boolean active=true;
+    Boolean active = true;
     Date dateCreated;
     Date lastUpdated;
 
@@ -31,11 +35,11 @@ class User {
         admin nullable: true
         active nullable: true
         confirmPassword(bindable: true, nullable: true, blank: true, validator: { val, obj ->
-//           if(val) {
-            if (obj.password != val) {
-                return "passwords.don't.match"
+            if (val) {
+                if (obj.password != val) {
+                    return "passwords.don't.match"
+                }
             }
-//           }
         })
 
 
@@ -48,20 +52,53 @@ class User {
     }
 
 
-   List<Topic> getSubscribedTopics() {
+    List<Topic> getSubscribedTopics() {
 
-       List<Topic> topics = Subscription.createCriteria().list(){
+        List<Topic> topics = Subscription.createCriteria().list() {
 
-           projections {
-               property('topic')
+            projections {
+                property('topic')
 
-           }
-           eq('user.id', this.id)
+            }
+            eq('user.id', this.id)
 
 
-       }
-       topics
-   }
+        }
+        topics
+    }
+
+    int getScore(int score) {
+
+
+    }
+
+    Boolean canDeleteResource(Long resourceId) {
+        Resource resource = Resource.get(resourceId)
+        if (this.admin || this == resource.createdBy) {
+            return true
+        } else {
+            return false
+
+        }
+    }
+
+    Boolean isSusbsribed(Long topicId) {
+        Topic topic = Topic.get(topicId)
+        Integer susbcribedUsersCount = Subscription.createCriteria().count {
+
+            eq('user', this)
+            eq('topic', topic)
+
+        }
+
+        if (susbcribedUsersCount) {
+            true
+        } else {
+            false
+        }
+
+    }
+
 
     String toString() {
         firstName

@@ -28,12 +28,12 @@
 
                         <div class="col-xs-4">
                             <small class="col-xs-12">Subscriptions</small>
-                            <small class="col-xs-12">50</small>
+                            <ls:subscriptionCount topicId="${topic.id}"/>
                         </div>
 
                         <div class="col-xs-4">
                             <small class="col-xs-12">Posts</small>
-                            <small class="col-xs-12">10</small>
+                            <ls:postCount topicId="${topic.id}"/>
                         </div>
                     </div>
                 </div>

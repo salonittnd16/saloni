@@ -6,9 +6,9 @@ import com.ttnd.linksharing.VO.TopicVo
 class UserController {
 
     def index() {
-
-        List<TopicVo> topicVoList =Topic.getTrendingTopics()
-        render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics,trendingTopics:topicVoList]
+        List<Subscription> subscriptions=Subscription.findAllByUser(session.user)
+        List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [max: 2])
+        render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics, readingItems: readingItems,subscriptions:subscriptions]
     }
 
 
@@ -21,16 +21,27 @@ class UserController {
 
                 flash.message = "${user.firstName} registered successfully"
                 render(flash.message)
-
-
             } else {
                 flash.message = "validations failed"
-
-
             }
         } else
             render("already registered")
         redirect(controller: 'login', action: 'index')
 
     }
+
+    def search() {
+        render view: 'search'
+    }
+
+    def post(Long postId) {
+        Resource resource = Resource.get(postId)
+        if (resource.canViewBy(postId)) {
+            render(view: 'post', model: [post: resource])
+        }
+        else {
+            render "access denied"
+        }
+    }
+
 }

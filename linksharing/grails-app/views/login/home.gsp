@@ -24,7 +24,7 @@
 
     <div class="row" style="margin:9px">
         <div class="col-xs-6">
-            <g:render template="topposts" model="${topPosts}"/>
+          <ls:showTopPosts/>
         </div>
 
         <div class="col-xs-5 col-xs-offset-1" style="float:right">

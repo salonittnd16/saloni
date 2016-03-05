@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <small class="col-xs-12">@saloni</small>
-                            <small class="col-xs-12"><a>Subscribe</a></small>
+                            <ls:showUnsuscribe><small class="col-xs-12"><a>Unsubscribe</a></small></ls:showUnsuscribe>
                         </div>
 
                         <div class="col-xs-4">

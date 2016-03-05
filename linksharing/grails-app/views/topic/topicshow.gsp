@@ -20,7 +20,7 @@
 </div>
 
 <div class="col-xs-7">
-    <g:render template="/user/inbox"/>
+    <g:render template="/user/inbox"  model="${readingItems}"/>
 </div>
 
 </body>

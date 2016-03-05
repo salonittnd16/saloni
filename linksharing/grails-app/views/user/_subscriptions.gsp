@@ -4,32 +4,42 @@
     </div>
 
     <div class="panel-body">
-        <div class="row">
-            <span class="glyphicon glyphicon-user" style="font-size:80px; float:left;padding: 10px"></span>
+        <g:each in="${subscriptions}" var="subscription">
+            <div class="row">
+                <div class="list-group col-xs-3">
 
-            <div>Grails</div>
+                    <div class="img-thumbnail" style="float:left">
+                        <span class="glyphicon glyphicon-user" style="font-size:80px"></span>
+                    </div>
+                </div>
 
-            <p class="text-muted inline">@saloni&nbsp;&nbsp;&nbsp;&nbsp;<span>Subscriptions</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Top Posts
-            </p>
+                <div class="col-xs-9">
 
-            <p>Unsuscribe&nbsp;&nbsp;&nbsp;&nbsp;<span>50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>30
-            </p>
+                    <br/>
 
-        </div>
-        <hr>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <small class="col-xs-12">@saloni</small>
+                            <small class="col-xs-12"><a>Unsubscribe</a></small>
+                        </div>
 
-        <div class="row">
-            <span class="glyphicon glyphicon-user" style="font-size:80px; float:left;padding: 10px"></span>
+                        <div class="col-xs-4">
+                            <small class="col-xs-12">Subscriptions</small>
+                            <small class="col-xs-12">50</small>
+                        </div>
 
-            <div>Grails</div>
+                        <div class="col-xs-4">
+                            <small class="col-xs-12">Topics</small>
+                            <small class="col-xs-12">10</small>
+                        </div>
+                    </br>
+                    </div>
+                </div>
+            </div>
 
-            <p class="text-muted inline">@saloni&nbsp;&nbsp;&nbsp;&nbsp;<span>Subscriptions</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Top Posts
-            </p>
+            <ls:subscriptionsShow subscriptionId="${subscription.id}"/>
+            <hr/>
 
-            <p>Unsuscribe&nbsp;&nbsp;&nbsp;&nbsp;<span>50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>30
-            </p>
-
-        </div>
-
+        </g:each>
     </div>
 </div>

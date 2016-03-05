@@ -6,16 +6,15 @@ import com.ttnd.linksharing.Enum.Visibility
 class TopicController {
 
     def index() {
-        User user = session.user
-        Topic topic = Topic.findByCreatedBy(user)
-        render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers,topic:topic])
+        render "topic show"
+
     }
 
     def show(ResourceSearchCo co) {
         Topic topic = Topic.read(co.topicId)
         if (topic) {
             if (topic.visibility == Visibility.PUBLIC) {
-                redirect(view: 'index')
+                render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers, topic: topic])
 
             } else {
                 Subscription subscription = Subscription.findByUserAndTopic(topic.createdBy, topic)

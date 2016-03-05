@@ -12,11 +12,12 @@ class ResourceController {
 
     }
 
-    def delete(long id) {
+    def delete(long postId) {
         try {
-            Resource resource = Resource.load(id)
-            render "resource deleted : ${resource.id}"
+            Resource resource = Resource.load(postId)
+//            render "resource deleted : ${resource.id}"
             resource.delete(flush: true)
+            redirect(controller: "user", action: "index")
 
         }
         catch (Exception e) {
@@ -35,21 +36,18 @@ class ResourceController {
     }
 
     def show(Long id) {
+
         Resource resource = Resource.findById(id)
-
-        RatingInfoVo ratingInfoVo = resource.ratingInfo
-
-        render "----------total votes : $ratingInfoVo.totalVotes----average score: $ratingInfoVo.averageScore------total score: $ratingInfoVo.totalScore"
-
+        if (resource.canViewBy(id)) {
+            RatingInfoVo ratingInfoVo = resource.ratingInfo
+            render "----------total votes : $ratingInfoVo.totalVotes----average score: $ratingInfoVo.averageScore------total score: $ratingInfoVo.totalScore"
+            render(view: '/user/post')
+        }
 
     }
 
     def showtopics() {
-        /*List<TopicVo> topicVoList = Topic.getTrendingTopics()
-        render topicVoList
-
-*/
-        List<TopicVo> topicVoList =Topic.getTrendingTopics()
+        List<TopicVo> topicVoList = Topic.getTrendingTopics()
         render topicVoList
     }
 
