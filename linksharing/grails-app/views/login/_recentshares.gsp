@@ -5,7 +5,10 @@
     <div class="panel-body">
     <div class="row">
         <g:each in="${recentshares}" var="resource">
-            <div class="glyphicon glyphicon-user col-xs-2 " style="font-size:70px; float:left"></div>
+            <div class=" col-xs-2 " style=" float:left">
+                <ls:userImage id="${resource.createdBy?.id}"/>
+            </div>
+
 
             <div class="col-xs-10">
                 ${resource.createdBy}<span class="text-muted inline">@saloni 5min</span>

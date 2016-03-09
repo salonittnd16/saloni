@@ -1,7 +1,9 @@
 <div class="panel panel-default panel-primary">
     <div class="panel-body">
         <div class="row">
-            <div class="glyphicon glyphicon-user col-xs-2" style="font-size:70px; float:left"></div>
+            <div class=" col-xs-2" style="font-size:70px; float:left">
+                <ls:userImage id="${post.createdBy?.id}"/>
+            </div>
 
             <g:form params="[resourceId:post.id]" controller="resourceRating" action="saveRatings" class="col-xs-10">
                 ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>
@@ -19,7 +21,7 @@
                 <div class="inline" style="float:right;padding: 2px">
                     <ls:deleteResource resourceId="${post.id}"/>
                 </div>
-                <a href="#" class="inline" style="float:right;padding: 2px"><u>Edit</u></a>
+                <g:if test="${session.user}"><a href="#" class="inline" style="float:right;padding: 2px"><u>Edit</u></a></g:if>
             %{--<ls:checkIsRead isRead="${post.isRead}">--}%
             %{--<g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>--}%
             %{--</ls:checkIsRead>--}%

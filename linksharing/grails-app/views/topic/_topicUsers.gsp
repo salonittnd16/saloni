@@ -11,7 +11,9 @@
                     <div class="list-group col-xs-3">
 
                         <div style="float:left;padding: 10px">
-                            <span class="glyphicon glyphicon-user" style="font-size:80px; padding: 10px"></span>
+                            <span  style="font-size:80px; padding: 10px">
+                                <ls:userImage id="${user?.id}"/>
+                            </span>
                         </div>
                     </div>
 

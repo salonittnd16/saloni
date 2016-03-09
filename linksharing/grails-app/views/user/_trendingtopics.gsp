@@ -9,9 +9,10 @@
                 <div class="row">
                     <div class="list-group col-xs-3">
 
-                        <div class="img-thumbnail" style="float:left">
-                            <span class="glyphicon glyphicon-user" style="font-size:80px; padding: 10px"></span>
-                        </div>
+                        <span style="font-size:80px; padding: 10px">
+                            <ls:userImage id="${topic.createdBy?.id}"/>
+                        </span>
+
                     </div>
 
                     <div class="col-xs-9">
@@ -49,9 +50,10 @@
             <div class="row">
                 <div class="list-group col-xs-3">
 
-                    <div class="img-thumbnail" style="float:left">
-                        <span class="glyphicon glyphicon-user" style="font-size:80px"></span>
-                    </div>
+                    <span style="font-size:80px; float:left;padding: 10px">
+                        <ls:userImage id="${topic.createdBy?.id}"/>
+                    </span>
+
                 </div>
 
                 <div class="col-xs-9">

@@ -12,14 +12,16 @@
                 </div>
 
                 <div class="modal-body">
-                    <g:form class="form-horizontal" controller="documentResource" action="save">
+                    <g:uploadForm class="form-horizontal" controller="documentResource" action="save" method="post">
                         <div class="form-group">
-                            <label for="filePath" class="control-label col-xs-2">Document</label>
+                            <label for="myFile" class="control-label col-xs-2">Document</label>
 
                             <div class="col-xs-10">
-                                <g:textField name="filePath" class="form-control" id="input document"
-                                             placeholder="Document"/>
+
+                                <input type="file" name="myFile"/>
+
                             </div>
+
                         </div>
 
                         <div class="form-group">
@@ -32,10 +34,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="topic" class="control-label col-xs-2">Topic</label>
+                            <label for="topicId" class="control-label col-xs-2">Topic</label>
 
                             <div class="col-xs-7">
-                                <g:select name="topic" from="${listOfTopics}" optionKey="id"
+                                <g:select name="topicId" from="${listOfTopics}" optionKey="id"
                                           noSelection="['': '-Select topic-']"/>
 
                             </div>
@@ -54,7 +56,7 @@
                             </div>
 
                         </div>
-                    </g:form>
+                    </g:uploadForm>
 
                 </div>
 

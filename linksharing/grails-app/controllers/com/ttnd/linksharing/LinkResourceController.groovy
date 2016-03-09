@@ -1,6 +1,6 @@
 package com.ttnd.linksharing
 
-class LinkResourceController {
+class LinkResourceController extends ResourceController {
 
     def index() {
         render "upload link resources"
@@ -9,8 +9,12 @@ class LinkResourceController {
     def save(LinkResource linkResource) {
         linkResource.createdBy = session.user
         if (linkResource.save(flush: true)) {
+            addToReadingItems(linkResource)
             render view: '/user/dashboard'
             flash.message = "saved resource"
+        }
+        else {
+            render(linkResource.errors)
         }
 
 

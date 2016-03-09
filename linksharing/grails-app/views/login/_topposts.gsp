@@ -5,7 +5,9 @@
 
     <div class="panel-body" style="padding:20px">
         <g:each in="${topPosts}" var="post">
-            <div class="glyphicon glyphicon-user" style="font-size:60px; float:left"></div>
+            <div  style="font-size:60px; float:left">
+                <ls:userImage id="${post.createdBy?.id}"/>
+            </div>
 
             <div class="col-xs-10">
                 ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>

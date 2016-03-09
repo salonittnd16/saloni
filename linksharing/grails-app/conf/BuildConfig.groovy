@@ -69,6 +69,8 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
         compile "org.grails.plugins:console:1.5.7"
+        compile "org.grails.plugins:mail:1.0.7"
+
 
 
 

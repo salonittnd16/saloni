@@ -1,6 +1,7 @@
 package com.linksharing
 
 import com.ttnd.linksharing.ReadingItem
+import grails.converters.JSON
 
 class ReadingItemController {
 
@@ -8,13 +9,13 @@ class ReadingItemController {
 
     def changeIsRead(Long id, Boolean isRead) {
         if (ReadingItem.executeUpdate("update ReadingItem as r set r.isRead=isRead where r.id=id")) {
-            render 'successfully changed isRead'
-
+            render ([message: "status changed successfully"] as JSON)
         } else {
-            flash.message = "updation unsuccessful!"
+
+            render ([message: "status not changed"] as JSON)
+
+
         }
-
-
     }
-}
 
+}

@@ -17,6 +17,7 @@ class ResourceController {
             Resource resource = Resource.load(postId)
 //            render "resource deleted : ${resource.id}"
             resource.delete(flush: true)
+            resource.deleteFile()
             redirect(controller: "user", action: "index")
 
         }
@@ -60,6 +61,23 @@ class ResourceController {
         List<Resource> resources = Resource.getAll(ids)
         render resources
 
+
+    }
+
+    void addToReadingItems(Resource resource) {
+        Topic topic = resource.topic
+
+        List<User> users = topic.getSubscribedUsers()
+        users.each {
+            ReadingItem readingItem
+            if (session.user == it) {
+                readingItem = new ReadingItem(resource: resource, user: it, isRead: true)
+
+            } else {
+                readingItem = new ReadingItem(resource: resource, user: it, isRead: false)
+            }
+            it.readingItems.add(readingItem)
+        }
 
     }
 

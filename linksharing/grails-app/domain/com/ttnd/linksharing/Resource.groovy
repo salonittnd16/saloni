@@ -57,6 +57,11 @@ abstract class Resource {
 
     }
 
+    void deleteFile(){
+        log.info("this will be implemented in linkResource")
+
+    }
+
 
     static List<Resource> topResources() {
         List result = ResourceRating.showTopPosts()

@@ -2,7 +2,9 @@
 
     <div class="panel-body">
         <div class="row">
-            <span class="glyphicon glyphicon-user" style="font-size:80px; float:left;padding: 10px"></span>
+            <span  style="font-size:80px; float:left;padding: 10px">
+                <ls:userImage id="${session.user?.id}"/>
+            </span>
 
             <div>${session.user.name}</div>
 

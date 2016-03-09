@@ -4,11 +4,12 @@ import com.ttnd.linksharing.CO.UserCo
 import com.ttnd.linksharing.VO.TopicVo
 
 class UserController {
+    def assetResourceLocator
 
     def index() {
-        List<Subscription> subscriptions=Subscription.findAllByUser(session.user)
-        List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [max: 2])
-        render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics, readingItems: readingItems,subscriptions:subscriptions]
+        List<Subscription> subscriptions = Subscription.findAllByUser(session.user)
+        List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [sort:'dateCreated',order:'desc',max: 2])
+        render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics, readingItems: readingItems, subscriptions: subscriptions]
     }
 
 
@@ -22,11 +23,11 @@ class UserController {
                 flash.message = "${user.firstName} registered successfully"
                 render(flash.message)
             } else {
-                flash.message = "validations failed"
+
+                render(template: "/login/register", model: [user: user])
             }
         } else
             render("already registered")
-        redirect(controller: 'login', action: 'index')
 
     }
 
@@ -38,10 +39,24 @@ class UserController {
         Resource resource = Resource.get(postId)
         if (resource.canViewBy(postId)) {
             render(view: 'post', model: [post: resource])
-        }
-        else {
+        } else {
             render "access denied"
         }
+    }
+
+    def image(Long id) {
+        User user = User.findById(id)
+        byte[] image
+        if (user.photo) {
+            image = user.photo
+        } else {
+            image = assetResourceLocator.findAssetForURI('userdefault.jpeg').byteArray
+        }
+        OutputStream out = response.getOutputStream()
+        out.write(image)
+        out.flush()
+        out.close()
+
     }
 
 }

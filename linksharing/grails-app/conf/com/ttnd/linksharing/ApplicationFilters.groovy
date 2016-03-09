@@ -16,26 +16,26 @@ class ApplicationFilters {
             }
         }
         sessioncheck() {}
-        logincheck(controller: 'login', invert: true) {
-            before = {
-                if (!session.user) {
-                    println("=================================================")
-                    redirect(controller: 'login', action: 'index')
-
-                }
-
-
-            }
-            after = { Map model ->
-
-
-            }
-            afterView = { Exception e ->
-
-            }
-
-
-        }
+//        logincheck(controller: 'login', invert: true) {
+//            before = {
+//                if (!session.user) {
+//                    println("=================================================")
+//                    redirect(controller: 'login', action: 'index')
+//
+//                }
+//
+//
+//            }
+//            after = { Map model ->
+//
+//
+//            }
+//            afterView = { Exception e ->
+//
+//            }
+//
+//
+//        }
 
     }
 

@@ -7,10 +7,7 @@
         <g:each in="${subscriptions}" var="subscription">
             <div class="row">
                 <div class="list-group col-xs-3">
-
-                    <div class="img-thumbnail" style="float:left">
-                        <span class="glyphicon glyphicon-user" style="font-size:80px"></span>
-                    </div>
+                    <ls:userImage id="${subscription.user?.id}"/>
                 </div>
 
                 <div class="col-xs-9">

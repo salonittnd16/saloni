@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-xs-5 col-xs-offset-1" style="float:right">
-            <g:render template="register"/>
+            <g:render template="register" model="${user}"/>
         </div>
 
     </div>

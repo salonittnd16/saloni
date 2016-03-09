@@ -8,13 +8,16 @@ class TopicController {
     def index() {
         render "topic show"
 
+
+
     }
 
     def show(ResourceSearchCo co) {
         Topic topic = Topic.read(co.topicId)
         if (topic) {
             if (topic.visibility == Visibility.PUBLIC) {
-                render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers, topic: topic])
+                List<Resource> posts=Resource.findAllByTopic(topic)
+                render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers, topic: topic,posts:posts])
 
             } else {
                 Subscription subscription = Subscription.findByUserAndTopic(topic.createdBy, topic)
