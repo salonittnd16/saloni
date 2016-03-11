@@ -8,12 +8,15 @@ class LinkResourceController extends ResourceController {
 
     def save(LinkResource linkResource) {
         linkResource.createdBy = session.user
+        User user = session.user
+        user.refresh()
         if (linkResource.save(flush: true)) {
-            addToReadingItems(linkResource)
-            render view: '/user/dashboard'
-            flash.message = "saved resource"
-        }
-        else {
+            ReadingItem readingItem = addToReadingItems(linkResource)
+            ResourceRating resourceRating = new ResourceRating(user: readingItem.user, resource: readingItem.resource, score: 4)
+            resourceRating.save(flush: true)
+            user.addToResourceRatings(resourceRating)
+            redirect(controller: 'user',action: 'index')
+        } else {
             render(linkResource.errors)
         }
 

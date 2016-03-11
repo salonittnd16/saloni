@@ -29,6 +29,9 @@ abstract class Resource {
             }
 
         }
+        searchCreatedResources{ User user->
+            eq('createdBy',user)
+        }
 
     }
 

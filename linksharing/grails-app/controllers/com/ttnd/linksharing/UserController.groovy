@@ -1,12 +1,17 @@
 package com.ttnd.linksharing
 
+import com.ttnd.linksharing.CO.ResourceSearchCo
+import com.ttnd.linksharing.CO.TopicSearchCo
 import com.ttnd.linksharing.CO.UserCo
-import com.ttnd.linksharing.VO.TopicVo
 
 class UserController {
     def assetResourceLocator
+    def topicService
+    def subscriptionService
+    def resourceService
 
     def index() {
+
         List<Subscription> subscriptions = Subscription.findAllByUser(session.user)
         List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [sort: 'dateCreated', order: 'desc', max: 2])
         render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics, readingItems: readingItems, subscriptions: subscriptions]
@@ -44,6 +49,19 @@ class UserController {
         }
     }
 
+    def profile(ResourceSearchCo resourceSearchCo) {
+        resourceSearchCo.max = resourceSearchCo.max ?: 5
+        resourceSearchCo.offset = resourceSearchCo.offset ?: 0
+        TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
+        List<Resource> postsCreated = resourceService.search(resourceSearchCo)
+        List<Topic> topics = topicService.search(topicSearchCo)
+        int topicCount=topics.size()
+        List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
+        render(view: "/user/userProfile", model: [subscribedTopics:subscribedTopics,resourceSearchCo: resourceSearchCo, postsCreated: postsCreated,listOfTopics: topics,topicCount:topicCount])
+
+
+    }
+
     def image(Long id) {
         User user = User.findById(id)
         byte[] image
@@ -57,6 +75,10 @@ class UserController {
         out.flush()
         out.close()
 
+    }
+
+    def edit(){
+        render view: '/user/myProfile'
     }
 
 }

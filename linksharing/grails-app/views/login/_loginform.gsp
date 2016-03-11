@@ -25,7 +25,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <g:link controller="login" action="forgotPassword"><u> Forgot Password</u></g:link>
+                  <g:link  data-toggle="modal" data-target="#forgot"><u> Forgot Password</u></g:link>
+                    <g:render template="forgotPassword"/>
                 </div>
             </div>
 

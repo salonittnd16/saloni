@@ -43,7 +43,7 @@ class LoginController {
     }
 
     def forgotPassword() {
-        render(view: 'forgotPassword')
+        render(template: "/login/forgotPassword")
 
     }
 

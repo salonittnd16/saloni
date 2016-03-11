@@ -14,10 +14,12 @@ class DocumentResource extends Resource {
     }
     static mapping = {
         contentType bindable: true, validator: { val, obj, err ->
-            if (val != Constant.DOCUMENT_CONTENT_TYPE) {
-                return "content.type.not.set"
-            } else
-                true
+            if (val) {
+                if (val != Constant.DOCUMENT_CONTENT_TYPE) {
+                    return "content.type.not.set"
+                } else
+                    true
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+<%@ page import="com.ttnd.linksharing.Enum.Visibility" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -55,10 +56,8 @@
                aria-expanded="false">Saloni
                 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">my profile</a></li>
+                <li><g:link controller="user" action="edit">my profile</g:link></li>
                 <li><a href="#">users</a></li>
-                <li><a href="#">topics</a></li>
-                <li><a href="#">posts</a></li>
                 <li><g:link controller="login" action="logout">logout</g:link></li>
             </ul>
 

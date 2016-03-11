@@ -22,7 +22,7 @@
 
                         <div class="row">
                             <div class="col-xs-4">
-                                <small class="col-xs-12">${subscription.topic.createdBy}</small>
+                                <small class="col-xs-12"><g:link controller="user" action="profile" params="[id:session.user.id,visibility:com.ttnd.linksharing.Enum.Visibility.PUBLIC,topicId:0]"> ${subscription.topic.createdBy}</g:link></small>
                                 <small class="col-xs-12"><g:link name="${subscription.id}" onclick="unsubscribe(${subscription.id})">Unsubscribe</g:link></small>
                             </div>
 

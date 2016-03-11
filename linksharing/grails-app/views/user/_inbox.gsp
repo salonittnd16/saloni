@@ -10,7 +10,11 @@
                 </div>
 
                 <div class="col-xs-10">
-                    ${readingItem.resource.createdBy}<span class="text-muted inline">@saloni 5min</span>
+                    <g:link controller="user" action="profile"
+                            params="[id: session.user.id, visibility: com.ttnd.linksharing.Enum.Visibility.PUBLIC, topicId: 0]">
+                        ${readingItem.resource.createdBy}
+                    </g:link>
+                    <span class="text-muted inline">@saloni 5min</span>
                     <a href="#" class="inline" style="float:right">Grails</a>
 
                     <p>${readingItem.resource.description}
@@ -20,14 +24,17 @@
                     <a href="#"><div class="fa fa-google-plus inline"></div></a>
 
 
-                    <span class="inline" style="float:right;padding: 2px" ><u><ls:checkResourceType resource="${readingItem.resource.id}"/> </u></span>
-                    %{--<a href="#" class="inline" style="float:right;padding: 2px"><u>Full size</u></a>--}%
+                    <span class="inline" style="float:right;padding: 2px"><u><ls:checkResourceType
+                            resource="${readingItem.resource.id}"/></u></span>
+                %{--<a href="#" class="inline" style="float:right;padding: 2px"><u>Full size</u></a>--}%
                     <ls:checkIsRead isRead="${readingItem.isRead}">
                         <g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>
                     </ls:checkIsRead>
 
                     <ls:checkIsUnRead isRead="${readingItem.isRead}">
-                        <g:link  controller="readingItem" action="changeIsRead" class="inline" style="float:right;padding: 2px" params="[id: readingItem.id,isRead:!readingItem.isRead]"><u>Mark As read</u></g:link>
+                        <g:link controller="readingItem" action="changeIsRead" class="inline"
+                                style="float:right;padding: 2px"
+                                params="[id: readingItem.id, isRead: !readingItem.isRead]"><u>Mark As read</u></g:link>
                     </ls:checkIsUnRead>
                     <g:link controller="user" action="post" class="inline"
                             style="float:right;padding: 2px"

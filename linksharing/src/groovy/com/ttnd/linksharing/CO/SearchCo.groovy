@@ -6,8 +6,8 @@ package com.ttnd.linksharing.CO
 class SearchCo {
 
     String q
-    Integer max
-    Integer offset
+    Integer max=5
+    Integer offset=0
     String order
     String sort
 }

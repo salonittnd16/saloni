@@ -29,7 +29,6 @@ class DocumentResourceController extends ResourceController {
                 ReadingItem readingItem = addToReadingItems(documentResource)
                 ResourceRating resourceRating = new ResourceRating(user: readingItem.user, resource: readingItem.resource, score: 4)
                 resourceRating.save(flush: true)
-                println resourceRating
                 user.addToResourceRatings(resourceRating)
             }
         } else {

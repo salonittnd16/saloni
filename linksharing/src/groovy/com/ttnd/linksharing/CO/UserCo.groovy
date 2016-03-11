@@ -11,5 +11,4 @@ class UserCo {
     String userName
     String confirmPassword
 
-
 }
