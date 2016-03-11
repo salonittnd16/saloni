@@ -99,6 +99,17 @@ class User {
 
     }
 
+    Boolean equals(User user) {
+        this.id==user.id
+    }
+
+    Subscription getSubscription(Long topicId) {
+        Topic topic = Topic.get(topicId)
+        Subscription subscription = Subscription.findByUserAndTopic(this, topic)
+        subscription
+
+    }
+
 
     String toString() {
         firstName

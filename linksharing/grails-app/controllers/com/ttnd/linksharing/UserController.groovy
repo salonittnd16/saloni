@@ -8,7 +8,7 @@ class UserController {
 
     def index() {
         List<Subscription> subscriptions = Subscription.findAllByUser(session.user)
-        List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [sort:'dateCreated',order:'desc',max: 2])
+        List<ReadingItem> readingItems = ReadingItem.findAllByUser(session.user, [sort: 'dateCreated', order: 'desc', max: 2])
         render view: 'dashboard', model: [listOfTopics: session.user.subscribedTopics, readingItems: readingItems, subscriptions: subscriptions]
     }
 
@@ -19,15 +19,15 @@ class UserController {
             flash.message = "please register first!"
             User user = new User(firstName: co.firstName, lastName: co.lastName, userName: co.userName, email: co.email, password: co.password, confirmPassword: co.confirmPassword)
             if (user.save(flush: true)) {
-
                 flash.message = "${user.firstName} registered successfully"
                 render(flash.message)
             } else {
-
-                render(template: "/login/register", model: [user: user])
+                List<Resource> recentShares = Resource.list([sort: 'dateCreated', order: 'desc', max: 2])
+                render(view: "/login/home", model: [user: user, recentshares: recentShares])
             }
-        } else
+        } else {
             render("already registered")
+        }
 
     }
 

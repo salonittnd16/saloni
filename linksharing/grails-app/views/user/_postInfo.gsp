@@ -5,7 +5,7 @@
                 <ls:userImage id="${post.createdBy?.id}"/>
             </div>
 
-            <g:form params="[resourceId:post.id]" controller="resourceRating" action="saveRatings" class="col-xs-10">
+            <g:form params="[resourceId: post.id]" controller="resourceRating" action="saveRatings" class="col-xs-10">
                 ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>
                 <a href="#" class="inline" style="float:right"></a>
 
@@ -21,7 +21,7 @@
                 <div class="inline" style="float:right;padding: 2px">
                     <ls:deleteResource resourceId="${post.id}"/>
                 </div>
-                <g:if test="${session.user}"><a href="#" class="inline" style="float:right;padding: 2px"><u>Edit</u></a></g:if>
+                <g:if test="${session.user}"><a href="#" class="inline" style="float:right;padding: 2px">Edit</a></g:if>
             %{--<ls:checkIsRead isRead="${post.isRead}">--}%
             %{--<g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>--}%
             %{--</ls:checkIsRead>--}%
@@ -29,12 +29,10 @@
             %{--<ls:checkIsUnRead isRead="${post.isRead}">--}%
             %{--<a href="#" class="inline" style="float:right;padding: 2px"><u>Mark As read</u></a>--}%
             %{--</ls:checkIsUnRead>--}%
-                <ls:checkResourceType resource="${post.id}"/>
+                <span class="inline" style="float:right;padding: 2px"><ls:checkResourceType
+                        resource="${post.id}"/></span>
             </g:form>
-
         </div>
-
     </div>
-
 </div>
 

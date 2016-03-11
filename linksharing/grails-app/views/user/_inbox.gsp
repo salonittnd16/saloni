@@ -20,9 +20,8 @@
                     <a href="#"><div class="fa fa-google-plus inline"></div></a>
 
 
-                    <g:link controller="documentResource" action="download" class="inline"
-                            style="float:right;padding: 2px" params="[id:readingItem.id]"><u>Download</u></g:link>
-                    <a href="#" class="inline" style="float:right;padding: 2px"><u>Full size</u></a>
+                    <span class="inline" style="float:right;padding: 2px" ><u><ls:checkResourceType resource="${readingItem.resource.id}"/> </u></span>
+                    %{--<a href="#" class="inline" style="float:right;padding: 2px"><u>Full size</u></a>--}%
                     <ls:checkIsRead isRead="${readingItem.isRead}">
                         <g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>
                     </ls:checkIsRead>

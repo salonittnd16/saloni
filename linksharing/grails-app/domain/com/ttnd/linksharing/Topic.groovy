@@ -28,20 +28,22 @@ class Topic {
     }
 
     static List<TopicVo> getTrendingTopics() {
-        List result = Resource.createCriteria().list([max: 2]) {
+        List result = Resource.createCriteria().list() {
+
 
             projections {
                 createAlias('topic', 't')
                 groupProperty('t.id')
                 property('t.name')
                 property('t.visibility')
-                count('id')
+                count('id', 'resourceCount')
                 property('t.createdBy')
+
             }
-//order("r.id", "desc")
-            eq('t.visibility', Visibility.PUBLIC)
-            order("t.name", "desc")
             maxResults 5
+            eq('t.visibility', Visibility.PUBLIC)
+            order("resourceCount", "desc")
+            order("t.name", "desc")
         }
         println("=========================${result}")
         List<TopicVo> topicVo = []
@@ -129,7 +131,7 @@ class Topic {
     }
 
     String toString() {
-        return name
+        "${name} ${id}"
     }
 
 }

@@ -28,8 +28,6 @@ class DemoController {
             subject "Hello Surbhi"
             body 'this is some text'
         }
-
-
     }
 
 //        render myBean.properties

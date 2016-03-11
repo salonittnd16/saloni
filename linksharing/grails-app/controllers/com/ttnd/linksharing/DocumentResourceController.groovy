@@ -17,7 +17,8 @@ class DocumentResourceController extends ResourceController {
         Topic topic = Topic.get(documentResourceCO.topicId)
         String filePath = "${grailsApplication.config.grails.folderPath}/${documentResourceCO.name}.pdf"
         DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: session.user, description: documentResourceCO.description, contentType: documentResourceCO.contentType, filePath: filePath)
-
+        User user = session.user
+        user.refresh()
 
         if (documentResource.validate()) {
 
@@ -25,22 +26,27 @@ class DocumentResourceController extends ResourceController {
             if (documentResource.save(failOnError: true)) {
                 flash.message = "document resource saved"
                 render(flash.message)
-                addToReadingItems(documentResource)
+                ReadingItem readingItem = addToReadingItems(documentResource)
+                ResourceRating resourceRating = new ResourceRating(user: readingItem.user, resource: readingItem.resource, score: 4)
+                resourceRating.save(flush: true)
+                println resourceRating
+                user.addToResourceRatings(resourceRating)
             }
         } else {
             render(documentResource.errors)
         }
-    }
 
+    }
 
     def download(Long id) {
         DocumentResource documentResource = DocumentResource.get(id)
         if (documentResource && (documentResource.topic.canViewedBy(session.user.id))) {
             File file = new File(documentResource.filePath)
+            println "..................>>>${file.bytes}"
             response.setHeader("Content-disposition", "attachment; filename=" + documentResource.fileName)
             response.contentType = documentResource.contentType
             response.outputStream << file.newInputStream()
-            render "success"
+//            render "success"
 
         } else
             render "failed"

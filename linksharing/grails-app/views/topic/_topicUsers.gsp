@@ -32,12 +32,12 @@
 
                             <div class="col-xs-4">
                                 <small class="col-xs-12">Subscriptions</small>
-                                <small class="col-xs-12">50</small>
+                                <small class="col-xs-12">${user.subscriptions.size()}</small>
                             </div>
 
                             <div class="col-xs-4">
-                                <small class="col-xs-12">Posts</small>
-                                <small class="col-xs-12">10</small>
+                                <small class="col-xs-12">Topics</small>
+                               <ls:topicCount/>
                             </div>
                         </div>
                     </div>

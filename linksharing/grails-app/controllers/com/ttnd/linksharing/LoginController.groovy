@@ -31,6 +31,17 @@ class LoginController {
         }
     }
 
+    def validateUserName() {
+        Integer count = User.countByUserName(params.userName)
+        return count ? false : true
+
+    }
+    def validateEmail() {
+        Integer count = User.countByEmail(params.userName)
+        return count ? false : true
+
+    }
+
     def forgotPassword() {
         render(view: 'forgotPassword')
 

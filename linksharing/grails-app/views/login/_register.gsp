@@ -1,27 +1,31 @@
+
+
+
+
+
 <div class="panel panel-default panel-primary">
     <div class="panel-heading">Register
 
     </div>
 
     <div class="panel-body">
-        <g:hasErrors bean="${user}">
-            <div class="alert alert-danger">
-                <g:eachError><g:message error="${it}"/></g:eachError>
-            </div>
-        </g:hasErrors>
-        <g:renderErrors bean="${user}"/>
+    %{--<g:hasErrors bean="${user}">--}%
+    %{--<div class="alert alert-danger">--}%
+    %{--<g:eachError><g:message error="${it}"/></g:eachError>--}%
+    %{--</div>--}%
+    %{--</g:hasErrors>--}%
+    %{--<g:renderErrors bean="${user}"/>--}%
 
-        <g:form class="form-horizontal" controller="user" action="register">
+        <g:form class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="register">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="firstName">First Name:
                 </label>
 
                 <div class="col-sm-8">
                     <g:textField name="firstName" class="form-control" placeholder="Enter first name"/>
-                </div>
-
-                <div class="alert-danger" role="alert">
-                    <g:fieldError field="firstName" bean="${user}"/>
+                    <div class="alert-danger" role="alert">
+                        <g:fieldError field="firstName" bean="${user}"/>
+                    </div>
                 </div>
 
             </div>
@@ -31,11 +35,11 @@
 
                 <div class="col-sm-8">
                     <g:textField name="lastName" class="form-control" placeholder="Enter last name"/>
+                    <div class="alert-danger" role="alert">
+                        <g:fieldError field="lastName" bean="${user}"/>
+                    </div>
                 </div>
 
-                <div class="alert-danger" role="alert">
-                    <g:fieldError field="lastName" bean="${user}"/>
-                </div>
             </div>
 
 
@@ -44,11 +48,11 @@
 
                 <div class="col-sm-8">
                     <g:textField name="email" class="form-control" placeholder="Enter email"/>
+                    <div class="alert-danger" role="alert">
+                        <g:fieldError field="email" bean="${user}"/>
+                    </div>
                 </div>
 
-                <div class="alert-danger" role="alert">
-                    <g:fieldError field="email" bean="${user}"/>
-                </div>
             </div>
 
 
@@ -56,12 +60,12 @@
                 <label class="control-label col-sm-4" for="pwd">UserName:</label>
 
                 <div class="col-sm-8">
-                    <g:textField name="userName" class="form-control" placeholder="Enter user name"/>
+                    <g:textField name="userName" class="form-control" placeholder="Enter user name" />
+                    <div class="alert-danger" role="alert">
+                        <g:fieldError field="userName" bean="${user}"/>
+                    </div>
                 </div>
 
-                <div class="alert-danger" role="alert">
-                    <g:fieldError field="userName" bean="${user}"/>
-                </div>
             </div>
 
             <div class="form-group">
@@ -84,7 +88,7 @@
                     <g:passwordField name="confirmPassword" type="password" class="form-control" id="pwd1"
                                      placeholder="Enter password again"/>
                     <div class="alert-danger" role="alert">
-                        <g:fieldError field="" bean="${user}"/>
+                        <g:fieldError field="confirmPassword" bean="${user}"/>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,6 @@
                 </div>
             </div>
         </g:form>
-
     </div>
 </div>
 

@@ -64,12 +64,12 @@ class ResourceController {
 
     }
 
-    void addToReadingItems(Resource resource) {
+    ReadingItem addToReadingItems(Resource resource) {
         Topic topic = resource.topic
-
+        ReadingItem readingItem
         List<User> users = topic.getSubscribedUsers()
         users.each {
-            ReadingItem readingItem
+
             if (session.user == it) {
                 readingItem = new ReadingItem(resource: resource, user: it, isRead: true)
 
@@ -78,7 +78,7 @@ class ResourceController {
             }
             it.readingItems.add(readingItem)
         }
-
+        readingItem
     }
 
 

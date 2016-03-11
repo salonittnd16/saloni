@@ -17,7 +17,7 @@
                             <label for="topic" class="control-label col-xs-2">Name</label>
 
                             <div class="col-xs-10">
-                                <g:textField name="name" class="form-control" id="Enter Topic" placeholder="Name"/>
+                                <g:textField name="topicName" class="form-control" id="topicName" placeholder="Name"/>
                             </div>
                         </div>
 
@@ -25,7 +25,7 @@
                             <label for="inputText" class="control-label col-xs-2">visiblity</label>
 
                             <div class="col-xs-7">
-                                <g:select name="visibility" from="${com.ttnd.linksharing.Enum.Visibility.values()}"
+                                <g:select name="visibility" id="visibility" from="${com.ttnd.linksharing.Enum.Visibility.values()}"
                                           noSelection="['': '-Select visibility-']"/>
 
                             </div>
@@ -33,8 +33,8 @@
 
                         <div class="form-group">
                             <div class="col-xs-offset-2 col-xs-10" style="float:left">
-                                <g:submitButton name="save" value="Save" controller="topic" action="save"
-                                                class="btn btn-primary">save</g:submitButton>
+                                <button  id="saveButton" name="save" value="Save" controller="topic" action="save"
+                                                class="btn btn-primary">save</button>
                             </div>
                         </div>
 

@@ -1,15 +1,16 @@
 <div class="row">
+    <div class="col-xs-1"></div>
+
     <div class=" col-sm-4">
-        <g:select name="visibility" from="${com.ttnd.linksharing.Enum.Seriousness.values()}"
-                  noSelection="['': '-Select seriousness-']"/>
+        <ls:showSeriousness topicId="${topicId}"/>
     </div>
 
     <div class=" col-sm-4">
-        <g:select name="visibility" from="${com.ttnd.linksharing.Enum.Visibility.values()}"
-                  noSelection="['': '-Select visibility-']"/>
+        <ls:showVisibility topicId="${topicId}"/>
     </div>
+
     <i class="fa fa-envelope-o nav_icon "></i>
     <span class="glyphicon glyphicon-edit nav_icon "></span>
     <g:link name="delete" controller="topic" action="delete" class="glyphicon glyphicon-trash nav_icon"
-            params="[subscriptionId: subscriptionId]"></g:link>
+            params="[topicId: topicId]"></g:link>
 </div>

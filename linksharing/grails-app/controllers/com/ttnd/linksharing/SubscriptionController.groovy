@@ -1,40 +1,44 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.Enum.Seriousness
+import grails.converters.JSON
 
 class SubscriptionController {
 
     def index() { render("subscription section") }
 
-    def save(long id) {
+    def save(Long id) {
         Topic topic = Topic.get(id)
         Subscription subscription = new Subscription(user: session.user, topic: topic, seriousness: Seriousness.SERIOUS)
         if (subscription.save(flush: true))
-            render "success"
+            render([message: "subscribed successfully"] as JSON)
         else
-            render "couldn't save subscription"
+            render([error: "subscribed unsuccessfully"] as JSON)
     }
 
-    def update(long id, String seriousness) {
+    def update(Long id, String seriousness) {
+        Map result = [:]
         Subscription subscription = Subscription.get(id)
         if (subscription) {
             subscription.seriousness = seriousness as Seriousness
             if (subscription.save(flush: true))
-                render("successfully updated")
+                result.message="subscription updated successfully"
             else
-                render "couldn't save ${subscription.id}"
+                result.error= "subscription updation unsuccessful"
         }
+        render(result as JSON)
     }
 
-    def delete(Long subscriptionId) {
-        Subscription subscription = Subscription.get(subscriptionId)
-        if (subscription) {
+    def delete(Long id) {
+        Map result = [:]
+        Subscription subscription = Subscription.get(id)
+        if (subscription && subscription.topic.createdBy!=session.user) {
 
             subscription.delete(flush: true)
-            render "successfully deleted subscription"
+            result.message = "subscription deleted successfully"
         } else {
-            render("subscription not found")
+            result.error = "subscription delete unsuccessful"
         }
-
+        render(result as JSON)
     }
 }

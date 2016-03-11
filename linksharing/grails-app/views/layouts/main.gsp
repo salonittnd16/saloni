@@ -10,6 +10,8 @@
     <title><g:layoutTitle default="Grails"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <asset:javascript src="jquery-2.2.1.min.js"/>
+    <asset:javascript src="jquery.validate.min.js"/>
+    <asset:javascript src="additional-methods.min.js"/>
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
 
@@ -62,6 +64,8 @@
 
         </form>
     </nav>
+
+
     <g:render template="/topic/create"/>
     <g:render template="/linkResource/createLinkResource"/>
     <g:render template="/documentResource/createDocumentResource"/>
@@ -87,7 +91,12 @@
     </nav>
 
 </g:else>
+<div class="alert messageAlert" id="alert" style="display:none">
+</div>
 <g:layoutBody/>
+<asset:javascript src="jquery-2.2.1.min.js"/>
+<asset:javascript src="bootstrap.min.js"/>
+<asset:javascript src="application.js"/>
 
 </body>
 </html>

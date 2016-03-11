@@ -1,6 +1,9 @@
 package com.ttnd.linksharing
 
+import com.ttnd.linksharing.Enum.Seriousness
 import com.ttnd.linksharing.VO.TopicVo
+
+//import org.apache.commons.collections.Closure
 
 class LinksharingTagLib {
     static namespace = "ls"
@@ -37,12 +40,16 @@ class LinksharingTagLib {
         }
     }
     def checkResourceType = { attrs ->
+        String link = ""
         Resource resource = Resource.read(attrs.resource)
         if (resource instanceof LinkResource) {
             out << " <a href=\"#\" class=\"inline\" style=\"float:right;padding: 2px\"><u>View Full Site</u></a>"
 
         } else if (resource instanceof DocumentResource) {
-            out << "<a href=\"#\" class=\"inline\" style=\"float:right;padding: 2px\"><u>Download</u></a>"
+            link = g.link(controller: "documentResource", action: "download", params: [id: attrs.resource], {
+                "Download"
+            })
+            out << link
         }
 
     }
@@ -72,20 +79,56 @@ class LinksharingTagLib {
 
     def showUnsuscribe = { attrs, body ->
         User user = session.user
-        user.isSusbsribed(attrs.topicId)
-        out << body()
-
+        if (user.isSusbsribed(attrs.topicId as Long))
+            out << "Unsubscribe"
+        else
+            out << g.link(controller: "subscription", action: "save", params: [id: attrs.topicId as Long], {
+                "Subscribe"
+            })
 
     }
 
-    def subscriptionsShow = { attrs, body ->
-        Subscription subscription = Subscription.get(attrs.subscriptionId as Long)
+    def canUpdateTopic = { attrs, body ->
+        Topic topic = Topic.get(attrs.topicId)
         User user = session.user
-        if (subscription.topic.createdBy == user || user.admin) {
-            out << render(template: '/user/mysubscribedtopics', model: [subscriptionId: attrs.subscriptionId])
+        if (topic.createdBy == user || user.admin) {
+            out << render(template: '/user/mysubscribedtopics', model: [topicId: attrs.topicId])
         } else {
             out << render(template: '/user/mysuscribedNotCreated')
 
+        }
+    }
+
+    def showSeriousness = { attrs, body ->
+        User user = session.user
+        if (user) {
+            Subscription subscription = user.getSubscription(attrs.topicId as Long)
+            if (subscription) {
+                out << g.select(class: "seriousness", topicId: attrs.topicId, name: 'seriousness',
+                        from: com.ttnd.linksharing.Enum.Seriousness.values(), value: subscription.seriousness)
+            } else {
+                flash.error = "user not subscribed to topic"
+            }
+
+        } else {
+            flash.error = "Please Login"
+        }
+
+    }
+
+    def showVisibility = { attrs ->
+        User user = session.user
+        if (user) {
+            Topic topic = Topic.get(attrs.topicId as Long)
+            if (topic) {
+                out << g.select(class: "visibility", name: 'visibility', topicName: topic.name,
+                        from: com.ttnd.linksharing.Enum.Visibility.values(), value: topic.visibility)
+                println(topic.name)
+            } else {
+                flash.error = "topic not found"
+            }
+        } else {
+            flash.error = "Please login first"
         }
     }
 
@@ -96,6 +139,15 @@ class LinksharingTagLib {
         out << "<small class=\"col-xs-12\">${count}</small>"
     }
 
+    def subscriptionCountByUser = {
+        if (session.user) {
+            Integer subscriptioncount = Subscription.findAllByUser(session.user).size()
+            out << "<small class=\"col-xs-12\">${subscriptioncount}</small>"
+
+        }
+
+    }
+
     def postCount = { attrs ->
         Topic topic = Topic.get(attrs.topicId)
         Integer count = topic.resources.size()
@@ -103,8 +155,8 @@ class LinksharingTagLib {
     }
     def topicCount = { attrs ->
         User user = session.user
-        Integer count = user.topics.size()
-
+        Integer count = Topic.findAllByCreatedBy(user).size()
+        out << "<small class=\"col-xs-12\">${count}</small>"
 
     }
 

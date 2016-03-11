@@ -23,7 +23,7 @@
                         params="[postId: post?.id]"><u>View Post</u></g:link>
                 <hr/>
             </div>
-            <hr/>
+            %{--<hr/>--}%
         </g:each>
 
     </div>

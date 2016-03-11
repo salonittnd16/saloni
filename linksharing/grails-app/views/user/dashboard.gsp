@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <div class="col-xs-5">
     <div class="row" style="margin:9px">
         <g:render template="/user/userinfo"/>

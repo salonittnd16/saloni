@@ -2,12 +2,12 @@ package com.ttnd.linksharing
 
 import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.Enum.Visibility
+import grails.converters.JSON
 
 class TopicController {
 
     def index() {
         render "topic show"
-
 
 
     }
@@ -16,8 +16,8 @@ class TopicController {
         Topic topic = Topic.read(co.topicId)
         if (topic) {
             if (topic.visibility == Visibility.PUBLIC) {
-                List<Resource> posts=Resource.findAllByTopic(topic)
-                render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers, topic: topic,posts:posts])
+                List<Resource> posts = Resource.findAllByTopic(topic)
+                render(view: '/topic/topicshow', model: [subscribedUsers: topic.subscribedUsers, topic: topic, posts: posts])
 
             } else {
                 Subscription subscription = Subscription.findByUserAndTopic(topic.createdBy, topic)
@@ -25,7 +25,6 @@ class TopicController {
                     render "subscription exists"
                 else
                     redirect(controller: 'login', action: 'index')
-
             }
 
         } else {
@@ -36,21 +35,25 @@ class TopicController {
 
     }
 
-    def save(String name, String visibility) {
-        Topic topic = new Topic(name: name, createdBy: session.user, visibility: Visibility.convert(visibility))
-
+    def save(String topicName, String visibility) {
+        Topic topic = new Topic(name: "${topicName} new", createdBy: session.user, visibility: Visibility.convert(visibility))
+        Map result = [:]
         if (topic.save(flush: true, failOnError: true)) {
-            flash.message = " topic saved successfully"
-            render flash.message
-            render view: '/user/dashboard'
+            result.message = "topic saved successfully"
         } else {
-            log.error(" Could not save Topic ${topic.name}")
-            flash.message = "Topic ${topic.name} not saved"
-            render flash.message
-
-
+            result.error = "topic save unsuccessful"
         }
+        render(result as JSON)
+    }
 
-
+    def delete(Long topicId) {
+        Topic topic = Topic.get(topicId)
+        if (session.user == topic.createdBy || session.user.admin) {
+            topic.delete(flush: true)
+            render([message: "topic deleted successfully"] as JSON)
+        }
+        else {
+            render([error: "topic cannot be deleted"] as JSON)
+        }
     }
 }
