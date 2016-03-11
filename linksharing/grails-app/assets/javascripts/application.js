@@ -143,7 +143,6 @@ $(document).ready(function () {
     });
 
     jQuery.validator.addMethod("confirm", function (value, element) {
-        alert(value)
         var check = false;
         var password = $('#registerForm input[id=pwd]').val();
 
@@ -153,5 +152,5 @@ $(document).ready(function () {
         return check;
     }, "Confirm password doesn't match your password");
 
-//
+
 });

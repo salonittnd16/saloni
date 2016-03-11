@@ -55,9 +55,21 @@ class UserController {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Resource> postsCreated = resourceService.search(resourceSearchCo)
         List<Topic> topics = topicService.search(topicSearchCo)
-        int topicCount=topics.size()
+        int topicCount = topics.size()
         List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
-        render(view: "/user/userProfile", model: [subscribedTopics:subscribedTopics,resourceSearchCo: resourceSearchCo, postsCreated: postsCreated,listOfTopics: topics,topicCount:topicCount])
+        render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics, resourceSearchCo: resourceSearchCo, postsCreated: postsCreated, listOfTopics: topics, topicCount: topicCount])
+
+
+    }
+
+    def changePassword(String pwd, String changePwd) {
+        println(pwd)
+        println(changePwd)
+        if (pwd.equals(changePwd)) {
+            render "password updated successfully"
+        } else {
+            render "entered passwords donot match"
+        }
 
 
     }
@@ -77,7 +89,7 @@ class UserController {
 
     }
 
-    def edit(){
+    def edit() {
         render view: '/user/myProfile'
     }
 

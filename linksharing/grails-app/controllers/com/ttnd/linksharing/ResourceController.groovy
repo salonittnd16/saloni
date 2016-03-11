@@ -15,7 +15,6 @@ class ResourceController {
     def delete(long postId) {
         try {
             Resource resource = Resource.load(postId)
-//            render "resource deleted : ${resource.id}"
             resource.delete(flush: true)
             resource.deleteFile()
             redirect(controller: "user", action: "index")
