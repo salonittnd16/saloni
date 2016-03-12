@@ -79,15 +79,17 @@ class LinksharingTagLib {
 
     def showUnsuscribe = { attrs, body ->
         User user = session.user
-        if (user.isSusbsribed(attrs.topicId as Long))
-            out << g.link(controller: "subscription", action: "delete", params: [id: attrs.topicId as Long], {
+        if (user.isSusbsribed(attrs.topicId as Long)) {
+            Topic topic = Topic.get(attrs.topicId)
+            Subscription subscription = Subscription.findByUserAndTopic(user, topic)
+            out << g.link(onclick: "unsubscribe(${subscription.id})", name: "unsuscribe", controller: "subscription", action: "delete", params: [id: subscription.id as Long], {
                 "Unsubscribe"
             })
-        else
-            out << g.link(controller: "subscription", action: "save", params: [id: attrs.topicId as Long], {
+        } else {
+            out << g.link(onclick: "subscribe(${attrs.topicId})", name: "suscribe", controller: "subscription", action: "save", params: [id: attrs.topicId as Long], {
                 "Subscribe"
             })
-
+        }
     }
 
     def canUpdateTopic = { attrs, body ->

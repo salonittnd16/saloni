@@ -39,6 +39,22 @@ function success(data, id) {
     }
 }
 
+function subscribe(id) {
+    event.preventDefault();
+    $.ajax({
+        url: '/subscription/save',
+        data: {id: id},
+        method: 'post',
+        success: function (data) {
+            success(data, id)
+        }
+        ,
+        error: function (data) {
+            $("#alert").html(data.error);
+        }
+    })
+};
+
 function unsubscribe(id) {
     event.preventDefault();
     $.ajax({
