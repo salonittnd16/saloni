@@ -112,7 +112,7 @@ $(document).ready(function () {
             },
             'confirmPassword': {
                 required: true,
-                confirm: true
+                //confirm: true
             },
             'userName': {
                 required: true,
@@ -138,19 +138,19 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-            form.submit();
+            $(form).submit();
         }
     });
 
-    jQuery.validator.addMethod("confirm", function (value, element) {
-        var check = false;
-        var password = $('#registerForm input[id=pwd]').val();
-
-        if (password === value) {
-            check = true;
-        }
-        return check;
-    }, "Confirm password doesn't match your password");
+    //jQuery.validator.addMethod("confirm", function (value, element) {
+    //    var check = false;
+    //    var password = $('#registerForm input[id=pwd]').val();
+    //
+    //    if (password === value) {
+    //        check = true;
+    //    }
+    //    return check;
+    //}, "Confirm password doesn't match your password");
 
 
 });

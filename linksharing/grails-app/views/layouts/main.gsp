@@ -53,10 +53,10 @@
             </div>
 
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">Saloni
+               aria-expanded="false">${session.user.name}
                 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><g:link controller="user" action="edit">my profile</g:link></li>
+                <li><g:link controller="user" action="edit" params="[id:session.user.id,visibility:com.ttnd.linksharing.Enum.Visibility.PUBLIC,topicId:0]">my profile</g:link></li>
                 <li><a href="#">users</a></li>
                 <li><g:link controller="login" action="logout">logout</g:link></li>
             </ul>
@@ -88,7 +88,6 @@
             </form>
         </div>
     </nav>
-
 </g:else>
 <div class="alert messageAlert" id="alert" style="display:none">
 </div>

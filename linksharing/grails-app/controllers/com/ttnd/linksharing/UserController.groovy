@@ -52,12 +52,16 @@ class UserController {
     def profile(ResourceSearchCo resourceSearchCo) {
         resourceSearchCo.max = resourceSearchCo.max ?: 5
         resourceSearchCo.offset = resourceSearchCo.offset ?: 0
-        TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
+        TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id,
+                visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Resource> postsCreated = resourceService.search(resourceSearchCo)
         List<Topic> topics = topicService.search(topicSearchCo)
         int topicCount = topics.size()
         List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
-        render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics, resourceSearchCo: resourceSearchCo, postsCreated: postsCreated, listOfTopics: topics, topicCount: topicCount])
+        render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics,
+                                                  resourceSearchCo: resourceSearchCo,
+                                                  postsCreated: postsCreated,
+                                                  listOfTopics: topics, topicCount: topicCount])
 
 
     }
@@ -89,8 +93,10 @@ class UserController {
 
     }
 
-    def edit() {
-        render view: '/user/myProfile'
+    def edit(ResourceSearchCo resourceSearchCo) {
+        TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
+        List<Topic> topics = topicService.search(topicSearchCo)
+        render(view: '/user/myProfile' ,model: [listOfTopics: topics])
     }
 
 }

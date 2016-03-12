@@ -42,10 +42,10 @@ class LoginController {
 
     }
 
-    def forgotPassword() {
-        render(template: "/login/forgotPassword")
-
-    }
+//    def forgotPassword() {
+//        render(template: "/login/forgotPassword")
+//
+//    }
 
     def logout()
 

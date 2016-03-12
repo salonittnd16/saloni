@@ -19,13 +19,13 @@
                         <div class="row">
 
                             <g:link controller="topic" action="show" params='[topicId: "${topic.id}"]'>
-                                ${topic}</g:link>
+                                ${topic} ${topic.id}</g:link>
                         </div>
                         <br/><br/>
 
                         <div class="row">
                             <div class="col-xs-4">
-                                <small class="col-xs-12">@saloni</small>
+                                <small class="col-xs-12">"@${topic.createdBy}"</small>
                                 <small class="col-xs-12"><ls:showUnsuscribe topicId="${topic.id}"/></small>
                             </div>
 

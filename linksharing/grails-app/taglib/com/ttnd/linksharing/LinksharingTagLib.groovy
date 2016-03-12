@@ -43,7 +43,7 @@ class LinksharingTagLib {
         String link = ""
         Resource resource = Resource.read(attrs.resource)
         if (resource instanceof LinkResource) {
-            out << " <a href=\"${resource.url}\" class=\"inline\" style=\"float:right;padding: 2px\"><u>View Full Site</u></a>"
+            out << " <a href=\"${resource.url}\" class=\"inline\" target=\"_blank\" style=\"float:right;padding: 2px\"><u>View Full Site</u></a>"
 
         } else if (resource instanceof DocumentResource) {
             link = g.link(controller: "documentResource", action: "download", params: [id: attrs.resource], {
@@ -80,7 +80,9 @@ class LinksharingTagLib {
     def showUnsuscribe = { attrs, body ->
         User user = session.user
         if (user.isSusbsribed(attrs.topicId as Long))
-            out << "Unsubscribe"
+            out << g.link(controller: "subscription", action: "delete", params: [id: attrs.topicId as Long], {
+                "Unsubscribe"
+            })
         else
             out << g.link(controller: "subscription", action: "save", params: [id: attrs.topicId as Long], {
                 "Subscribe"
@@ -91,7 +93,7 @@ class LinksharingTagLib {
     def canUpdateTopic = { attrs, body ->
         Topic topic = Topic.get(attrs.topicId)
         User user = session.user
-        if (topic.createdBy == user || user.admin) {
+        if (topic.createdBy == user) {
             out << render(template: '/user/mysubscribedtopics', model: [topicId: attrs.topicId])
         } else {
             out << render(template: '/user/mysuscribedNotCreated')
