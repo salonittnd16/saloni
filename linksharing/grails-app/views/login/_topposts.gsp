@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-xs-10">
-                ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>
+                ${post.createdBy}<span class="text-muted inline">"${post.createdBy}"</span>
                 <a href="#" class="inline" style="float:right">${post.topic}</a>
 
                 <p>${post.description}
@@ -23,9 +23,6 @@
                         params="[postId: post?.id]"><u>View Post</u></g:link>
                 <hr/>
             </div>
-            %{--<hr/>--}%
         </g:each>
-
     </div>
-
 </div>

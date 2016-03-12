@@ -1,4 +1,4 @@
-<div class="panel panel-default panel-primary">
+..<div class="panel panel-default panel-primary">
     <div class="panel-heading">Login
     </div>
 
@@ -25,8 +25,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <a href=""  data-toggle="modal" data-target="#forgot"><u> Forgot Password</u></a>
-                    <g:render template="/login/forgotPassword"/>
+                    <a href="" data-toggle="modal" data-target="#forgot"><u>Forgot Password</u></a>
+
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
 
             </div>
         </g:form>
-
+        <g:render template="/login/forgotPassword"/>
     </div>
 </div>
 

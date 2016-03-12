@@ -3,8 +3,6 @@ package com.ttnd.linksharing
 import spock.util.mop.Use
 
 class ReadingItem {
-    //Resource resource;
-    //User user;
     Boolean isRead;
     Date dateCreated;
     Date lastUpdated;
@@ -20,9 +18,7 @@ class ReadingItem {
         User user = User.get(1)
         String firstName = user.firstName
         User.executeUpdate("update User as u set u.firstName=:firstName where u.id=:id", [firstName: "Test", id: 1.toLong()])
-//        user.refresh()
         render "firstName before ${firstName} -: After updation ${user.firstName}"
         User.executeUpdate("delete User where id=:id", [id: 1.toLong()])
-//        render "Success"
     }
 }

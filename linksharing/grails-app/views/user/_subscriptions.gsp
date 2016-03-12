@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="row" >
-                    <ls:canUpdateTopic topicId="${subscription.topic.id}"/>
+                    <ls:canUpdateTopic topicId="${subscription.topic.id}" parent="subscription"/>
                 </div>
                 <hr/>
 

@@ -45,7 +45,6 @@ class Topic {
             order("resourceCount", "desc")
             order("t.name", "desc")
         }
-        println("=========================${result}")
         List<TopicVo> topicVo = []
         result.each {
             topicVo.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], count: it[3], createdBy: it[4]))
@@ -55,35 +54,6 @@ class Topic {
 
     }
 
-//    static List<TopicVo> getTrendingTopics() {
-//        List topicVoList = Resource.createCriteria().list() {
-//
-//            projections {
-//                createAlias('topic', 't')
-//                groupProperty('t.id')
-//                property('t.name')
-//                property('t.visibility')
-//                property('t.createdBy')
-//                //createAlias(count('id'), 'resourceCount')
-//                count('id')
-//            }
-//            max('resourceCount')
-//
-//            maxResults 5
-//
-//            eq('visibility', Visibility.PUBLIC)
-//           // order("resourceCount", "desc")
-//            order("t.name", "desc")
-//
-//        }
-//        println "${topicVoList}"
-//        List<TopicVo> topicVoList1 = []
-//        topicVoList.each {
-//            topicVoList1.add(new TopicVo(id: it[0], name: it[1], visibility: it[2], createdBy: it[3], count: it[4]))
-//        }
-//
-//        return topicVoList1
-//    }
 
 
     def afterInsert() {

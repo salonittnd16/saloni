@@ -114,10 +114,13 @@ $(document).ready(function () {
         });
     });
 
-    $(".edit").click(function (id){
+    $(".edit").bind('click', function () {
+        var topicId = $(this).attr("topicId")
+        var parent = $(this).attr("parent")
         event.preventDefault()
-        var editRow=$(".editRow")
+        var editRow = $("#" + parent + "Edit_" + topicId)
         editRow.show()
+        event.preventDefault()
 
     });
 

@@ -14,7 +14,7 @@
                             params="[id: session.user.id, visibility: com.ttnd.linksharing.Enum.Visibility.PUBLIC, topicId: 0]">
                         ${readingItem.resource.createdBy}
                     </g:link>
-                    <span class="text-muted inline">@saloni 5min</span>
+                    <span class="text-muted inline">"@${readingItem.resource.createdBy}"</span>
                     <a href="#" class="inline" style="float:right">Grails</a>
 
                     <p>${readingItem.resource.description}
@@ -26,7 +26,6 @@
 
                     <span class="inline" style="float:right;padding: 2px"><u><ls:checkResourceType
                             resource="${readingItem.resource.id}"/></u></span>
-                %{--<a href="#" class="inline" style="float:right;padding: 2px"><u>Full size</u></a>--}%
                     <ls:checkIsRead isRead="${readingItem.isRead}">
                         <g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>
                     </ls:checkIsRead>

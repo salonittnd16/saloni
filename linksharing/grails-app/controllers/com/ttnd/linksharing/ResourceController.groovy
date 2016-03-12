@@ -40,7 +40,6 @@ class ResourceController {
         Resource resource = Resource.findById(id)
         if (resource.canViewBy(id)) {
             RatingInfoVo ratingInfoVo = resource.ratingInfo
-            render "----------total votes : $ratingInfoVo.totalVotes----average score: $ratingInfoVo.averageScore------total score: $ratingInfoVo.totalScore"
             render(view: '/user/post')
         }
 
@@ -63,22 +62,6 @@ class ResourceController {
 
     }
 
-    ReadingItem addToReadingItems(Resource resource) {
-        Topic topic = resource.topic
-        ReadingItem readingItem
-        List<User> users = topic.getSubscribedUsers()
-        users.each {
-
-            if (session.user == it) {
-                readingItem = new ReadingItem(resource: resource, user: it, isRead: true)
-
-            } else {
-                readingItem = new ReadingItem(resource: resource, user: it, isRead: false)
-            }
-            it.readingItems.add(readingItem)
-        }
-        readingItem
-    }
 
 
 }

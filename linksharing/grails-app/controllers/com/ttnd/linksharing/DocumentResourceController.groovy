@@ -8,8 +8,7 @@ import javax.mail.Multipart
 
 class DocumentResourceController extends ResourceController {
 
-//    def grailsApplication
-
+def resourceService
     def index() { render "document resource section" }
 
     @Transactional
@@ -26,7 +25,7 @@ class DocumentResourceController extends ResourceController {
             if (documentResource.save(failOnError: true)) {
                 flash.message = "document resource saved"
                 render(flash.message)
-                ReadingItem readingItem = addToReadingItems(documentResource)
+                ReadingItem readingItem = resourceService.addToReadingItems(documentResource)
                 ResourceRating resourceRating = new ResourceRating(user: readingItem.user, resource: readingItem.resource, score: 4)
                 resourceRating.save(flush: true)
                 user.addToResourceRatings(resourceRating)
@@ -45,8 +44,6 @@ class DocumentResourceController extends ResourceController {
             response.setHeader("Content-disposition", "attachment; filename=" + documentResource.fileName)
             response.contentType = documentResource.contentType
             response.outputStream << file.newInputStream()
-//            render "success"
-
         } else
             render "failed"
     }

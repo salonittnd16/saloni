@@ -95,8 +95,9 @@ class LinksharingTagLib {
     def canUpdateTopic = { attrs, body ->
         Topic topic = Topic.get(attrs.topicId)
         User user = session.user
+        String parent = attrs.parent
         if (topic.createdBy == user) {
-            out << render(template: '/user/mysubscribedtopics', model: [topicId: attrs.topicId])
+            out << render(template: '/user/mysubscribedtopics', model: [topicId: attrs.topicId, parent: parent])
         } else {
             out << render(template: '/user/mysuscribedNotCreated')
 

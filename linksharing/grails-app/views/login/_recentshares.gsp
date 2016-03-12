@@ -11,7 +11,7 @@
 
 
                 <div class="col-xs-10">
-                    ${resource.createdBy}<span class="text-muted inline">@saloni 5min</span>
+                    ${resource.createdBy}<span class="text-muted inline">"@${resource.createdBy}"</span>
                     <a href="#" class="inline" style="float:right">${resource.topic}</a>
 
                     <p>${resource.description}</p>
