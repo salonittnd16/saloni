@@ -71,6 +71,7 @@ function unsubscribe(id) {
     })
 };
 
+
 function commonSuccess(data) {
     var messageAlert = $(".messageAlert");
     for (item in data) {
@@ -113,6 +114,13 @@ $(document).ready(function () {
         });
     });
 
+    $(".edit").click(function (id){
+        event.preventDefault()
+        var editRow=$(".editRow")
+        editRow.show()
+
+    });
+
 
     $('#registerForm').validate({
         rules: {
@@ -138,7 +146,7 @@ $(document).ready(function () {
                 }
             }
             ,
-            'emailID': {
+            'email': {
                 required: true,
                 email: true,
                 remote: {
@@ -158,15 +166,15 @@ $(document).ready(function () {
         }
     });
 
-    //jQuery.validator.addMethod("confirm", function (value, element) {
-    //    var check = false;
-    //    var password = $('#registerForm input[id=pwd]').val();
-    //
-    //    if (password === value) {
-    //        check = true;
-    //    }
-    //    return check;
-    //}, "Confirm password doesn't match your password");
+    jQuery.validator.addMethod("confirm", function (value, element) {
+        var check = false;
+        var password = $('#registerForm input[id=pwd]').val();
+
+        if (password === value) {
+            check = true;
+        }
+        return check;
+    }, "Confirm password doesn't match your password");
 
 
 });

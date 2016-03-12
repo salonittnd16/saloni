@@ -33,12 +33,12 @@ class LoginController {
 
     def validateUserName() {
         Integer count = User.countByUserName(params.userName)
-        return count ? false : true
+        render count ? false : true
 
     }
     def validateEmail() {
-        Integer count = User.countByEmail(params.userName)
-        return count ? false : true
+        Integer count = User.countByEmail(params.email)
+        render count ? false : true
 
     }
 

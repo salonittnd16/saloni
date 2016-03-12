@@ -10,7 +10,7 @@
     </div>
 
     <i class="fa fa-envelope-o nav_icon "></i>
-    <span class="glyphicon glyphicon-edit nav_icon "></span>
+    <span><g:link  class="glyphicon glyphicon-edit nav_icon edit" params="[topicId: topicId]"></g:link></span>
     <g:link name="delete" controller="topic" action="delete" class="glyphicon glyphicon-trash nav_icon"
             params="[topicId: topicId]"></g:link>
 </div>

@@ -60,18 +60,18 @@
             %{--</div>--}%
 
             %{--<div class="col-xs-9">--}%
-            %{--<div class="row">--}%
-            %{--<form class="form-inline" role="form">--}%
-            %{--<div class="form-group">--}%
+            <div  class="row editRow${topic.id}" style="display: none">
+            <form class="form-inline" role="form">
+            <div class="form-group">
 
-            %{--<input type="text" class="form-control col-xs-4" placeholder="Grails" id="name">--}%
-            %{--<button type="button" class="btn ">save</button>--}%
-            %{--<button type="button" class="btn btn-default">cancel</button>--}%
+            <input type="text" class="form-control col-xs-4" placeholder="Grails" id="name">
+            <button type="button" class="btn ">save</button>
+            <button type="button" class="btn btn-default">cancel</button>
 
-            %{--</div>--}%
-            %{--</form>--}%
-            %{--</div>--}%
-            %{--<br/>--}%
+            </div>
+            </form>
+            </div>
+            <br/>
 
             %{--<div class="row">--}%
             %{--<div class="col-xs-4">--}%

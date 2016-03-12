@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <asset:javascript src="jquery-2.2.1.min.js"/>
     <asset:javascript src="jquery.validate.min.js"/>
-    <asset:javascript src="additional-methods.min.js"/>
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
 
