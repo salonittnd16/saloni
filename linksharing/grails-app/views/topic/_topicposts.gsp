@@ -26,7 +26,7 @@
     %{--<div class="panel-body" id="topicPosts">--}%
         %{--<g:each in="${posts}" var="post">--}%
             %{--<div class="row" >--}%
-                %{--<div class=" col-xs-2" style="font-size:70px; float:left">--}%
+                %{--<div class=" col-xs-2" style="font-scize:70px; float:left">--}%
                     %{--<ls:userImage id="${post.createdBy?.id}"/>--}%
                 %{--</div>--}%
 

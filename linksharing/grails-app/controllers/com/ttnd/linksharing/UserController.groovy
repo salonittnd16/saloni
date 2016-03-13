@@ -4,6 +4,8 @@ import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.CO.TopicSearchCo
 import com.ttnd.linksharing.CO.UserCo
 
+import static com.ttnd.linksharing.Utility.*
+
 class UserController {
     def assetResourceLocator
     def topicService
@@ -96,6 +98,15 @@ class UserController {
 
     }
 
+    def forgotPassword(String email){
+        User user = User.findByEmail(email)
+        if(user && user.active){
+            String newPassword =Utility.getRandomPassword()
+            user.password=newPassword
+
+
+        }
+    }
     def edit(ResourceSearchCo resourceSearchCo) {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Topic> topics = topicService.search(topicSearchCo)

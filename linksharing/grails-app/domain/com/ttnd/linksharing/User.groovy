@@ -1,7 +1,6 @@
 package com.ttnd.linksharing
 
 import groovy.transform.EqualsAndHashCode
-import org.xhtmlrenderer.css.parser.property.PrimitivePropertyBuilders
 
 @EqualsAndHashCode
 class User {

@@ -145,16 +145,14 @@ $(document).ready(function () {
         $("#searchPostBox").val("")
     })
 
-    $("#findSearchPostBox").click(function() {
-        alert("click")
+    $("#findSearchPostBox").click(function () {
         topicId = $(this).attr('topicId')
 
         $.ajax({
             url: "/resource/search",
             data: {q: $('#searchPostBox').val(), topicId: topicId},
-            method:'post',
+            method: 'post',
             success: function (result) {
-                alert(result)
                 $("#topicPosts").html(result)
             }
         });

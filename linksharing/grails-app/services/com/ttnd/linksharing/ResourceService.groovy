@@ -16,13 +16,14 @@ class ResourceService {
 
     }
 
-    ReadingItem addToReadingItems(Resource resource) {
+    ReadingItem addToReadingItems(Resource resource,Long id) {
         Topic topic = resource.topic
         ReadingItem readingItem
         List<User> users = topic.getSubscribedUsers()
+        User user=User.get(id)
         users.each {
 
-            if (session.user == it) {
+            if (user == it) {
                 readingItem = new ReadingItem(resource: resource, user: it, isRead: true)
 
             } else {
