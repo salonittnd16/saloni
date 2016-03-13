@@ -5,6 +5,17 @@
 
     <div class="panel-body">
         <g:each in="${subscriptions}" var="subscription">
+            <div class="row" id="subscription_${subscription.topic.id}" style="display: none;padding: 10px">
+                <form class="form-inline" role="form" >
+                    <div class="form-group">
+
+                        <input type="text" name="topic" class="form-control col-xs-4" placeholder="Grails" id="topicname">
+                        <button  name="saveTopic"  class="btn  changeTopicName">save</button>
+                        <button type="button" class="btn btn-default">cancel</button>
+
+                    </div>
+                </form>
+            </div>
             <div class="row" id="${subscription.id}">
                 <div class="row">
                     <span class="list-group col-xs-3" style="padding-left: 15px ">

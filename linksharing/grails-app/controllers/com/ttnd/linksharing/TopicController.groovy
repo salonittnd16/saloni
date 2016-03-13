@@ -45,7 +45,7 @@ class TopicController {
             result.error = "topic save unsuccessful"
         }
         render(result as JSON)
-        redirect(controller: 'login', action: 'index')
+//        redirect(controller: 'login', action: 'index')
     }
 
     def delete(Long topicId) {

@@ -78,9 +78,8 @@ function topicDelete(id) {
         data: {topicId: id},
         method: 'post',
         success: function (data) {
-            var reply=confirm("do you want to delete this topic?")
-            if(reply)
-            {
+            var reply = confirm("do you want to delete this topic?")
+            if (reply) {
                 success(data, id)
             }
         }
@@ -143,6 +142,19 @@ $(document).ready(function () {
         event.preventDefault()
 
     });
+    $(".changeTopicName").bind('click', function () {
+        var topicName = $("#topicname").val()
+        var visibility = "public";
+        alert(topicName)
+        $.ajax({
+            url: "/topic/save",
+            data: {topicName: $(topicName), visibility: $(visibility)},
+            success: commonSuccess
+        });
+
+
+    });
+
 
     $("#clearSearchPostBox").click(function () {
         $("#searchPostBox").val("")

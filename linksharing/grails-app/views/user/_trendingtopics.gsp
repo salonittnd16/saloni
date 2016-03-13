@@ -7,11 +7,11 @@
         <div class="panel-body ">
             <div>
                 <div class="row" id="trendingEdit_${topic.id}" style="display: none;padding: 10px">
-                    <form class="form-inline" role="form">
+                    <form class="form-inline" role="form" >
                         <div class="form-group">
 
-                            <input type="text" class="form-control col-xs-4" placeholder="Grails" id="name">
-                            <button type="button" class="btn ">save</button>
+                            <input type="text" name="topic" class="form-control col-xs-4" placeholder="Grails" id="topicname">
+                            <button  name="saveTopic"  class="btn  changeTopicName">save</button>
                             <button type="button" class="btn btn-default">cancel</button>
 
                         </div>
