@@ -1,16 +1,18 @@
 package com.ttnd.linksharing
 
+import DTO.EmailDTO
 import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.CO.TopicSearchCo
 import com.ttnd.linksharing.CO.UserCo
-
-import static com.ttnd.linksharing.Utility.*
+import com.ttnd.linksharing.CO.UserSearchCo
+import com.ttnd.linksharing.VO.UserVO
 
 class UserController {
     def assetResourceLocator
     def topicService
     def subscriptionService
     def resourceService
+    def emailService
 
     def index() {
 
@@ -103,7 +105,9 @@ class UserController {
         if(user && user.active){
             String newPassword =Utility.getRandomPassword()
             user.password=newPassword
-
+            EmailDTO emailDTO = new EmailDTO(to: [email], subject: "Link to generate New Password",
+                    view: '/email/_password', model: [newPassword: newPassword])
+            emailService.sendMail(emailDTO)
 
         }
     }
@@ -111,6 +115,18 @@ class UserController {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Topic> topics = topicService.search(topicSearchCo)
         render(view: '/user/myProfile' ,model: [listOfTopics: topics])
+    }
+    def list(UserSearchCo userSearchCO) {
+        List<UserVO> userVOList = []
+        if (session.user?.admin) {
+            User.search(userSearchCO).list([sort: userSearchCO.sort, order: userSearchCO.order]).each { user ->
+                userVOList.add(new UserVO(id: user.id, userName: user.userName, email: user.email, firstName: user.firstName,
+                        lastName: user.lastName, active: user.active))
+            }
+            render(view: 'list', model: [users: userVOList])
+        } else {
+            redirect(controller: 'login', action: 'index')
+        }
     }
 
 }

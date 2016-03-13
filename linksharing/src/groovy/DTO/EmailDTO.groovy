@@ -9,10 +9,10 @@ class EmailDTO {
     String subject
     Map model = [:]
 
-    static constraints={
-        to nullable:false
-        view nullable:false
-        subject nullable:false
-        model nullable:true
+    static constraints = {
+        to nullable: false
+        view nullable: false
+        subject nullable: false
+        model nullable: true
     }
 }

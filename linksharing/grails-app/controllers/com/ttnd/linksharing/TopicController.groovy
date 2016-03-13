@@ -1,6 +1,7 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.CO.ResourceSearchCo
+import com.ttnd.linksharing.Enum.Seriousness
 import com.ttnd.linksharing.Enum.Visibility
 import grails.converters.JSON
 
@@ -58,13 +59,17 @@ class TopicController {
         }
         render(result as JSON)
     }
-    def invite(Long id,String email){
-       Topic topic=Topic.get(id)
-        if(!topic){
-            flash.error="topic not found"
+
+    def invite(Long id, String email) {
+        Topic topic = Topic.get(id)
+        if (!topic) {
+            flash.error = "topic not found"
         }
-
-
+    }
+    def join(Long id){
+        Topic topic=Topic.get(id)
+        Subscription subscription = new Subscription(user: session.user, topic: topic, seriousness: Seriousness.VERY_SERIOUS)
 
     }
+
 }

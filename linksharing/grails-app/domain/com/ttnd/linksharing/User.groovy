@@ -1,5 +1,6 @@
 package com.ttnd.linksharing
 
+import com.ttnd.linksharing.CO.UserSearchCo
 import groovy.transform.EqualsAndHashCode
 
 @EqualsAndHashCode
@@ -42,6 +43,24 @@ class User {
         })
 
 
+    }
+    static namedQueries = {
+        search { UserSearchCo userSearchCO ->
+            eq('admin', false)
+            if (userSearchCO.active != null) {
+                eq("active", userSearchCO.active)
+            }
+
+            if (userSearchCO.q) {
+                or {
+                    ilike("firstName", "%${userSearchCO.q}%")
+                    ilike("lastName", "%${userSearchCO.q}%")
+                    ilike("email", "%${userSearchCO.q}%")
+                    ilike("userName", "%${userSearchCO.q}%")
+
+                }
+            }
+        }
     }
     static hasMany = [topics: Topic, subscriptions: Subscription, resources: Resource, readingItems: ReadingItem, resourceRatings: ResourceRating]
 

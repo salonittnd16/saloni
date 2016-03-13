@@ -72,14 +72,17 @@ function unsubscribe(id) {
 };
 
 function topicDelete(id) {
-    alert("hello")
     event.preventDefault();
     $.ajax({
         url: '/topic/delete',
         data: {topicId: id},
         method: 'post',
         success: function (data) {
-            success(data, id)
+            var reply=confirm("do you want to delete this topic?")
+            if(reply)
+            {
+                success(data, id)
+            }
         }
         ,
         error: function (data) {

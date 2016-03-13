@@ -22,13 +22,16 @@
 
                         <div class="row">
                             <div class="col-xs-4">
-                                <small class="col-xs-12"><g:link controller="user" action="profile" params="[id:subscription.topic.createdBy.id,visibility:com.ttnd.linksharing.Enum.Visibility.PUBLIC,topicId:0]"> ${subscription.topic.createdBy}</g:link></small>
-                                <small class="col-xs-12"><g:link name="${subscription.id}" onclick="unsubscribe(${subscription.id})">Unsubscribe</g:link></small>
+                                <small class="col-xs-12"><g:link controller="user" action="profile"
+                                                                 params="[id: subscription.topic.createdBy.id, visibility: com.ttnd.linksharing.Enum.Visibility.PUBLIC, topicId: 0]">${subscription.topic.createdBy}</g:link></small>
+                                <small class="col-xs-12"><g:link name="${subscription.id}"
+                                                                 onclick="unsubscribe(${subscription.id})">Unsubscribe</g:link></small>
                             </div>
 
                             <div class="col-xs-4">
                                 <small class="col-xs-12">Subscriptions</small>
-                                <small class="col-xs-12"><ls:subscriptionCount topicId="${subscription.topic.id}"/></small>
+                                <small class="col-xs-12"><ls:subscriptionCount
+                                        topicId="${subscription.topic.id}"/></small>
                             </div>
 
                             <div class="col-xs-4">
@@ -39,14 +42,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" >
+
+                <div class="row">
                     <ls:canUpdateTopic topicId="${subscription.topic.id}" parent="subscription"/>
                 </div>
                 <hr/>
 
             </div>
 
-            %{--<hr/>--}%
+        %{--<hr/>--}%
 
         </g:each>
     </div>
