@@ -22,7 +22,10 @@ class UserController {
 
         if (!session.user) {
             flash.message = "please register first!"
-            User user = new User(firstName: co.firstName, lastName: co.lastName, userName: co.userName, email: co.email, password: co.password, confirmPassword: co.confirmPassword)
+            User user = new User(firstName: co.firstName, lastName: co.lastName, userName: co.userName,
+                    email: co.email, password: co.password, confirmPassword: co.confirmPassword)
+            if (!params.pic.empty)
+                user.photo = co.pic
             if (user.save(flush: true)) {
                 flash.message = "${user.firstName} registered successfully"
                 render(flash.message)

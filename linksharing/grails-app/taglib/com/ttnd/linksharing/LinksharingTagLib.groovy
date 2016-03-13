@@ -168,7 +168,7 @@ class LinksharingTagLib {
     def userImage = { attrs, body ->
         User user = User.get(attrs.id)
         if (user.photo) {
-            out << ""
+            out << "<img src=\"/user/image/${attrs.id}\" width=\"64\" height\"64\"/> "
         } else
             out << "<img src=\"/user/image/${attrs.id}\" width=\"64\" height\"64\"/>"
 

@@ -71,6 +71,23 @@ function unsubscribe(id) {
     })
 };
 
+function topicDelete(id) {
+    alert("hello")
+    event.preventDefault();
+    $.ajax({
+        url: '/topic/delete',
+        data: {topicId: id},
+        method: 'post',
+        success: function (data) {
+            success(data, id)
+        }
+        ,
+        error: function (data) {
+            $("#alert").html(data.error);
+        }
+    })
+};
+
 
 function commonSuccess(data) {
     var messageAlert = $(".messageAlert");
@@ -123,6 +140,25 @@ $(document).ready(function () {
         event.preventDefault()
 
     });
+
+    $("#clearSearchPostBox").click(function () {
+        $("#searchPostBox").val("")
+    })
+
+    $("#findSearchPostBox").click(function() {
+        alert("click")
+        topicId = $(this).attr('topicId')
+
+        $.ajax({
+            url: "/resource/search",
+            data: {q: $('#searchPostBox').val(), topicId: topicId},
+            method:'post',
+            success: function (result) {
+                alert(result)
+                $("#topicPosts").html(result)
+            }
+        });
+    })
 
 
     $('#registerForm').validate({

@@ -40,6 +40,7 @@
 
         <form class="navbar-form navbar-right">
 
+
             <div class="form-group">
                 <button type="button" class="fa fa-comment" data-toggle="modal" data-target="#myModal"></button>
                 <button type="button" class="fa fa-envelope " data-toggle="modal" data-target="#myModal1"></button>
@@ -83,6 +84,7 @@
             <form class="navbar-form navbar-right" role="search" style="text-align:right">
                 <div class="form group">
                     <input type="text" class="form-control" placeholder="Search"/>
+
                 </div>
             </form>
         </div>

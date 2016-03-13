@@ -19,7 +19,7 @@ class User {
     Date lastUpdated;
 
     static mapping = {
-        photo(type: 'blob')
+        photo(sqlType:  'longblob')
         sort id: "desc"
     }
 

@@ -10,5 +10,6 @@ class UserCo {
     String password
     String userName
     String confirmPassword
+    byte[] pic
 
 }

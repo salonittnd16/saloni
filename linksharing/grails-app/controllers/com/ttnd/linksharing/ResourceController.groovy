@@ -32,7 +32,8 @@ class ResourceController {
 
         }
         List<Resource> resources = Resource.search(co).list()
-        render resources
+        render(template:"/topic/searchInTopic" ,model: [posts:resources])
+//           render resources
     }
 
     def show(Long id) {

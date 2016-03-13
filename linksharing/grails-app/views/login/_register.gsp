@@ -16,7 +16,7 @@
     %{--</g:hasErrors>--}%
     %{--<g:renderErrors bean="${user}"/>--}%
 
-        <g:form class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="register">
+        <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="register">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="firstName">First Name:
                 </label>
@@ -96,12 +96,11 @@
 
             <div class="row">
                 <div class="form-group">
-                    <label class="control-label col-xs-4" for="pwd">Photo:</label>
+                    <label class="control-label col-xs-4" for="photo">Photo:</label>
 
                     <div class="col-xs-5">
-                        <input class="form-control" id="pwd2" placeholder="Upload Photo">
+                        <input type="file" name = "pic" class="form-control"/>
                     </div>
-                    <button type="submit" class="btn btn-default">Browse</button>
                 </div>
             </div>
 
@@ -111,7 +110,7 @@
                                     class="btn btn-default"/>
                 </div>
             </div>
-        </g:form>
+        </g:uploadForm>
     </div>
 </div>
 

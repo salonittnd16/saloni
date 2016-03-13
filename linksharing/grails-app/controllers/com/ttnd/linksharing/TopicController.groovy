@@ -44,16 +44,18 @@ class TopicController {
             result.error = "topic save unsuccessful"
         }
         render(result as JSON)
+        redirect(controller: 'login', action: 'index')
     }
 
     def delete(Long topicId) {
         Topic topic = Topic.get(topicId)
+        Map result = [:]
         if (session.user == topic.createdBy || session.user.admin) {
             topic.delete(flush: true)
-            render([message: "topic deleted successfully"] as JSON)
+            result.message = "topic deleted successfully"
+        } else {
+            result.error = "topic cannot be deleted"
         }
-        else {
-            render([error: "topic cannot be deleted"] as JSON)
-        }
+        render(result as JSON)
     }
 }
