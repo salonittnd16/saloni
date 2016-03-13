@@ -5,17 +5,20 @@
 
     <div class="panel-body">
         <g:each in="${subscriptions}" var="subscription">
-            <div class="row" id="subscription_${subscription.topic.id}" style="display: none;padding: 10px">
-                <form class="form-inline" role="form" >
+            <div class="row" id="subscriptionEdit_${subscription.topic.id}" style="display: none;padding: 10px">
+                <form class="form-inline" role="form">
                     <div class="form-group">
 
-                        <input type="text" name="topic" class="form-control col-xs-4" placeholder="Grails" id="topicname">
-                        <button  name="saveTopic"  class="btn  changeTopicName">save</button>
+                        <input type="text" name="topic" class="form-control col-xs-4"
+                               placeholder="${subscription.topic.name}" id="subscription_${subscription.topic.id}">
+                        <button name="saveTopic" class="btn  changeTopicName" parent="subscription"
+                                topicId="${subscription.topic.id}">save</button>
                         <button type="button" class="btn btn-default">cancel</button>
 
                     </div>
                 </form>
             </div>
+
             <div class="row" id="${subscription.id}">
                 <div class="row">
                     <span class="list-group col-xs-3" style="padding-left: 15px ">
@@ -26,7 +29,8 @@
                     <div class="col-xs-9">
                         <div class="row">
                             <g:link controller="topic" action="show" params='[topicId: "${subscription.topic.id}"]'>
-                                ${subscription.topic}</g:link>
+                                ${subscription.topic}
+                                <span class="topicName_${subscription.topic.id}"></span></g:link>
                         </div>
 
                         <br/>

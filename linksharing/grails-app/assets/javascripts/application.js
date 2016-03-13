@@ -143,13 +143,25 @@ $(document).ready(function () {
 
     });
     $(".changeTopicName").bind('click', function () {
-        var topicName = $("#topicname").val()
+        var topicId = $(this).attr("topicId")
+        var parent = $(this).attr("parent")
+        var topicName = $("#" + parent + "_" + topicId).val()
         var visibility = "public";
         alert(topicName)
         $.ajax({
-            url: "/topic/save",
-            data: {topicName: $(topicName), visibility: $(visibility)},
-            success: commonSuccess
+            url: "/topic/update",
+            data: {topicName: topicName, id: topicId},
+            success: function (data) {
+                if (data.success) {
+                    $(".topicName_" + topicId).html(data.topicName)
+                    $("#" + parent + "Edit_" + topicId).hide()
+                    commonSuccess({message: "Updated topic"});
+                } else {
+                    commonSuccess({error: data.message})
+
+
+                }
+            }
         });
 
 

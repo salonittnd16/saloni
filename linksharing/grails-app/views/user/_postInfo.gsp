@@ -21,7 +21,7 @@
                 <div class="inline" style="float:right;padding: 2px">
                     <ls:deleteResource resourceId="${post.id}"/>
                 </div>
-                <g:if test="${session.user}"><a href="#" class="inline" style="float:right;padding: 2px">Edit</a></g:if>
+                <g:if test="${session.user}"><a href="" class="inline" style="float:right;padding: 2px" href="" data-toggle="modal" data-target="#edit">Edit</a></g:if>
             %{--<ls:checkIsRead isRead="${post.isRead}">--}%
             %{--<g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>--}%
             %{--</ls:checkIsRead>--}%
@@ -32,6 +32,7 @@
                 <span class="inline" style="float:right;padding: 2px"><ls:checkResourceType
                         resource="${post.id}"/></span>
             </g:form>
+            <g:render template="/resource/edit" model="${post}"/>
         </div>
     </div>
 </div>

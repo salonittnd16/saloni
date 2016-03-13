@@ -8,7 +8,7 @@
                 <h3 class="modal-title">Send Invitation</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
+                <g:form class="form-horizontal" controller="topic" action="invite">
                     <div class="form-group">
                         <label for="inputEmail" class="control-label col-xs-2">Email</label>
                         <div class="col-xs-10">
@@ -18,25 +18,17 @@
                     <div class="form-group">
                         <label for="inputText" class="control-label col-xs-2">Topic</label>
 
-                        <div class="dropdown col-xs-7">
-                            <button class="btn btn-default dropdown-toggle col-xs-5" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Topic
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Grails</a></li>
-                                <li><a href="#">Mean</a></li>
-                                <li><a href="#">AMC</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">QA</a></li>
-                            </ul>
+                        <div class="col-xs-7">
+                            <g:select name="id" from="${listOfTopics}" optionKey="id"
+                                      noSelection="['': '-Select topic-']"/>
+
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10" style="float:left">
-                            <button type="submit" class="btn btn-primary">Invite</button>
+                            <g:actionSubmit name="invite" value="invite" controller="topic" action="invite" type="submit" class="btn btn-primary"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -45,7 +37,7 @@
                         </div>
 
                     </div>
-                </form>
+                </g:form>
 
 
 

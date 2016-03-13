@@ -7,11 +7,13 @@
         <div class="panel-body ">
             <div>
                 <div class="row" id="trendingEdit_${topic.id}" style="display: none;padding: 10px">
-                    <form class="form-inline" role="form" >
+                    <form class="form-inline" role="form">
                         <div class="form-group">
 
-                            <input type="text" name="topic" class="form-control col-xs-4" placeholder="Grails" id="topicname">
-                            <button  name="saveTopic"  class="btn  changeTopicName">save</button>
+                            <input type="text" name="topic" class="form-control col-xs-4" placeholder="${topic.name}"
+                                   id="trending_${topic.id}">
+                            <button name="saveTopic" class="btn  changeTopicName" parent="trending"
+                                    topicId="${topic.id}">save</button>
                             <button type="button" class="btn btn-default">cancel</button>
 
                         </div>
@@ -32,7 +34,8 @@
                         <div class="row">
 
                             <g:link controller="topic" action="show" params='[topicId: "${topic.id}"]'>
-                                ${topic} ${topic.id}</g:link>
+                                ${topic} ${topic.id}
+                                <span class="topicName_${topic.id}"></span></g:link>
                         </div>
                         <br/><br/>
 

@@ -10,11 +10,9 @@
 
             <p class="text-muted inline">@saloni</p>
 
-            %{--<p>Subscriptions&nbsp;&nbsp;&nbsp;&nbsp;<span>Topics</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>--}%
-            %{--</p>--}%
             <div class="col-xs-4">
                 <small class="col-xs-12">Subscriptions</small>
-               <ls:subscriptionCountByUser/>
+                <ls:subscriptionCountByUser/>
             </div>
 
             <div class="col-xs-4">

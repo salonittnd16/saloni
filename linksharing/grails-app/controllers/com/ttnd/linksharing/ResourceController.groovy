@@ -32,8 +32,7 @@ class ResourceController {
 
         }
         List<Resource> resources = Resource.search(co).list()
-        render(template:"/topic/searchInTopic" ,model: [posts:resources])
-//           render resources
+        render(template: "/topic/searchInTopic", model: [posts: resources])
     }
 
     def show(Long id) {
@@ -63,6 +62,19 @@ class ResourceController {
 
     }
 
+    def save(String description) {
+        Resource resource = Resource.get(params.topicId)
+        if (resource) {
+            resource.description = description
+            if (resource.save(flush: true)) {
+                render("resource description updated successfully")
+            }
+        } else {
+            render("resource not find")
+
+        }
+
+    }
 
 
 }

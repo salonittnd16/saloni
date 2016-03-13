@@ -67,8 +67,8 @@ class UserController {
         List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
         render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics,
                                                   resourceSearchCo: resourceSearchCo,
-                                                  postsCreated: postsCreated,
-                                                  listOfTopics: topics, topicCount: topicCount])
+                                                  postsCreated    : postsCreated,
+                                                  listOfTopics    : topics, topicCount: topicCount])
 
 
     }
@@ -76,14 +76,11 @@ class UserController {
     def changePassword(String pwd, String changePwd) {
         println(pwd)
         println(changePwd)
-        if (pwd.equals(changePwd)) {
-            render "password updated successfully"
-        } else {
-            render "entered passwords donot match"
-        }
 
-
+        User.executeUpdate("update User as u set u.password=:changedpwd where u.password=:pwd", [changedpwd: changePwd, pwd: pwd])
+        render "password updated successfully"
     }
+
 
     def image(Long id) {
         User user = User.findById(id)
@@ -100,22 +97,24 @@ class UserController {
 
     }
 
-    def forgotPassword(String email){
+    def forgotPassword(String email) {
         User user = User.findByEmail(email)
-        if(user && user.active){
-            String newPassword =Utility.getRandomPassword()
-            user.password=newPassword
+        if (user && user.active) {
+            String newPassword = Utility.getRandomPassword()
+            user.password = newPassword
             EmailDTO emailDTO = new EmailDTO(to: [email], subject: "Link to generate New Password",
                     view: '/email/_password', model: [newPassword: newPassword])
             emailService.sendMail(emailDTO)
 
         }
     }
+
     def edit(ResourceSearchCo resourceSearchCo) {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Topic> topics = topicService.search(topicSearchCo)
-        render(view: '/user/myProfile' ,model: [listOfTopics: topics])
+        render(view: '/user/myProfile', model: [listOfTopics: topics])
     }
+
     def list(UserSearchCo userSearchCO) {
         List<UserVO> userVOList = []
         if (session.user?.admin) {
@@ -125,6 +124,7 @@ class UserController {
             }
             render(view: 'list', model: [users: userVOList])
         } else {
+            end
             redirect(controller: 'login', action: 'index')
         }
     }
