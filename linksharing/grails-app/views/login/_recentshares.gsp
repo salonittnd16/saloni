@@ -18,7 +18,10 @@
                     <a href="#"><div class="fa fa-facebook-official"></div></a>
                     <a href="#"><div class="fa fa-twitter inline"></div></a>
                     <a href="#"><div class="fa fa-google-plus inline"></div></a>
-                    <g:link class="inline" controller="user" action="post" style="float:right" params="[postId: resource?.id]"><u>View Post</u></g:link>
+
+                    <g:link class="inline" controller="user" action="post" style="float:right"
+                            params="[postId: resource?.id]"><u>View Post</u></g:link>
+
                     <hr/>
                 </div>
 

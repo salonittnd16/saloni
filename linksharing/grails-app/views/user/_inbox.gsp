@@ -27,13 +27,18 @@
                     <span class="inline" style="float:right;padding: 2px"><u><ls:checkResourceType
                             resource="${readingItem.resource.id}"/></u></span>
                     <ls:checkIsRead isRead="${readingItem.isRead}">
-                        <g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>
+                        <g:link class="inline  ${readingItem.id}" style="float:right;padding: 2px"
+                                controller="readingItem"
+                                action="changeIsRead" id="unread"
+                                params="[id: readingItem.id, isRead: !readingItem.isRead]"
+                                onclick="changeUnread(${readingItem.id},${!readingItem.isRead})"><u>Mark As Unread</u></g:link>
                     </ls:checkIsRead>
 
                     <ls:checkIsUnRead isRead="${readingItem.isRead}">
-                        <g:link controller="readingItem" action="changeIsRead" class="inline"
-                                style="float:right;padding: 2px"
-                                params="[id: readingItem.id, isRead: !readingItem.isRead]"><u>Mark As read</u></g:link>
+                        <g:link controller="readingItem" action="changeIsRead" class="inline ${readingItem.id}"
+                                style="float:right;padding: 2px" id="read"
+                                params="[id: readingItem.id, isRead: !readingItem.isRead]"
+                                onclick="changeRead(${readingItem.id},${!readingItem.isRead})"><u>Mark As read</u></g:link>
                     </ls:checkIsUnRead>
                     <g:link controller="user" action="post" class="inline"
                             style="float:right;padding: 2px"

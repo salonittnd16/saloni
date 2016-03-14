@@ -13,13 +13,13 @@ class User {
     String email;
     String confirmPassword
     Byte[] photo;
-    Boolean admin;
+    Boolean admin=false
     Boolean active = true;
     Date dateCreated;
     Date lastUpdated;
 
     static mapping = {
-        photo(sqlType:  'longblob')
+        photo(sqlType: 'longblob')
         sort id: "desc"
     }
 
@@ -118,7 +118,7 @@ class User {
     }
 
     Boolean equals(User user) {
-        this.id==user.id
+        this.id == user.id
     }
 
     Subscription getSubscription(Long topicId) {

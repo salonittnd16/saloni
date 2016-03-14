@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="panel panel-default panel-primary">
     <div class="panel-heading">Change Password
 
@@ -16,7 +11,8 @@
     %{--</g:hasErrors>--}%
     %{--<g:renderErrors bean="${user}"/>--}%
 
-        <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="changePassword" method="post">
+        <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user"
+                      action="changePassword" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="pwd">Password:
                 </label>
@@ -43,7 +39,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <g:submitButton name="register" controller="user" action="changePassword" type="submit" value="Update     "
+                    <g:submitButton name="register" controller="user" action="changePassword" type="submit"
+                                    value="Update     "
                                     class="btn btn-default"/>
                 </div>
             </div>

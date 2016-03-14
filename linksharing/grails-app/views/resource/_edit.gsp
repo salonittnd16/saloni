@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form controller="resource" action="save" class="form-horizontal">
+                    <g:form controller="resource" action="save" class="form-horizontal">
                         <div class="form-group">
                             <label for="description" class="control-label col-xs-2">Description:</label>
 
@@ -25,8 +25,9 @@
 
                         <div class="form-group">
                             <div class="col-xs-offset-2 col-xs-10" style="float:left">
+                                <g:hiddenField name="postId" value="${post.id}"/>
                                 <g:submitButton name="save" type="submit" value="Save"
-                                                class="btn btn-primary" topicId="${post.id}"/>
+                                                class="btn btn-primary"/>
                             </div>
                         </div>
 
@@ -36,7 +37,7 @@
                             </div>
 
                         </div>
-                    </form>
+                    </g:form>
 
                 </div>
 

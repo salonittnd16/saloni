@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="panel panel-default panel-primary">
     <div class="panel-heading">Profile
 
@@ -16,13 +11,15 @@
     %{--</g:hasErrors>--}%
     %{--<g:renderErrors bean="${user}"/>--}%
 
-        <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="register" method="post">
+        <g:uploadForm class="form-horizontal" name="profileForm" id="profileForm" controller="user"
+                      action="updateProfile">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="firstName">First Name:
                 </label>
 
                 <div class="col-sm-8">
-                    <g:textField name="firstName" class="form-control" placeholder="Enter first name"/>
+                    <g:textField name="firstName" class="form-control" placeholder="Enter first name"
+                                 value="${session.user.firstName}"/>
                     <div class="alert-danger" role="alert">
                         <g:fieldError field="firstName" bean="${user}"/>
                     </div>
@@ -43,12 +40,11 @@
             </div>
 
 
-
             <div class="form-group">
                 <label class="control-label col-sm-4" for="pwd">UserName:</label>
 
                 <div class="col-sm-8">
-                    <g:textField name="userName" class="form-control" placeholder="Enter user name" />
+                    <g:textField name="userName" class="form-control" placeholder="Enter user name"/>
                     <div class="alert-danger" role="alert">
                         <g:fieldError field="userName" bean="${user}"/>
                     </div>
@@ -62,14 +58,14 @@
                     <label class="control-label col-xs-4" for="pwd">Photo:</label>
 
                     <div class="col-xs-5">
-                        <input type="file" name="myPhoto"/>
+                        <input type="file" name="pic"/>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <g:submitButton name="register" controller="user" action="register" type="submit" value="Update     "
+                    <g:actionSubmit action="updateProfile" name="register" type="submit" value="Update"
                                     class="btn btn-default"/>
                 </div>
             </div>

@@ -48,7 +48,7 @@ class TopicController {
             result.error = "topic save unsuccessful"
         }
         render(result as JSON)
-//        redirect(controller: 'login', action: 'index')
+        redirect(controller: 'login', action: 'index')
     }
 
     def delete(Long topicId) {
@@ -66,6 +66,7 @@ class TopicController {
 
 
     def invite(Long id, String email) {
+        println("===============${id}  ${email}")
         Topic topic = Topic.get(id)
         if (topic) {
             TopicVo topicVO = new TopicVo(id: topic.id, name: topic.name, visibility: topic.visibility,

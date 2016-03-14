@@ -70,6 +70,69 @@ function unsubscribe(id) {
         }
     })
 };
+function changeUnread(id, isRead) {
+    event.preventDefault();
+    var read = $("#read")
+    $.ajax({
+        url: '/readingItem/changeIsRead',
+        data: {id: id, isRead: isRead},
+        method: 'post',
+        success: function (data) {
+            var messageAlert = $(".messageAlert");
+
+            for (item in data) {
+
+                if (item === "message") {
+                    messageAlert.text(data[item]);
+                    messageAlert.css({'display': 'block'})
+                    messageAlert.addClass("alert-success");
+                    jQuery("." + id + "").text("Mark as read")
+                }
+                else {
+                    messageAlert.text(data[item]);
+                    messageAlert.css({'display': 'block'})
+                    messageAlert.addClass("alert-danger");
+                }
+            }
+        }
+        ,
+        error: function (data) {
+            $("#alert").html(data.error);
+        }
+    })
+};
+
+function changeRead(id, isRead) {
+    event.preventDefault();
+    $.ajax({
+        url: '/readingItem/changeIsRead',
+        data: {id: id, isRead: isRead},
+        method: 'post',
+        success: function (data) {
+            var messageAlert = $(".messageAlert");
+
+            for (item in data) {
+
+                if (item === "message") {
+                    messageAlert.text(data[item]);
+                    messageAlert.css({'display': 'block'})
+                    messageAlert.addClass("alert-success");
+                    jQuery("." + id + "").text("Mark as read")
+                }
+                else {
+                    messageAlert.text(data[item]);
+                    messageAlert.css({'display': 'block'})
+                    messageAlert.addClass("alert-danger");
+                }
+            }
+        }
+        ,
+        error: function (data) {
+            $("#alert").html(data.error);
+        }
+    })
+};
+
 
 function topicDelete(id) {
     event.preventDefault();
@@ -93,7 +156,9 @@ function topicDelete(id) {
 
 function commonSuccess(data) {
     var messageAlert = $(".messageAlert");
+
     for (item in data) {
+
         if (item === "message") {
             messageAlert.text(data[item]);
             messageAlert.css({'display': 'block'})

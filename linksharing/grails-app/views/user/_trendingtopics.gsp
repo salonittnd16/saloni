@@ -2,9 +2,10 @@
     <div class="panel-heading">
         <h3 class="panel-title">Trending topic</h3>
     </div>
-    <g:each in="${trendingTopics}" var="topic">
 
-        <div class="panel-body ">
+    <div class="panel-body " style="overflow-y: auto;height: 238px">
+        <g:each in="${trendingTopics}" var="topic">
+
             <div>
                 <div class="row" id="trendingEdit_${topic.id}" style="display: none;padding: 10px">
                     <form class="form-inline" role="form">
@@ -62,56 +63,6 @@
             </div>
             <hr/>
 
-            %{----}%
-            %{----}%
-            %{----}%
-
-            %{--<div class="row">--}%
-            %{--<div class="list-group col-xs-3">--}%
-
-            %{--<span style="font-size:80px; float:left;padding: 10px">--}%
-            %{--<ls:userImage id="${topic.createdBy?.id}"/>--}%
-            %{--</span>--}%
-
-            %{--</div>--}%
-
-            %{--<div class="col-xs-9">--}%
-
-            %{--<div class="row">--}%
-            %{--<div class="col-xs-4">--}%
-            %{--<small class="col-xs-12">@saloni</small>--}%
-            %{--<ls:showUnsuscribe><small class="col-xs-12"><a>Unsubscribe</a></small></ls:showUnsuscribe>--}%
-            %{--</div>--}%
-
-            %{--<div class="col-xs-4">--}%
-            %{--<small class="col-xs-12">Subscriptions</small>--}%
-            %{--<small class="col-xs-12"><ls:subscriptionCount topicId="${topic.id}"/></small>--}%
-            %{--</div>--}%
-
-            %{--<div class="col-xs-4">--}%
-            %{--<small class="col-xs-12">Posts</small>--}%
-            %{--<small class="col-xs-12"><ls:postCount topicId="${topic.id}"/></small>--}%
-            %{--</div>--}%
-            %{--</br>--}%
-            %{--</div>--}%
-            %{--</div>--}%
-            %{--</div>--}%
-
-            %{--<div class="row">--}%
-            %{--<div class=" col-sm-4">--}%
-            %{--<g:select name="visibility" from="${com.ttnd.linksharing.Enum.Seriousness.values()}"--}%
-            %{--noSelection="['': '-Select seriousness-']"/>--}%
-            %{--</div>--}%
-
-            %{--<div class=" col-sm-4">--}%
-            %{--<g:select name="visibility" from="${com.ttnd.linksharing.Enum.Visibility.values()}"--}%
-            %{--noSelection="['': '-Select visibility-']"/>--}%
-            %{--</div>--}%
-            %{--<i class="fa fa-envelope-o nav_icon "></i>--}%
-            %{--<span class="glyphicon glyphicon-edit nav_icon "></span>--}%
-            %{--<span class="glyphicon glyphicon-trash nav_icon "></span>--}%
-            %{--</div>--}%
-
-        </div>
-    </g:each>
+        </g:each>
+    </div>
 </div>

@@ -8,14 +8,16 @@ class ReadingItemController {
     def index() { render "reading items" }
 
     def changeIsRead(Long id, Boolean isRead) {
-        if (ReadingItem.executeUpdate("update ReadingItem as r set r.isRead=isRead where r.id=id")) {
-            render ([message: "status changed successfully"] as JSON)
+        Map result = [:]
+        println(".............................>${id}#########################${isRead}")
+        if (ReadingItem.executeUpdate("update ReadingItem as r set r.isRead=${isRead} where r.id=id")) {
+            result.message = "status changed successfully"
         } else {
 
-            render ([message: "status not changed"] as JSON)
-
-
+            result.error = "status not changed"
         }
+        render(result as JSON)
+
     }
 
 }

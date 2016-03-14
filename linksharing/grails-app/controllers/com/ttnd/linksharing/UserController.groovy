@@ -118,14 +118,44 @@ class UserController {
     def list(UserSearchCo userSearchCO) {
         List<UserVO> userVOList = []
         if (session.user?.admin) {
-            User.search(userSearchCO).list([sort: userSearchCO.sort, order: userSearchCO.order]).each { user ->
+            List users = User.search(userSearchCO).list([sort: userSearchCO.sort, order: userSearchCO.order]).each { user ->
                 userVOList.add(new UserVO(id: user.id, userName: user.userName, email: user.email, firstName: user.firstName,
                         lastName: user.lastName, active: user.active))
             }
-            render(view: 'list', model: [users: userVOList])
+            render(view: 'list', model: [users: userVOList, userSearchCO: userSearchCO, totalCount: users.totalCount])
         } else {
-            end
-            redirect(controller: 'login', action: 'index')
+
+            redirect(controller: 'user', action: 'index')
+        }
+    }
+
+    def updateProfile(UserCo userCo) {
+        println("co.....................${userCo.properties}")
+        println(".....................${session.user}")
+        if (User.executeUpdate("update User set firstName='${userCo.firstName}' ,lastName='${userCo.lastName}'," +
+                "userName='${userCo.userName}', photo='${userCo.pic}' where id='${session.user.id}' ")) {
+            render "saved sucessfully"
+
+        } else
+            render "unsuccesfull update"
+
+
+    }
+
+    def toggleActive(Long id) {
+        if (session.user?.admin) {
+            User user = User.get(id)
+            if (user.active) {
+                user.active = false
+            } else {
+                user.active = true
+            }
+            if (user.save(flush: true)) {
+                flash.message = "toggled successfully"
+            } else {
+                flash.message = "toggle unsuccessful"
+            }
+            redirect(action: 'list')
         }
     }
 

@@ -61,19 +61,12 @@ class LinksharingTagLib {
             "Delete"
         }
         User user = session.user
-        if (user.canDeleteResource(attrs.resourceId as Long)) {
-            link = g.link(controller: "resource", action: "delete", params: [postId: attrs.resourceId], c())
+        if (user) {
+            if (user.canDeleteResource(attrs.resourceId as Long)) {
+                link = g.link(controller: "resource", action: "delete", params: [postId: attrs.resourceId], c())
+            }
         }
         out << link
-    }
-
-
-    def showSusbcribe = { attrs ->
-        if (session.user && attrs.topicId) {
-
-
-        }
-
     }
 
 

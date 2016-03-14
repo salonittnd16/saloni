@@ -3,7 +3,7 @@
         <a href="#" style="float:right" ;>View all</a>
     </div>
 
-    <div class="panel-body">
+    <div class="panel-body" style="overflow-y: auto;height: 238px">
         <g:each in="${subscriptions}" var="subscription">
             <div class="row" id="subscriptionEdit_${subscription.topic.id}" style="display: none;padding: 10px">
                 <form class="form-inline" role="form">
@@ -64,8 +64,6 @@
                 <hr/>
 
             </div>
-
-        %{--<hr/>--}%
 
         </g:each>
     </div>

@@ -62,15 +62,17 @@ class ResourceController {
 
     }
 
-    def save(String description) {
-        Resource resource = Resource.get(params.topicId)
+    def save(Long postId, String description) {
+        Resource resource = Resource.get(postId as Long)
+        println(resource)
         if (resource) {
             resource.description = description
             if (resource.save(flush: true)) {
-                render("resource description updated successfully")
+                render("resource updated")
+            } else {
+                render("resource not found")
+
             }
-        } else {
-            render("resource not find")
 
         }
 

@@ -10,9 +10,9 @@
             <div class="modal-body">
                 <g:form class="form-horizontal" controller="topic" action="invite">
                     <div class="form-group">
-                        <label for="inputEmail" class="control-label col-xs-2">Email</label>
+                        <label for="email" class="control-label col-xs-2">Email</label>
                         <div class="col-xs-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            <g:textField name="email"  class="form-control" id="inputEmail" placeholder="Email"/>
                         </div>
                     </div>
                     <div class="form-group">
