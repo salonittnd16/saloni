@@ -59,7 +59,8 @@ grails {
         // filteringCodecForContentType.'text/html' = 'html'
     }
 }
-
+grails.plugins.remotepagination.max = 5
+grails.plugins.remotepagination.enableBootstrap = true
 
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
@@ -117,7 +118,7 @@ log4j.main = {
             'org.hibernate',
             'net.sf.ehcache.hibernate',
             'com.linksharing.controllers.LoggingController'
-            'com.grails.app.conf.Bootstrap.groovy'
+    'com.grails.app.conf.Bootstrap.groovy'
 
     info 'grails.app'
 
@@ -128,10 +129,10 @@ grails {
         port = 465
         username = "saloni.sharma@tothenew.com"
         password = "salonittnd16"
-        props = ["mail.smtp.auth":"true",
-                 "mail.smtp.socketFactory.port":"465",
-                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-                 "mail.smtp.socketFactory.fallback":"false"]
+        props = ["mail.smtp.auth"                  : "true",
+                 "mail.smtp.socketFactory.port"    : "465",
+                 "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback": "false"]
 
     }
 }

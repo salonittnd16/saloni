@@ -10,7 +10,7 @@
 <body>
 <div class="col-xs-5">
     <div class="row" style="margin:9px">
-        <g:render template="postInfo" model="${post}"/>
+        <g:render template="/user/postInfo" model="${post}"/>
     </div>
 
     <div class="row" style="margin:9px">

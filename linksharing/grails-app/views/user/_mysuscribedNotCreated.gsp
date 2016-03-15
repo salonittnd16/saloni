@@ -8,6 +8,7 @@
 
 
     <div class=" col-sm-4">
-        <i class="fa fa-envelope-o nav_icon "></i>
+        <a href="" class="fa fa-envelope-o nav_icon " data-toggle="modal" data-target="#myModal1" id="invitation"
+           topicName="${topicName}"></a>
     </div>
 </div>

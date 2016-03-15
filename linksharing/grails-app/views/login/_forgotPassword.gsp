@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <g:form controller="login" action="forgotPassword" class="form-horizontal">
+                    <g:form controller="user" action="forgotPassword" class="form-horizontal">
                         <div class="form-group">
                             <label for="email" class="control-label col-xs-2">Email:</label>
 
@@ -25,23 +25,16 @@
 
                         <div class="form-group">
                             <div class="col-xs-offset-2 col-xs-10" style="float:left">
-                                <button  id="saveButton" name="save" value="Save" controller="" action="save"
-                                         class="btn btn-primary">save</button>
+                                <g:actionSubmit  id="saveButton" name="save" value="Save" controller="user" action="forgotPassword"
+                                         class="btn btn-primary">save</g:actionSubmit>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-offset-5 col-xs-10" style="float:right">
-                                <button type="submit" class="btn btn-primary">cancel</button>
-                            </div>
-
                         </div>
                     </g:form>
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 

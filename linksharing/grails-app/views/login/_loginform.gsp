@@ -1,4 +1,4 @@
-..<div class="panel panel-default panel-primary">
+<div class="panel panel-default panel-primary">
     <div class="panel-heading">Login
     </div>
 
@@ -10,7 +10,8 @@
                 </label>
 
                 <div class="col-sm-8">
-                    <g:textField name="username" class="form-control" id="email" placeholder="Enter user name"/>
+                    <g:textField name="username" class="form-control" id="email" placeholder="Enter user name"
+                                 required="required"/>
                 </div>
             </div>
 
@@ -18,7 +19,8 @@
                 <label class="control-label col-sm-4" for="pwd">Password:</label>
 
                 <div class="col-sm-8">
-                    <g:passwordField name="password" class="form-control" id="pwd" placeholder="Enter password"/>
+                    <g:passwordField name="password" class="form-control" id="pwd" placeholder="Enter password"
+                                     required="required"/>
                 </div>
             </div>
 

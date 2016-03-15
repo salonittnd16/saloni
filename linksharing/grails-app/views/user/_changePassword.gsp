@@ -12,14 +12,15 @@
     %{--<g:renderErrors bean="${user}"/>--}%
 
         <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user"
-                      action="changePassword" method="post">
+                      action="updatePassword" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="pwd">Password:
                 </label>
 
                 <div class="col-sm-8">
-                    <g:passwordField name="pwd" class="form-control" placeholder="Enter first name"/>
+                    <g:passwordField name="oldPassword" class="form-control" placeholder="Enter first name"/>
                     <div class="alert-danger" role="alert">
+
 
                     </div>
                 </div>
@@ -30,7 +31,7 @@
                 <label class="control-label col-sm-4" for="changePwd">Change Password:</label>
 
                 <div class="col-sm-8">
-                    <g:passwordField name="changePwd" class="form-control" placeholder="Enter last name"/>
+                    <g:passwordField name="password" class="form-control" placeholder="Enter last name"/>
                     <div class="alert-danger" role="alert">
                     </div>
                 </div>
@@ -39,7 +40,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <g:submitButton name="register" controller="user" action="changePassword" type="submit"
+                    <g:hiddenField name="id" value="${session.user.id}"/>
+                    <g:submitButton name="register" controller="user" action="updatePassword" type="submit"
                                     value="Update     "
                                     class="btn btn-default"/>
                 </div>

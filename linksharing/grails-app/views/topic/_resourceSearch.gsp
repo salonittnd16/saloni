@@ -1,5 +1,3 @@
-
-
     <div class="row">
         <div class=" col-xs-2" style="font-size:70px; float:left">
             <ls:userImage id="${post.createdBy?.id}"/>

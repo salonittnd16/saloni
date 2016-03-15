@@ -3,6 +3,7 @@ package com.ttnd.linksharing
 import DTO.EmailDTO
 import com.ttnd.linksharing.CO.ResourceSearchCo
 import com.ttnd.linksharing.CO.TopicSearchCo
+import com.ttnd.linksharing.CO.UpdatePasswordCO
 import com.ttnd.linksharing.CO.UserCo
 import com.ttnd.linksharing.CO.UserSearchCo
 import com.ttnd.linksharing.VO.UserVO
@@ -57,28 +58,29 @@ class UserController {
     }
 
     def profile(ResourceSearchCo resourceSearchCo) {
+        int totalCo
         resourceSearchCo.max = resourceSearchCo.max ?: 5
         resourceSearchCo.offset = resourceSearchCo.offset ?: 0
+        User user = User.findById(resourceSearchCo.id)
+        Integer totalCount = Resource.countByCreatedBy(user)
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id,
-                visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
+                visibility: resourceSearchCo.visibility, max: resourceSearchCo.max, offset: resourceSearchCo.offset)
         List<Resource> postsCreated = resourceService.search(resourceSearchCo)
         List<Topic> topics = topicService.search(topicSearchCo)
-        int topicCount = topics.size()
         List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
         render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics,
                                                   resourceSearchCo: resourceSearchCo,
                                                   postsCreated    : postsCreated,
-                                                  listOfTopics    : topics, topicCount: topicCount])
+                                                  listOfTopics    : topics, totalCount: totalCount])
 
 
     }
 
-    def changePassword(String pwd, String changePwd) {
-        println(pwd)
-        println(changePwd)
-
-        User.executeUpdate("update User as u set u.password=:changedpwd where u.password=:pwd", [changedpwd: changePwd, pwd: pwd])
+    def updatePassword(UpdatePasswordCO co) {
+        println("******************************${co.id}")
+        User.executeUpdate("update User set password='${co.password}' where id='${session.user.id}'")
         render "password updated successfully"
+
     }
 
 
@@ -105,6 +107,7 @@ class UserController {
             EmailDTO emailDTO = new EmailDTO(to: [email], subject: "Link to generate New Password",
                     view: '/email/_password', model: [newPassword: newPassword])
             emailService.sendMail(emailDTO)
+            redirect(controller: 'login', action: 'index')
 
         }
     }
@@ -112,7 +115,7 @@ class UserController {
     def edit(ResourceSearchCo resourceSearchCo) {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Topic> topics = topicService.search(topicSearchCo)
-        render(view: '/user/myProfile', model: [listOfTopics: topics])
+        render(view: '/user/myProfile', model: [listOfTopics: topics, id: session.user.id])
     }
 
     def list(UserSearchCo userSearchCO) {
@@ -130,8 +133,6 @@ class UserController {
     }
 
     def updateProfile(UserCo userCo) {
-        println("co.....................${userCo.properties}")
-        println(".....................${session.user}")
         if (User.executeUpdate("update User set firstName='${userCo.firstName}' ,lastName='${userCo.lastName}'," +
                 "userName='${userCo.userName}', photo='${userCo.pic}' where id='${session.user.id}' ")) {
             render "saved sucessfully"

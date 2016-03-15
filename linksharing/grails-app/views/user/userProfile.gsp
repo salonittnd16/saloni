@@ -25,7 +25,7 @@
 </div>
 
 <div class="col-xs-6" style="float: right">
-    <g:render template="/user/postsCreated"/>
+    <g:render template="/user/postsCreated" model="${totalCount}"/>
 </div>
 </body>
 </html>

@@ -24,21 +24,26 @@
     <nav role="navigation" class="navbar navbar-default">
 
         <div class="navbar-header">
-            <div class="navbar-brand navbar-left"><u><a href="#"><b>LINK SHARING</b></a></u>
+            <div class="navbar-brand navbar-left"><u><g:link controller="user"
+                                                             action="index"><b>LINK SHARING</b></g:link></u>
 
             </div>
-
-            <form class="navbar-form navbar-right" role="search" style="text-align:right">
-                <div class="form group">
-                    <input type="text" class="form-control" placeholder="Search"/>
-
-                </div>
-
-            </form>
 
         </div>
 
         <form class="navbar-form navbar-right">
+            <div class="input-group" style="padding-right:30px">
+                <span class="input-group-btn">
+                    <button id="findSearchPostBox" topicId="${0}"
+                            class="btn btn-primary glyphicon glyphicon-search searchButtons findSearchPostBox">
+                    </button></span> <input type="text" id="searchPostBox"
+                                            class="form-control input-group searchPostBox"
+                                            placeholder="Search">
+                <span class="input-group-btn">
+                    <button id="clearSearchPostBox"
+                            class="btn btn-primary glyphicon-searchphicon glyphicon-remove searchButtons">
+                    </button></span>
+            </div>
 
 
             <div class="form-group">
@@ -56,7 +61,8 @@
                aria-expanded="false">${session.user.name}
                 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><g:link controller="user" action="edit" params="[id:session.user.id,visibility:com.ttnd.linksharing.Enum.Visibility.PUBLIC,topicId:0]">my profile</g:link></li>
+                <li><g:link controller="user" action="edit"
+                            params="[id: session.user.id, visibility: com.ttnd.linksharing.Enum.Visibility.PUBLIC, topicId: 0]">my profile</g:link></li>
                 <li><g:link controller="user" action="list">users</g:link></li>
                 <li><g:link controller="login" action="logout">logout</g:link></li>
             </ul>
@@ -75,17 +81,15 @@
     <nav role="navigation" class="navbar navbar-default">
 
         <div class="navbar-header">
-            <div class="navbar-brand navbar-left"><u><a href="#"><b>LINK SHARING</b></a></u>
+            <div class="navbar-brand navbar-left"><u><g:link controller="login"
+                                                             action="index"><b>LINK SHARING</b></g:link></u>
             </div>
 
         </div>
 
         <div class="container-fluid">
             <form class="navbar-form navbar-right" role="search" style="text-align:right">
-                <div class="form group">
-                    <input type="text" class="form-control" placeholder="Search"/>
 
-                </div>
             </form>
         </div>
     </nav>

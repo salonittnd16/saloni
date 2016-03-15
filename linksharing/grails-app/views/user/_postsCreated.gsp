@@ -2,7 +2,7 @@
     <div class="panel-heading">Posts
     </div>
 
-    <div class="panel-body">
+    <div class="panel-body" id="postsCreated">
         <g:each in="${postsCreated}" var="post">
             <div class="row">
                 <div class=" col-xs-2" style="font-size:70px; float:left">
@@ -36,9 +36,9 @@
             <hr/>
 
         </g:each>
-        <g:paginate total="20" controller="user" action="profile"
-                    params='[id:"${resourceSearchCo.id}",visibility:"${resourceSearchCo.visibility}"]'
-                    max="${resourceSearchCo.max}" offset="${resourceSearchCo.offset}"/>
+        <util:remotePaginate controller="user" action="profile" total="${totalCount}" update="postsCreated" max="5" pageSizes="[5,10,15,20]"
+        params='[id:"${resourceSearchCo.id}",visibility:"${resourceSearchCo.visibility}"]'/>
+
     </div>
 
 </div>

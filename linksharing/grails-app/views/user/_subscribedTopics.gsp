@@ -41,6 +41,7 @@
                     </div>
                     <br/>
                 </div>
+                <ls:canUpdateTopic topicId="${topic.id}" parent="trending"/>
             </div>
             <hr/>
         </div>

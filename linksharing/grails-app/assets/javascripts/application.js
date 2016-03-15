@@ -231,79 +231,86 @@ $(document).ready(function () {
 
 
     });
+    $("#invitation").click(function(){
+       var topicName=$(this).attr('topicName').val()
+        $("#myModal1").children().find($(".topic")).val(topicName)
+    })
 
 
     $("#clearSearchPostBox").click(function () {
-        $("#searchPostBox").val("")
-    })
+        alert("insideeeeeee")
+        $(".searchPostBox").val("")
+    });
 
-    $("#findSearchPostBox").click(function () {
-        topicId = $(this).attr('topicId')
+    $(".findSearchPostBox").click(function (e) {
+        e.preventDefault();
+        topicId = $(this).attr('topicId');
 
         $.ajax({
             url: "/resource/search",
-            data: {q: $('#searchPostBox').val(), topicId: topicId},
+            data: {q: $(this).parent().parent().find($('.searchPostBox')).val(), topicId: topicId},
             method: 'post',
+            type: 'html',
             success: function (result) {
                 $("#topicPosts").html(result)
             }
         });
-    })
-
-
-    $('#registerForm').validate({
-        rules: {
-            'firstName': {
-                required: true
-            },
-            'lastName': {
-                required: true
-            },
-            'password': {
-                required: true,
-                minlength: 5
-            },
-            'confirmPassword': {
-                required: true,
-                //confirm: true
-            },
-            'userName': {
-                required: true,
-                remote: {
-                    url: "/login/validateUserName",
-                    type: "post"
-                }
-            }
-            ,
-            'email': {
-                required: true,
-                email: true,
-                remote: {
-                    url: "/login/validateEmail",
-                    type: "post"
-                }
-
-            }
-        },
-        messages: {
-            'firstName': {
-                required: "firstname required"
-            }
-        },
-        submitHandler: function (form) {
-            $(form).submit();
-        }
     });
 
-    jQuery.validator.addMethod("confirm", function (value, element) {
-        var check = false;
-        var password = $('#registerForm input[id=pwd]').val();
-
-        if (password === value) {
-            check = true;
-        }
-        return check;
-    }, "Confirm password doesn't match your password");
-
-
 });
+$('#registerForm').validate({
+    rules: {
+        'firstName': {
+            required: true
+        },
+        'lastName': {
+            required: true
+        },
+        'password': {
+            required: true,
+            minlength: 5
+        },
+        'confirmPassword': {
+            required: true,
+            //confirm: true
+        },
+        'userName': {
+            required: true,
+            remote: {
+                url: "/login/validateUserName",
+                type: "post"
+            }
+        }
+        ,
+        'email': {
+            required: true,
+            email: true,
+            remote: {
+                url: "/login/validateEmail",
+                type: "post"
+            }
+
+        }
+    },
+    messages: {
+        'firstName': {
+            required: "firstname required"
+        }
+    },
+    submitHandler: function (form) {
+        $(form).submit();
+    }
+});
+
+jQuery.validator.addMethod("confirm", function (value, element) {
+    var check = false;
+    var password = $('#registerForm input[id=pwd]').val();
+
+    if (password === value) {
+        check = true;
+    }
+    return check;
+}, "Confirm password doesn't match your password");
+
+
+

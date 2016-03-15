@@ -17,7 +17,7 @@
                             <label for="topic" class="control-label col-xs-2">Name</label>
 
                             <div class="col-xs-10">
-                                <g:textField name="topicName" class="form-control" id="topicName" placeholder="Name"/>
+                                <g:textField name="topicName" class="form-control" id="topicName" placeholder="Name" required="required"/>
                             </div>
                         </div>
 
@@ -25,31 +25,26 @@
                             <label for="inputText" class="control-label col-xs-2">visiblity</label>
 
                             <div class="col-xs-7">
-                                <g:select name="visibility" id="visibility" from="${com.ttnd.linksharing.Enum.Visibility.values()}"
-                                          noSelection="['': '-Select visibility-']"/>
+                                <g:select name="visibility" id="visibility"
+                                          from="${com.ttnd.linksharing.Enum.Visibility.values()}"
+                                          noSelection="['': '-Select visibility-']" required="required"/>
 
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-offset-2 col-xs-10" style="float:left">
-                                <button  id="saveButton" name="save" value="Save" controller="topic" action="save"
-                                                class="btn btn-primary">save</button>
+                                <button id="saveButton" name="save" value="Save" controller="topic" action="save"
+                                        class="btn btn-primary">save</button>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-offset-5 col-xs-10" style="float:right">
-                                <button type="submit" class="btn btn-primary">cancel</button>
-                            </div>
-
-                        </div>
                     </g:form>
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 

@@ -18,7 +18,7 @@
 
                             <div class="col-xs-10">
 
-                                <input type="file" name="myFile"/>
+                                <input type="file" name="myFile" required="required"/>
 
                             </div>
 
@@ -29,7 +29,7 @@
 
                             <div class="col-xs-10">
                                 <g:textArea name="description" class="form-control" placeholder="Description" rows="5"
-                                            id="comment"></g:textArea>
+                                            id="comment" required="required"/>
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
 
                             <div class="col-xs-7">
                                 <g:select name="topicId" from="${listOfTopics}" optionKey="id"
-                                          noSelection="['': '-Select topic-']"/>
+                                          noSelection="['': '-Select topic-']" required="required"/>
 
                             </div>
                         </div>
@@ -50,18 +50,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-offset-5 col-xs-10" style="float:right">
-
-                            </div>
-
-                        </div>
                     </g:uploadForm>
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 

@@ -17,7 +17,8 @@
                             <label for="url" class="control-label col-xs-2">Link</label>
 
                             <div class="col-xs-10">
-                                <g:textField name="url" class="form-control" id="inputLink" placeholder="Link"/>
+                                <g:textField name="url" class="form-control" id="inputLink" placeholder="Link"
+                                             required="required"/>
                             </div>
                         </div>
 
@@ -26,7 +27,7 @@
 
                             <div class="col-xs-10">
                                 <g:textArea name="description" class="form-control" placeholder="Description" rows="5"
-                                            id="comment"></g:textArea>
+                                            id="comment" required="required"/>
                             </div>
                         </div>
 
@@ -35,29 +36,22 @@
 
                             <div class="col-xs-7">
                                 <g:select name="topic" from="${listOfTopics}" optionKey="id"
-                                          noSelection="['': '-Select topic-']"/>
+                                          noSelection="['': '-Select topic-']" required="required"/>
 
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-offset-2 col-xs-10" style="float:left">
-                                <g:submitButton name="Save" type="submit" class="btn btn-primary" controller="linkResource" action="save"/>
+                                <g:submitButton name="Save" type="submit" class="btn btn-primary"
+                                                controller="linkResource" action="save"/>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-offset-5 col-xs-10" style="float:right">
-
-                            </div>
-
                         </div>
                     </g:form>
-
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 

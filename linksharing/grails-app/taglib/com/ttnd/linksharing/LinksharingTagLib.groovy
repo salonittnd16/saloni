@@ -43,7 +43,7 @@ class LinksharingTagLib {
         String link = ""
         Resource resource = Resource.read(attrs.resource)
         if (resource instanceof LinkResource) {
-            out << " <a href=\"${resource.url}\" class=\"inline\" target=\"_blank\" style=\"float:right;padding: 2px\"><u>View Full Site</u></a>"
+            out << " <a href=\"${resource.url}\" class=\"inline\" target=\"_blank\" style=\"float:right;\"><u>View Full Site</u></a>"
 
         } else if (resource instanceof DocumentResource) {
             link = g.link(controller: "documentResource", action: "download", params: [id: attrs.resource], {
@@ -92,7 +92,7 @@ class LinksharingTagLib {
         if (topic.createdBy == user) {
             out << render(template: '/user/mysubscribedtopics', model: [topicId: attrs.topicId, parent: parent])
         } else {
-            out << render(template: '/user/mysuscribedNotCreated')
+            out << render(template: '/user/mysuscribedNotCreated', model: [topicName: topic.name])
 
         }
     }

@@ -27,8 +27,8 @@ abstract class Resource {
                     eq('visibility', co.visibility)
 
                 }
-                ilike('description',"%${co.q}%")
             }
+            ilike('description',"%${co.q}%")
 
         }
         searchCreatedResources{ User user->
@@ -95,6 +95,14 @@ abstract class Resource {
 
     String toString() {
         return "Topic: ${this.topic.name} ... ${this.description}"
+    }
+    static List usersWithUnreadResources() {
+        return ReadingItem.createCriteria().listDistinct {
+            projections {
+                property('user')
+            }
+            eq('isRead', false)
+        }
     }
 
 }

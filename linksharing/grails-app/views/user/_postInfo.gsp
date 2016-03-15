@@ -35,6 +35,7 @@
             %{--</ls:checkIsUnRead>--}%
                 <span class="inline" style="float:right;padding: 2px"><ls:checkResourceType
                         resource="${post.id}"/></span>
+                <g:hiddenField name="id" value="${post.id}"/>
             </g:form>
             <g:render template="/resource/edit" model="${post}"/>
         </div>
