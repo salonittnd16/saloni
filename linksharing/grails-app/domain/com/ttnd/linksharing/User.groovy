@@ -13,7 +13,7 @@ class User {
     String email;
     String confirmPassword
     Byte[] photo;
-    Boolean admin=false
+    Boolean admin = false
     Boolean active = true;
     Date dateCreated;
     Date lastUpdated;
@@ -85,7 +85,7 @@ class User {
         topics
     }
 
-    int getScore(int score) {
+    int getScore() {
 
 
     }

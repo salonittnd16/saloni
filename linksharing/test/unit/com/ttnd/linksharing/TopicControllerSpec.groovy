@@ -9,12 +9,5 @@ import spock.lang.Specification
 @TestFor(TopicController)
 class TopicControllerSpec extends Specification {
 
-    def setup() {
-    }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
 }

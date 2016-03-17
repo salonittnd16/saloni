@@ -1,7 +1,8 @@
 package com.ttnd.linksharing
 
-import spock.util.mop.Use
+import groovy.transform.EqualsAndHashCode
 
+@EqualsAndHashCode
 class ReadingItem {
     Boolean isRead;
     Date dateCreated;

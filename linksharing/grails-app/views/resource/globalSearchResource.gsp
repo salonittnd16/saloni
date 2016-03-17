@@ -12,8 +12,8 @@
 <div class="col-xs-5">
 </div>
 
-<div class="col-xs-6" style="float: right">
-    <g:render template="/topic/resourceSearch" model="${posts}"/>
+<div class="col-xs-6" style="float: right" id="topicPosts">
+    <g:render template="/resource/globalsearch" model="${posts}"/>
 </div>
 </body>
 </html>

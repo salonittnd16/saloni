@@ -16,7 +16,7 @@ class DocumentResourceCO {
         myFile.contentType
     }
 
-    void setContentType(String cType) {
+    void setContentType() {
         contentType = myFile.contentType
     }
 }

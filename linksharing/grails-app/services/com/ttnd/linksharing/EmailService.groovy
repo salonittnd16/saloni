@@ -8,9 +8,7 @@ class EmailService {
     def mailService
     def messageSource
 
-    def serviceMethod() {
 
-    }
 
     def sendMail(EmailDTO emailDTO) {
         mailService.sendMail {

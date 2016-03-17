@@ -6,9 +6,6 @@ import grails.transaction.Transactional
 class UserService {
     def emailService
 
-    def serviceMethod() {
-
-    }
     def sendUnreadItemsEmail(){
         getUserWithUnreadItems().each { user ->
             emailService.sendUnreadResourcesEmail(user, getUnreadResources(user))

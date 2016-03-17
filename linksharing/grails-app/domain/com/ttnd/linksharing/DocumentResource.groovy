@@ -1,7 +1,9 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.Constants.Constant
+import groovy.transform.EqualsAndHashCode
 
+@EqualsAndHashCode
 class DocumentResource extends Resource {
 
 

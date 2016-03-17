@@ -7,7 +7,7 @@ class LinkResourceController extends ResourceController {
         render "upload link resources"
     }
 
-    def save(LinkResource linkResource, Long id) {
+    def save(LinkResource linkResource) {
         linkResource.createdBy = session.user
         User user = session.user
         Long sessionId = session.user.id

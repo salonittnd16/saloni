@@ -29,10 +29,15 @@ class ResourceController {
     def search(ResourceSearchCo co) {
         if (co.q) {
             co.visibility = Visibility.PUBLIC
-
+            if (co.topicId) {
+                List<Resource> resources = Resource.search(co).list()
+                render(template: "/topic/searchInTopic", model: [posts: resources])
+            } else {
+                List<Resource> resources = Resource.search(co).list()
+                render(view: "/resource/globalSearchResource", model: [posts: resources])
+            }
         }
-        List<Resource> resources = Resource.search(co).list()
-        render(template: "/topic/searchInTopic", model: [posts: resources])
+
     }
 
 
@@ -40,7 +45,7 @@ class ResourceController {
 
         Resource resource = Resource.findById(id)
         if (resource.canViewBy(id)) {
-            RatingInfoVo ratingInfoVo = resource.ratingInfo
+//            RatingInfoVo ratingInfoVo = resource.ratingInfo
             render(view: '/user/post')
         }
 

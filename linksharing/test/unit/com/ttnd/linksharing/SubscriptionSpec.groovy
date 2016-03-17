@@ -10,14 +10,6 @@ import com.ttnd.linksharing.Enum.Seriousness
 @TestFor(Subscription)
 class SubscriptionSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
 
     void "test subscription"() {
 

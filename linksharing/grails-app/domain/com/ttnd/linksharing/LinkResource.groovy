@@ -1,5 +1,8 @@
 package com.ttnd.linksharing
 
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
 class LinkResource extends Resource {
     String url;
 

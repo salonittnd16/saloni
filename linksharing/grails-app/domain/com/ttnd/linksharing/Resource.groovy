@@ -1,10 +1,11 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.CO.ResourceSearchCo
-import com.ttnd.linksharing.Enum.Visibility
 import com.ttnd.linksharing.VO.RatingInfoVo
 import com.ttnd.linksharing.VO.TopicVo
+import groovy.transform.EqualsAndHashCode
 
+@EqualsAndHashCode
 abstract class Resource {
 
     String description;
@@ -78,11 +79,11 @@ abstract class Resource {
         resources
     }
 
-    def show() {
-        List<TopicVo> topicVoList = Topic.getTrendingTopics()
-
-
-    }
+//    def show() {
+//        List<TopicVo> topicVoList = Topic.getTrendingTopics()
+//
+//
+//    }
 
 
     Boolean canViewBy(Long id) {

@@ -1,15 +1,15 @@
 package com.ttnd.linksharing
 
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
 class ResourceRating {
-    // Resource resource;
-    //User user;
     Integer score;
 
     static constraints = {
 
-        score min: 1, max: 5
+        score min: 1, max: 5,nullable: false
         resource unique: 'user', nullable: false
-        score nullable: false
         user nullable: false
 
     }

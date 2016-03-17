@@ -13,11 +13,6 @@ import spock.lang.Unroll
 @TestFor(User)
 class UserSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
 
     @Unroll("Executing #sno")
     void "test user validations"() {

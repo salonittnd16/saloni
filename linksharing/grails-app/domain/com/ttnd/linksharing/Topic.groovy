@@ -3,7 +3,9 @@ package com.ttnd.linksharing
 import com.ttnd.linksharing.Enum.Seriousness
 import com.ttnd.linksharing.Enum.Visibility
 import com.ttnd.linksharing.VO.TopicVo
+import groovy.transform.EqualsAndHashCode
 
+@EqualsAndHashCode
 class Topic {
 
 

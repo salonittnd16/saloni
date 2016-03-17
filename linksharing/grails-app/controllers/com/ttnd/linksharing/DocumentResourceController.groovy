@@ -2,9 +2,7 @@ package com.ttnd.linksharing
 
 import com.ttnd.linksharing.CO.DocumentResourceCO
 import grails.transaction.Transactional
-import org.springframework.web.multipart.MultipartFile
 
-import javax.mail.Multipart
 
 class DocumentResourceController extends ResourceController {
 

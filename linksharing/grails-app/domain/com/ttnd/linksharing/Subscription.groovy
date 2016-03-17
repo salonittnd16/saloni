@@ -1,12 +1,10 @@
 package com.ttnd.linksharing
 
 import com.ttnd.linksharing.Enum.Seriousness
-import spock.lang.Specification
+import groovy.transform.EqualsAndHashCode
 
+@EqualsAndHashCode
 class Subscription {
-
-//    User user;
-//    Topic topic;
     Seriousness seriousness;
     Date dateCreated;
     Date lastUpdated;

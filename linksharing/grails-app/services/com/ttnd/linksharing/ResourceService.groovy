@@ -6,9 +6,7 @@ import grails.transaction.Transactional
 @Transactional
 class ResourceService {
 
-    def serviceMethod() {
 
-    }
 
     List<Resource> search(ResourceSearchCo resourceSearchCo) {
         User user = resourceSearchCo.getUser()

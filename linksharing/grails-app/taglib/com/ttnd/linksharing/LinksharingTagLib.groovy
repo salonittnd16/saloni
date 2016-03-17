@@ -1,6 +1,5 @@
 package com.ttnd.linksharing
 
-import com.ttnd.linksharing.Enum.Seriousness
 import com.ttnd.linksharing.VO.TopicVo
 
 //import org.apache.commons.collections.Closure
