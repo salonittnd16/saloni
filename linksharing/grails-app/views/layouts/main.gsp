@@ -89,14 +89,43 @@
 
         <div class="container-fluid">
             <form class="navbar-form navbar-right" role="search" style="text-align:right">
+                <div class="form group">
+                    <input type="text" class="form-control" placeholder="Search"/>
+
+                </div>
 
             </form>
         </div>
     </nav>
 </g:else>
-<div class="alert messageAlert" id="alert" style="display:none">
+
+
 </div>
-<g:layoutBody/>
+<div class="container">
+    <div class="alert messageAlert" id="alert" style="display:none">
+    </div>
+
+    <div class="row">
+        <g:if test="${flash.message}">
+
+            <div class="col-xs-12 alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <label><%=flash.message%></label>
+            </div>
+        </g:if>
+    </div>
+
+    <div class="row">
+        <g:if test="${flash.error}">
+            <div class="col-xs-12 alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <label><%=flash.error%></label>
+            </div>
+        </g:if>
+    </div>
+    <g:layoutBody/>
+</div>
+
 <asset:javascript src="jquery-2.2.1.min.js"/>
 <asset:javascript src="bootstrap.min.js"/>
 <asset:javascript src="application.js"/>

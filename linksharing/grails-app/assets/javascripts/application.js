@@ -156,7 +156,6 @@ function topicDelete(id) {
 
 function commonSuccess(data) {
     var messageAlert = $(".messageAlert");
-
     for (item in data) {
 
         if (item === "message") {
@@ -190,7 +189,6 @@ $(document).ready(function () {
     });
 
     $("#saveTopic").click(function () {
-        alert($('#visibility').val())
         $.ajax({
             url: "/topic/save",
             data: {topicName: $('#topicName').val(), visibility: $('#visibility').val()},
@@ -231,14 +229,13 @@ $(document).ready(function () {
 
 
     });
-    $("#invitation").click(function(){
-       var topicName=$(this).attr('topicName').val()
+    $("#invitation").click(function () {
+        var topicName = $(this).attr('topicName').val()
         $("#myModal1").children().find($(".topic")).val(topicName)
     })
 
 
     $("#clearSearchPostBox").click(function () {
-        alert("insideeeeeee")
         $(".searchPostBox").val("")
     });
 
@@ -256,6 +253,7 @@ $(document).ready(function () {
             }
         });
     });
+
 
 });
 $('#registerForm').validate({

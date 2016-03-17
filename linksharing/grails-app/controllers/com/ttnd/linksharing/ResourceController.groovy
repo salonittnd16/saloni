@@ -32,9 +32,9 @@ class ResourceController {
 
         }
         List<Resource> resources = Resource.search(co).list()
-        println("=====================${resources}=====${co.q}")
         render(template: "/topic/searchInTopic", model: [posts: resources])
     }
+
 
     def show(Long id) {
 

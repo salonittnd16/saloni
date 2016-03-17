@@ -9,13 +9,7 @@
     </div>
 
     <div class="panel-body">
-    %{--<g:hasErrors bean="${user}">--}%
-    %{--<div class="alert alert-danger">--}%
-    %{--<g:eachError><g:message error="${it}"/></g:eachError>--}%
-    %{--</div>--}%
-    %{--</g:hasErrors>--}%
-    %{--<g:renderErrors bean="${user}"/>--}%
-
+        <div>${flash.message}</div>
         <g:uploadForm class="form-horizontal" name="registerForm" id="registerForm" controller="user" action="register">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="firstName">First Name:
@@ -110,6 +104,7 @@
                                     class="btn btn-default"/>
                 </div>
             </div>
+            <div>${flash.error}</div>
         </g:uploadForm>
     </div>
 </div>

@@ -3,7 +3,6 @@
     </div>
 
     <div class="panel-body">
-
         <g:form class="form-horizontal" name="login" controller="login" action="login" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="username">Username:

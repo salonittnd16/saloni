@@ -21,13 +21,13 @@ class LoginController {
             if (user.active) {
                 session.user = user
                 redirect(controller: "user", action: "index")
-                //render view: '/user/dashboard'
+                flash.message = "welcome ${session.user.name}"
             } else
                 flash.message = "User is not active"
 
         } else {
+            redirect(action: 'index')
             flash.message = "User account not found"
-            render flash.message
         }
     }
 
@@ -36,16 +36,12 @@ class LoginController {
         render count ? false : true
 
     }
+
     def validateEmail() {
         Integer count = User.countByEmail(params.email)
         render count ? false : true
 
     }
-
-//    def forgotPassword() {
-//        render(template: "/login/forgotPassword")
-//
-//    }
 
     def logout()
 

@@ -9,6 +9,7 @@ import com.ttnd.linksharing.CO.UserSearchCo
 import com.ttnd.linksharing.VO.UserVO
 
 class UserController {
+    int check = 0
     def assetResourceLocator
     def topicService
     def subscriptionService
@@ -33,14 +34,15 @@ class UserController {
                 user.photo = co.pic
             if (user.save(flush: true)) {
                 flash.message = "${user.firstName} registered successfully"
-                render(flash.message)
             } else {
+                flash.error="register unsuccessfull!!!!"
                 List<Resource> recentShares = Resource.list([sort: 'dateCreated', order: 'desc', max: 2])
                 render(view: "/login/home", model: [user: user, recentshares: recentShares])
             }
         } else {
-            render("already registered")
+            flash.error="already registered!!!!"
         }
+        redirect(url: request.getHeader("referer"))
 
     }
 
@@ -68,10 +70,16 @@ class UserController {
         List<Resource> postsCreated = resourceService.search(resourceSearchCo)
         List<Topic> topics = topicService.search(topicSearchCo)
         List<Topic> subscribedTopics = subscriptionService.search(topicSearchCo)
-        render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics,
-                                                  resourceSearchCo: resourceSearchCo,
-                                                  postsCreated    : postsCreated,
-                                                  listOfTopics    : topics, totalCount: totalCount])
+        if (!request.xhr) {
+            render(view: "/user/userProfile", model: [subscribedTopics: subscribedTopics,
+                                                      resourceSearchCo: resourceSearchCo,
+                                                      postsCreated    : postsCreated,
+                                                      listOfTopics    : topics, totalCount: totalCount])
+            check++
+        } else {
+            render(template: "/user/resourceAjax", model: [postsCreated: postsCreated, resourceSearchCo: resourceSearchCo, totalCount: totalCount])
+
+        }
 
 
     }
