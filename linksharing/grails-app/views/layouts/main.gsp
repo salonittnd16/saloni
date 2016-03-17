@@ -40,9 +40,9 @@
                                             class="form-control input-group searchPostBox"
                                             placeholder="Search">
                 <span class="input-group-btn">
-                    <button id="clearSearchPostBox"
+                    <a id="clearSearchPostBox"
                             class="btn btn-primary glyphicon-searchphicon glyphicon-remove searchButtons">
-                    </button></span>
+                    </a></span>
             </div>
 
 

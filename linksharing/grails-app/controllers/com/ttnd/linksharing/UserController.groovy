@@ -35,12 +35,12 @@ class UserController {
             if (user.save(flush: true)) {
                 flash.message = "${user.firstName} registered successfully"
             } else {
-                flash.error="register unsuccessfull!!!!"
+                flash.error = "register unsuccessfull!!!!"
                 List<Resource> recentShares = Resource.list([sort: 'dateCreated', order: 'desc', max: 2])
                 render(view: "/login/home", model: [user: user, recentshares: recentShares])
             }
         } else {
-            flash.error="already registered!!!!"
+            flash.error = "already registered!!!!"
         }
         redirect(url: request.getHeader("referer"))
 
@@ -60,7 +60,6 @@ class UserController {
     }
 
     def profile(ResourceSearchCo resourceSearchCo) {
-        int totalCo
         resourceSearchCo.max = resourceSearchCo.max ?: 5
         resourceSearchCo.offset = resourceSearchCo.offset ?: 0
         User user = User.findById(resourceSearchCo.id)
@@ -124,6 +123,7 @@ class UserController {
         TopicSearchCo topicSearchCo = new TopicSearchCo(id: resourceSearchCo.id, visibility: resourceSearchCo.visibility, max: params.max, offset: params.offset)
         List<Topic> topics = topicService.search(topicSearchCo)
         render(view: '/user/myProfile', model: [listOfTopics: topics, id: session.user.id])
+
     }
 
     def list(UserSearchCo userSearchCO) {
@@ -143,10 +143,10 @@ class UserController {
     def updateProfile(UserCo userCo) {
         if (User.executeUpdate("update User set firstName='${userCo.firstName}' ,lastName='${userCo.lastName}'," +
                 "userName='${userCo.userName}', photo='${userCo.pic}' where id='${session.user.id}' ")) {
-            render "saved sucessfully"
+            flash.message = "profile edit successfully !!!!"
 
         } else
-            render "unsuccesfull update"
+            flash.error = "profile edit unsuccessfull !!!!!!"
 
 
     }

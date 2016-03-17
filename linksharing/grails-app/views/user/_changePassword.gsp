@@ -18,9 +18,9 @@
                 </label>
 
                 <div class="col-sm-8">
-                    <g:passwordField name="oldPassword" class="form-control" placeholder="Enter first name"/>
+                    <g:passwordField name="oldPassword" class="form-control" placeholder="Enter first name"
+                                     required="required"/>
                     <div class="alert-danger" role="alert">
-
 
                     </div>
                 </div>
@@ -31,7 +31,8 @@
                 <label class="control-label col-sm-4" for="changePwd">Change Password:</label>
 
                 <div class="col-sm-8">
-                    <g:passwordField name="password" class="form-control" placeholder="Enter last name"/>
+                    <g:passwordField name="password" class="form-control" placeholder="Enter last name"
+                                     required="required"/>
                     <div class="alert-danger" role="alert">
                     </div>
                 </div>

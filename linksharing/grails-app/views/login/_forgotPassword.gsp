@@ -17,7 +17,7 @@
                             <label for="email" class="control-label col-xs-2">Email:</label>
 
                             <div class="col-xs-10">
-                                <g:textField name="email" type="email" class="form-control"  placeholder="Enter email"/>
+                                <g:textField name="email" type="email" class="form-control"  placeholder="Enter email" required="required"/>
                             </div>
                         </div>
 

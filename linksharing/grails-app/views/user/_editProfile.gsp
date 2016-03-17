@@ -19,7 +19,7 @@
 
                 <div class="col-sm-8">
                     <g:textField name="firstName" class="form-control" placeholder="Enter first name"
-                                 value="${session.user.firstName}"/>
+                                 value="${session.user.firstName}" required="required"/>
                     <div class="alert-danger" role="alert">
                         <g:fieldError field="firstName" bean="${user}"/>
                     </div>
@@ -31,8 +31,8 @@
                 <label class="control-label col-sm-4" for="pwd">Last Name:</label>
 
                 <div class="col-sm-8">
-                    <g:textField name="lastName" class="form-control" placeholder="Enter last name"/>
-                    <div class="alert-danger" role="alert">
+                    <g:textField name="lastName" class="form-control" placeholder="Enter last name" required="required"/>
+                    <div class="alert-danger" role="alert" >
                         <g:fieldError field="lastName" bean="${user}"/>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <label class="control-label col-sm-4" for="pwd">UserName:</label>
 
                 <div class="col-sm-8">
-                    <g:textField name="userName" class="form-control" placeholder="Enter user name"/>
+                    <g:textField name="userName" class="form-control" placeholder="Enter user name" required="required"/>
                     <div class="alert-danger" role="alert">
                         <g:fieldError field="userName" bean="${user}"/>
                     </div>
