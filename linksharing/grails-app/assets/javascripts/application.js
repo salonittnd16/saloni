@@ -210,7 +210,6 @@ $(document).ready(function () {
         var parent = $(this).attr("parent")
         var topicName = $("#" + parent + "_" + topicId).val()
         var visibility = "public";
-        alert(topicName)
         $.ajax({
             url: "/topic/update",
             data: {topicName: topicName, id: topicId},

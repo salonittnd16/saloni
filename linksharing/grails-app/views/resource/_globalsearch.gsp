@@ -1,42 +1,27 @@
 <div class="panel panel-default panel-primary">
-    <div class="panel-heading">Posts
+    <div class="panel-heading">Posts : ${topic.name}
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button id="findSearchPostBox" topicId="${topic.id}"
+                        class="btn btn-primary glyphicon glyphicon-search searchButtons findSearchPostBox">
+                </button>
+            </span>
+
+            <input type="text" id="searchPostBox" class="form-control input-group searchPostBox" placeholder="Search">
+
+            <span class="input-group-btn">
+                <button id="clearSearchPostBox"
+                        class="btn btn-primary glyphicon-searchphicon glyphicon-remove searchButtons">
+                </button>
+            </span>
+        </div>
     </div>
 
-    <div class="panel-body" id="postsCreated">
+    <div id="topicPosts" class="panel-body">
         <g:each in="${posts}" var="post">
-            <div class="row">
-                <div class=" col-xs-2" style="font-size:70px; float:left">
-                </div>
-
-                <div class="col-xs-10">
-                    ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>
-                    <a href="#" class="inline" style="float:right">Grails</a>
-
-                    <p>${post.description}
-                    </p>
-                    <a href="#"><div class="fa fa-facebook-official"></div></a>
-                    <a href="#"><div class="fa fa-twitter inline"></div></a>
-                    <a href="#"><div class="fa fa-google-plus inline"></div></a>
-
-
-                    <span class="inline" style="float:right;padding: 2px"><u><ls:checkResourceType
-                            resource="${post.id}"/></u></span>
-                    %{--<ls:checkIsRead isRead="${readingItem.isRead}">--}%
-                    %{--<g:link class="inline" style="float:right;padding: 2px"><u>Mark As Unread</u></g:link>--}%
-                    %{--</ls:checkIsRead>--}%
-
-                    %{--<ls:checkIsUnRead isRead="${readingItem.isRead}">--}%
-                    %{--<g:link  controller="readingItem" action="changeIsRead" class="inline" style="float:right;padding: 2px" params="[id: readingItem.id,isRead:!readingItem.isRead]"><u>Mark As read</u></g:link>--}%
-                    %{--</ls:checkIsUnRead>--}%
-                    <g:link controller="user" action="post" class="inline"
-                            style="float:right;padding: 2px"
-                            params="[postId: post.id]"><u>View Post</u></g:link>
-                </div>
-
-            </div>
-            <hr/>
-
+            <g:render template="/topic/resourceSearch" model="[post: post]"/>
         </g:each>
     </div>
 
 </div>
+

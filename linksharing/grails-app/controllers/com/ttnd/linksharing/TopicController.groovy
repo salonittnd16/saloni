@@ -43,12 +43,13 @@ class TopicController {
         Topic topic = new Topic(name: "${topicName} new", createdBy: session.user, visibility: Visibility.convert(visibility))
         Map result = [:]
         if (topic.save(flush: true, failOnError: true)) {
+            flash.message = "topic saved successfully"
             result.message = "topic saved successfully"
         } else {
             result.error = "topic save unsuccessful"
         }
         render(result as JSON)
-        redirect(controller: 'login', action: 'index')
+        redirect(url: request.getHeader("referer"))
     }
 
     def delete(Long topicId) {

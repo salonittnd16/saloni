@@ -12,7 +12,7 @@
                         <div class="form-group">
 
                             <input type="text" name="topic" class="form-control col-xs-4" placeholder="${topic.name}"
-                                   id="trending_${topic.id}">
+                                   id="trending_${topic.id}" required="required">
                             <button name="saveTopic" class="btn  changeTopicName" parent="trending"
                                     topicId="${topic.id}">save</button>
                             <button type="button" class="btn btn-default">cancel</button>

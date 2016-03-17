@@ -13,7 +13,7 @@
 </div>
 
 <div class="col-xs-6" style="float: right">
-    <g:render template="/resource/globalsearch" model="${posts}"/>
+    <g:render template="/topic/resourceSearch" model="${posts}"/>
 </div>
 </body>
 </html>

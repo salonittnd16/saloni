@@ -26,8 +26,7 @@
 
                         <div class="row">
                             <div class="col-xs-4">
-                                <small class="col-xs-12">@saloni</small>
-                                <small class="col-xs-12"><a>Subscribe</a></small>
+                                <small class="col-xs-12">"@${user.firstName}"</small>
                             </div>
 
                             <div class="col-xs-4">

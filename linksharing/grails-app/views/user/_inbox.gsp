@@ -15,7 +15,7 @@
                         ${readingItem.resource.createdBy}
                     </g:link>
                     <span class="text-muted inline">"@${readingItem.resource.createdBy}"</span>
-                    <a href="#" class="inline" style="float:right">Grails</a>
+                    <a href="#" class="inline" style="float:right">${readingItem.resource.topic.name}</a>
 
                     <p>${readingItem.resource.description}
                     </p>

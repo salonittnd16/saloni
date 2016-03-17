@@ -5,7 +5,7 @@
 
         <div class="col-xs-10">
             ${post.createdBy}<span class="text-muted inline">@saloni 5min</span>
-            <a href="#" class="inline" style="float:right">Grails</a>
+            <a href="#" class="inline" style="float:right">${post.topic.name}</a>
 
             <p>${post.description}
             </p>
