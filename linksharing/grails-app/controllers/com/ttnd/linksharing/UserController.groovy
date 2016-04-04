@@ -46,9 +46,6 @@ class UserController {
 
     }
 
-    def search() {
-        render view: 'search'
-    }
 
     def post(Long postId) {
         Resource resource = Resource.get(postId)

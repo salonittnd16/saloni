@@ -6,6 +6,11 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
+    <meta property="og:url"           content="http://localhost:8080/" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    %{--<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />--}%
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><g:layoutTitle default="Grails"/></title>
@@ -15,10 +20,30 @@
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
 
+
     <g:layoutHead/>
 </head>
 
 <body>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1019800851413954',
+            xfbml      : true,
+            version    : 'v2.5'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 <g:if test="${session.user}">
 
     <nav role="navigation" class="navbar navbar-default">

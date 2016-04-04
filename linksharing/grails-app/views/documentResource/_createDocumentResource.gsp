@@ -52,7 +52,7 @@
 
                     </g:uploadForm>
 
-                </div>
+                </div>r
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Close</button>

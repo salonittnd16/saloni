@@ -9,5 +9,25 @@ import spock.lang.Specification
 @TestFor(UserService)
 class UserServiceSpec extends Specification {
 
+    def ""() {
+        setup:
+        def mockedEmailService = Mock(EmailService)
+        service.emailService = mockedEmailService
+        service.metaClass.getUsersWithUnreadItems = { ->
+            [new User()]
+        }
+        service.metaClass.getUnreadResources = { User user ->
+            [new LinkResource()]
+
+
+            when:
+            service.sendUnreadItemsEmail()
+
+            then:
+            1 * mockedEmailService.sendUnreadResourcesEmail(_, _)
+
+        }
+    }
+
 
 }
